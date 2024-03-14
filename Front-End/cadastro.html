@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código Agora</title>
+    <link rel="stylesheet" href="./src/assets/styles/vars.css">
+    <link rel="stylesheet" href="./src/assets/styles/style-cadastro.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <img id="logo" src="./src/assets/imgs/fundo-login.png" alt="logo">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        Página inicial
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        Sobre
+                    </a>
+                </li>
+                <li>
+                    <a href="cadastro.html">
+                        Inscreva-se
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <div  class="container">
+            <div class="container__lefth">
+                <h1 class="">Cadastre-se</h1>
+                
+                <div class="container__lefth__dados_cadastro">
+                    <div class="dados-row">
+                        <p class="dados"><span class="fa fa-user"></span><input id="cadNome" class="input-tranparent" type="text"></p>
+                    </div>
+                    <div class="dados-row">
+                        <p class="dados"><span class="fa fa-envelope"></span><input id="cadEmail" class="input-tranparent" type="email"></p>
+                    </div>
+                    <div class="dados-row">
+                        <p class="dados"><span class="fa fa-lock"></span><input id="cadSenha" class="input-tranparent" type="password"></p>
+                    </div>
+                </div>
+                <!-- <a href="login.html">
+                </a> -->
+                <button onclick="cadastrarUsuario()" class="container__button">Cadastrar</button>
+            </div>
+            
+            <div class="container__right">
+                <img src="./src/assets/imgs/fundo-cadastro.png" alt="fundo-login">
+                <div class="container__right__texto">
+                    <h2>Ainda não fez <span class="span-laranja">login</span> ?</h2>
+                    <br>
+                    <h3>Faça login e continue sua jornada</h3>
+                    <br>
+                    <h6>A cada novo nível, sua lógica se fortalece.</h6>
+                    <br>
+                    <p class="p__link-cad">
+                        <a href="login.html">Fazer meu login aqui</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="https://kit.fontawesome.com/062f506ca7.js" crossorigin="anonymous"></script>
+</body>
+</html>

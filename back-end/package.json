@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.3",
+    "json": "^11.0.0",
+    "mssql": "^10.0.2",
+    "node.js": "^0.0.1-security",
+    "path": "^0.12.7",
+    "src": "^1.1.2",
+    "tedious": "^17.0.0"
+  },
+  "name": "marca2.0",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

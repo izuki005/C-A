@@ -1,0 +1,136 @@
+/* Importa a fonte Roboto do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap');
+
+/* Zera margens e preenchimentos padrão para todos os elementos */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilo do corpo da página */
+body {
+    background-image: url(../imgs/fundo-estrelado-amarelo.png);
+    background-color: #283134;
+    font-family: var(--font-roboto); /* Utiliza a fonte Roboto */
+}
+
+/* Estilo para botões genéricos */
+button {
+    width: 158px;
+    height: 76px;
+    border-radius: 17.76px;
+    border-color: var(--cor-laranja);
+    background: none;
+    cursor: pointer;
+    margin: 0 10px 0 10px;
+}
+.fa-regular {
+    cursor: pointer;
+}
+
+/* Estilos específicos para os botões 'saida-inicio' e 'play' */
+.saida-inicio,
+.play {
+    color: var(--cor-laranja);
+    box-shadow: -6.56px 8.53px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* Estilos para a seção principal */
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilos para a seção principal, onde estão as principais divs */
+.main {
+    display: flex;
+    justify-content: space-around;
+    width: 99%;
+}
+
+/* Estilos para o contêiner central */
+.container {
+    border: 1px solid var(--cor-laranja);
+    background-color: rgba(0, 193, 255, 0.05);
+    border-radius: 21.79px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    width: 495px;
+    height: 440px;
+    padding: 0 0 20px 0;
+}
+
+/* Estilos para linhas de dados */
+.dados-row {
+    display: flex;
+    padding: 16px;
+    align-items: center;
+    color: #fff;
+    justify-content: space-around;
+}
+
+/* Estilos para as caixas de dados */
+.dados {
+    border: 0.9px solid #fff;
+    border-radius: 20px;
+    height: 41.4px;
+    width: 274.56px;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    padding: 0 10px 0 10px;
+}
+
+/* Estilos para o nome de entrada */
+.nome_inpt {
+    margin-right: 10px;
+}
+
+/* Estilos para o contêiner do perfil */
+.container__perfil {
+    margin: 20px 0 10px 0;
+}
+
+/* Estilos para o contêiner dos botões */
+.buttons {
+    display: flex;
+    margin-top: 10px;
+}
+
+/* Estilos para a caixa de música */
+.musica {
+    /* border: 1px solid blue; */
+    border-radius: 20px;
+    height: 41.4px;
+    width: 274.56px;
+    justify-content: center;
+    display: flex;
+    padding: 0 10px 0 10px;
+}
+
+/* Estilos para a caixa de seleção de música */
+.checkbox__input {
+    transform: scale(2);
+}
+
+/* Estilos gerais para inputs */
+input {
+    color: gray;
+}
+
+/* Estilos específicos para inputs transparentes */
+.input-tranparent {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    height: 41.4px;
+    width: 258px;
+}
+
+/* Estilo das imagens*/
+.img-right, .img-lefth{
+    margin-top: 50px;
+}
