@@ -98,23 +98,24 @@ app.post('/cadastro_usuario', (req, res) => {
 });
 
 app.post('/atualizar_usuario', (req, res) => {
-    const { nome, email, senha } = req.body;
+    const { id, nome, email, senha } = req.body;
 
-    const checkSenhaQuery = `SELECT * FROM cadastro WHERE senha='${senha}'`;
+    const checkIdQuery = `SELECT * FROM cadastro WHERE id='${id}'`;
 
     global.conn.request()
-        .query(checkSenhaQuery)
+        .query(checkIdQuery)
         .then((result) => {
             if (result.recordset.length === 0) {
-                return res.status(400).json({ mensagem: 'Erro: Esta senha não está cadastrada' });
+                return res.status(400).json({ mensagem: 'Erro: ID de usuário não encontrado' });
             }
 
-            // Se a senha estiver cadastrada, realiza a atualização no banco de dados
+            // Se o ID do usuário for encontrado, realiza a atualização no banco de dados
             const updateQuery = `
                 UPDATE cadastro 
                 SET nome = '${nome}',
-                    email = '${email}'
-                WHERE senha = '${senha}';
+                    email = '${email}',
+                    senha = '${senha}'
+                WHERE id = '${id}';
             `;
 
             global.conn.request()
@@ -158,37 +159,6 @@ app.get('/lista_produto', (req, res) => {
         .catch(err => {
             // Em caso de erro, retorna uma mensagem de erro
             res.status(500).json({ mensagem: 'Erro interno no servidor', error: err.message });
-        });
-});
-
-// Rota de atualização de tipo_produto
-app.put('/atualizar_produto', (req, res) => {
-    const sku = req.body.sku; // Obtém o ID
-    const produto = req.body.produto; // Obtém o novo nome
-    const id_marca = req.body.id_marca;
-    const id_tipo_produto = req.body.id_tipo_produto;
-    const preco_unitario = req.body.preco_unitario;
-    const custo_unitario = req.body.custo_unitario;
-    const observacao = req.body.observacao;
-
-    const updateQuery = `
-        UPDATE produtos 
-        SET produto = '${produto}',
-            id_marca = '${id_marca}',
-            id_tipo_produto = '${id_tipo_produto}',
-            preco_unitario = '${preco_unitario}',
-            custo_unitario = '${custo_unitario}',
-            observacao = '${observacao}'
-        WHERE sku = ${sku}
-    `;
-
-    global.conn.request()
-        .query(updateQuery)
-        .then(() => {
-            res.status(200).json({ message: 'Produto atualizado com sucesso' });
-        })
-        .catch((err) => {
-            res.status(500).json({ error: 'Erro ao atualizar o produto', details: err.message });
         });
 });
 

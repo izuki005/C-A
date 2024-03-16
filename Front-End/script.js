@@ -105,13 +105,12 @@ async function verificarUsuario() {
             console.log('Resposta da requisição:', response);
 
             if (response.ok) {
-                const userData = await response.json(); // Extrai os dados do usuário da resposta
+                const userData = await response.json();
+                localStorage.setItem('userId', userData.id); // Armazena o ID do usuário no localStorage
                 console.log('Usuário encontrado com sucesso!', userData);
-                window.alert('USUÁRIO EXISTENTE')
-                // Salvando informações do usuário localmente
-                localStorage.setItem('userData', JSON.stringify(userData));
+                window.alert('USUÁRIO EXISTENTE');
                 window.location.href = "inicio-jogo.html";
-            } else {
+            }else {
                 console.error('Erro ao procurar usuário:', response.status);
                 window.alert('USUÁRIO INEXISTENTE');
             }
@@ -147,3 +146,44 @@ function carregarDados() {
     // Chamar a função para carregar as informações
     carregarInformacoes(userData);
 };
+
+async function atualizarUsuario() {
+    // Obtém o ID do usuário do localStorage
+    const id = localStorage.getItem('userId');
+    
+    // Obtém os valores dos inputs de atualização
+    const nome = document.getElementById('confNome').value;
+    const email = document.getElementById('confEmail').value;
+    const senha = document.getElementById('confSenha').value;
+
+    // Constrói o objeto de dados a ser enviado para o servidor
+    const data = {
+        id: id,
+        nome: nome,
+        email: email,
+        senha: senha
+    };
+
+    try {
+        // Realiza a chamada de API usando o método fetch
+        const response = await fetch('http://localhost:3000/atualizar_usuario', {
+            method: 'POST', // Método HTTP para a solicitação
+            headers: {
+                'Content-Type': 'application/json', // Tipo de conteúdo enviado (JSON)
+            },
+            body: JSON.stringify(data), // Converte o objeto em formato JSON
+        });
+
+        // Verifica se a solicitação foi bem-sucedida (status 2xx)
+        if (response.ok) {
+            window.alert('Cadastro atualizado com sucesso.');
+            console.log('Usuário atualizado com sucesso!');
+        } else {
+            console.error('Erro ao atualizar usuário:', response.status);
+            window.alert('Erro ao atualizar usuário. Por favor, tente novamente.');
+        }
+    } catch (error) {
+        console.error('Erro na chamada de API:', error);
+        window.alert('Erro na chamada de API. Por favor, tente novamente.');
+    }
+}
