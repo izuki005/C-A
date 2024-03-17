@@ -48,7 +48,7 @@ app.post('/verificar_login', (req, res) => {
         }
     
         const checkLoginQuery = `
-            SELECT nome, email, senha 
+            SELECT id_cadastro, nome, email, senha 
             FROM cadastro 
             WHERE email = @email AND senha = @senha
         `;
@@ -97,12 +97,45 @@ app.post('/cadastro_usuario', (req, res) => {
         .catch((err) => res.status(500).json({ mensagem: 'Erro interno no servidor', error: err.message }));
 });
 
-app.post('/atualizar_usuario', (req, res) => {
-    const { id, nome, email, senha } = req.body;
+app.post('/verificar_senha', (req, res) => {
+    const senha  = req.body.senha;
 
-    const checkIdQuery = `SELECT * FROM cadastro WHERE id='${id}'`;
+    const checarSenha = `
+        SELECT COUNT(*) AS count 
+        FROM cadastro 
+        WHERE senha=@senha
+    `;
+
+    const request = new sql.Request();
+    request.input('senha', sql.VarChar, senha);
+    request.query(checarSenha, (error, result) => {
+        if (error) {
+            console.error('Erro ao executar a consulta:', error);
+            res.status(500).json({ error: 'Erro interno do servidor' });
+            return;
+        }
+
+        // Verifica se a senha foi encontrada
+        const count = result.recordset[0].count;
+        if (count > 0) {
+            // A senha foi encontrada
+            res.status(200).json({ senhaEncontrada: true });
+        } else {
+            // A senha não foi encontrada
+            res.status(200).json({ senhaEncontrada: false });
+        }
+    });
+});
+
+
+app.post('/atualizar_usuario', (req, res) => {
+    const { id_cadastro, nome, email, senha } = req.body;
+
+    // Verifica se o ID de usuário existe no banco de dados
+    const checkIdQuery = `SELECT * FROM cadastro WHERE id_cadastro=@id_cadastro`;
 
     global.conn.request()
+        .input('id_cadastro', id_cadastro)
         .query(checkIdQuery)
         .then((result) => {
             if (result.recordset.length === 0) {
@@ -112,13 +145,17 @@ app.post('/atualizar_usuario', (req, res) => {
             // Se o ID do usuário for encontrado, realiza a atualização no banco de dados
             const updateQuery = `
                 UPDATE cadastro 
-                SET nome = '${nome}',
-                    email = '${email}',
-                    senha = '${senha}'
-                WHERE id = '${id}';
+                SET nome = @nome,
+                    email = @email,
+                    senha = @senha
+                WHERE id_cadastro = @id_cadastro;
             `;
 
             global.conn.request()
+                .input('nome', nome)
+                .input('email', email)
+                .input('senha', senha)
+                .input('id_cadastro', id_cadastro)
                 .query(updateQuery)
                 .then(() => res.status(200).json({ mensagem: 'Cadastro atualizado com sucesso.' }))
                 .catch((err) => res.status(500).json({ mensagem: 'Erro interno no servidor', error: err.message }));
