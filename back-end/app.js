@@ -1,12 +1,12 @@
-const sql = require('mssql')
-const express = require('express')
-const path = require('path')
-var cors = require('cors')
+const sql = require('mssql');
+const express = require('express');
+const path = require('path');
+const cors = require('cors');
 
-const app = express()
+const app = express();
 const port = 3000; // porta padrão
-app.use(express.json())
-app.use(cors())
+app.use(express.json());
+app.use(cors());
 
 const config = {
     server: 'matheus004',
@@ -25,19 +25,27 @@ const config = {
 
 sql.connect(config)
     .then((conn) => {
-        console.log('conectou')
-        global.conn = conn
+        console.log('conectou');
+        global.conn = conn;
     })
     .catch((err) => {
-        console.log(err)
+        console.log(err);
     });
 
-    function execSQLQuery(sqlQry, res){
-        global.conn.request()
-                    .query(sqlQry)
-                    .then(result => res.json(result.recordset)) // EM caso de sucesso
-                    .catch(err => res.json(err)) // em caso de erro
-    }
+function execSQLQuery(sqlQry, res){
+    global.conn.request()
+                .query(sqlQry)
+                .then(result => res.json(result.recordset)) // Em caso de sucesso
+                .catch(err => res.json(err)); // Em caso de erro
+}
+
+// Servir os arquivos estáticos
+app.use(express.static(path.join(__dirname, '../Front-End')));
+
+// Rota GET para /cadastro
+app.get('/cadastro', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Front-End/cadastro.html'));
+});
 
 app.post('/verificar_login', (req, res) => {
         const { email, senha } = req.body;
@@ -163,73 +171,25 @@ app.post('/atualizar_usuario', (req, res) => {
         .catch((err) => res.status(500).json({ mensagem: 'Erro interno no servidor', error: err.message }));
 });
 
-// Endpoint para mostrar a lista de tipo_produto cadastradas
-app.get('/lista_produto', (req, res) => {
-    const listaprodutoQuery = `
-    SELECT 
-        p.sku,
-        p.produto,
-        m.marca,
-        tp.tipo_produto,
-        p.preco_unitario,
-        p.custo_unitario,
-        p.observacao 
-    FROM 
-        produtos p
-    LEFT JOIN 
-        marca m ON p.id_marca = m.id_marca
-    LEFT JOIN 
-        tipo_produto tp ON p.id_tipo_produto = tp.id_tipo_produto
-`; // Seleciona o ID e o nome do produto
-
-    global.conn.request()
-        .query(listaprodutoQuery)
-        .then(result => {
-            const produto = result.recordset; // Obtém todos os produto do resultado da consulta
-
-            if (produto.length > 0) {
-                res.status(200).json(produto); // Retorna todos os roduto, incluindo seus IDs
-            } else {
-                res.status(404).json({ mensagem: 'Não há produtos cadastrados.' });
-            }
-        })
-        .catch(err => {
-            // Em caso de erro, retorna uma mensagem de erro
-            res.status(500).json({ mensagem: 'Erro interno no servidor', error: err.message });
-        });
-});
-
 // Rota de exclusão de tipo_produto
-app.delete('/apagar_produto', (req, res) => {
-    const sku = req.body.sku; // Obtém o ID a ser excluído dos parâmetros da URL
+app.delete('/apagar_usuario', (req, res) => {
+    const id_cadastro = req.body.id_cadastro; // Obtém o ID a ser excluído dos parâmetros da URL
 
     const deleteQuery = `
-        DELETE FROM produtos 
-        WHERE sku = ${sku}
+        DELETE FROM cadastro
+        WHERE id_cadastro = ${id_cadastro}
     `;
 
     global.conn.request()
         .query(deleteQuery)
         .then(() => {
-            res.status(200).json({ message: 'produto excluído com sucesso' });
+            res.status(200).json({ message: 'Conta excluída com sucesso' });
         })
         .catch((err) => {
-            res.status(500).json({ error: 'Erro ao excluir o tipo_produto', details: err.message });
+            res.status(500).json({ error: 'Erro ao excluir a conta', details: err.message });
         });
 });
 
-/// Endpoint para obter todas as marcas
-app.get('/marcas', (req, res) => {
-    const sqlQuery = 'SELECT id_marca, marca FROM marca';
-    execSQLQuery(sqlQuery, res);
-});
-
-// Endpoint para obter todos os tipos de produto
-app.get('/tipos_produto', (req, res) => {
-    const sqlQuery = 'SELECT id_tipo_produto, tipo_produto FROM tipo_produto';
-    execSQLQuery(sqlQuery, res);
-});
-
 app.listen(port, () => {
-        console.log('o servidor está rodando na porta: http://localhost:3000/cadastro_marca')
-    })
+    console.log(`Servidor está rodando na porta ${port}`);
+});

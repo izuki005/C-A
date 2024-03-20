@@ -59,7 +59,7 @@ section {
     align-items: center;
     margin-top: 10px;
     width: 495px;
-    height: 440px;
+    /* height: 440px; */
     padding: 0 0 20px 0;
 }
 
@@ -75,13 +75,32 @@ section {
 /* Estilos para as caixas de dados */
 .dados {
     border: 0.9px solid #fff;
-    border-radius: 20px;
+    border-radius:10px;
     height: 41.4px;
     width: 274.56px;
     align-items: center;
     justify-content: space-between;
     display: flex;
     padding: 0 10px 0 10px;
+}
+
+#DeleteConta{
+    color: rgba(255, 255, 255, 0.041);
+    background-color: #ffdb6507;
+    border: none;
+    font-size: 20pt;
+    padding: 2px 6px 2px 6px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+#DeleteConta:hover{
+    color: white;
+    background-color: rgb(216, 33, 33);
+    border: none;
+    font-size: 20pt;
+    padding: 2px 6px 2px 6px;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 /* Estilos para o nome de entrada */

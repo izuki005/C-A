@@ -89,26 +89,32 @@ h1{
 /* Estilos para as caixas de dados */
 .dados {
     border: 0.9px solid var(--cor-laranja);
-    border-radius: 20px;
+    border-radius: 10px;
     height: 41.4px;
     width: 274.56px;
     align-items: center;
     display: flex;
     padding: 0 10px 0 10px;
+    position: relative;
 }
 
 .fa{
-    color: rgba(255, 191, 101, 0.80);    
+    color: rgba(255, 191, 101, 0.80);  
+    position: absolute;
+    z-index: 1;
+    right: 14px;  
 }
 
 .input-tranparent{
     background-color: transparent;
+    border-radius: 10px;
     border: none;
     outline: none;
     height: 41.4px;
-    width: 240px;
+    width: 100%;
     color: #fff;
-    margin-left: 10px;
+    /* margin-left: 10px; */
+
 }
 
 .container__button{

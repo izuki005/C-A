@@ -29,24 +29,25 @@ function habilitarEmail() {
 // Função para habilitar edição da senha
 function habilitarSenha() {
     const senha = document.getElementById('confSenha');
-    
     if (senha.disabled) {
         senha.disabled = false;
         senha.style.color = "white";
+        senha.type = "text"
     } else {
         senha.disabled = true;
         senha.style.color = "gray";
+        senha.type = "password"
+        
         verificar_senha(); // Chama a função para atualizar o usuário
     }
 }
 
 //===========================================
-
 async function cadastrarUsuario() {
     // Obtém os valores dos inputs
-    const nome = document.getElementById('cadNome').value;
-    const email = document.getElementById('cadEmail').value;
-    const senha = document.getElementById('cadSenha').value;
+    const nome = document.getElementById('cadNome').value
+    const email = document.getElementById('cadEmail').value
+    const senha = document.getElementById('cadSenha').value
 
     // Constrói o objeto de dados a ser enviado para o servidor
     const data = {
@@ -55,30 +56,39 @@ async function cadastrarUsuario() {
         senha: senha
     };
 
-    try {
-        // Realiza a chamada de API usando o método fetch
-        const response = await fetch('http://localhost:3000/cadastro_usuario', {
-            method: 'POST', // Método HTTP para a solicitação
-            headers: {
-                'Content-Type': 'application/json', // Tipo de conteúdo enviado (JSON)
-            },
-            body: JSON.stringify(data), // Converte o objeto em formato JSON
-        });
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        // Verifica se a solicitação foi bem-sucedida (status 2xx)
-        if (response.ok) {
-            document.getElementById('cadNome').value = ''; // Limpa o campo nome
-            document.getElementById('cadEmail').value = ''; // Limpa o campo email
-            document.getElementById('cadSenha').value = ''; // Limpa o campo senha
-            window.alert('Cadastro Realizado');
-            window.location.href = "login.html"; // Redireciona para login.html
-            console.log('Usuário cadastrado com sucesso!');
-        } else {
-            console.error('Erro ao cadastrar usuário:', response.status);
+      // Verifica se o formato do email é válido
+    if (emailRegex.test(email)) {
+        // Aqui você pode enviar o formulário ou fazer qualquer outra coisa que desejar
+        try {
+            // Realiza a chamada de API usando o método fetch
+            const response = await fetch('http://localhost:3000/cadastro_usuario', {
+                method: 'POST', // Método HTTP para a solicitação
+                headers: {
+                    'Content-Type': 'application/json', // Tipo de conteúdo enviado (JSON)
+                },
+                body: JSON.stringify(data), // Converte o objeto em formato JSON
+            });
+    
+            // Verifica se a solicitação foi bem-sucedida (status 2xx)
+            if (response.ok) {
+                document.getElementById('cadNome').value = ''; // Limpa o campo nome
+                document.getElementById('cadEmail').value = ''; // Limpa o campo email
+                document.getElementById('cadSenha').value = ''; // Limpa o campo senha
+                window.alert('Cadastro Realizado')
+                window.location.href = "login.html"; // Redireciona para login.html
+                console.log('Usuário cadastrado com sucesso!');
+            } else {
+                console.error('Erro ao cadastrar usuário:', response.status);
+            }
+        } catch (error) {
+            console.error('Erro na chamada de API:', error);
         }
-    } catch (error) {
-        console.error('Erro na chamada de API:', error);
+    } else {
+        alert('Por favor, insira um email válido.');
     }
+
 }
 
 // Função para verificar o usuário
@@ -157,7 +167,7 @@ function carregarDados() {
 }
 
 // Função para atualizar o usuário no servidor
-async function atualizarUsuario(userData) { // Adiciona userData como parâmetro
+async function atualizarUsuario(userData) { 
     // Verifica se userData contém id_cadastro
     if (!userData || !userData.id_cadastro) {
         console.error('Dados do usuário incompletos ou id_cadastro não encontrado');
@@ -187,7 +197,7 @@ async function atualizarUsuario(userData) { // Adiciona userData como parâmetro
             senha: senha
         };
 
-        console.log('Dados a serem enviados para atualização:', data); // Verifica os dados a serem enviados para atualização
+        console.log('Dados a serem enviados para atualização:', data);
 
         const response = await fetch('http://localhost:3000/atualizar_usuario', {
             method: 'POST',
@@ -245,7 +255,7 @@ async function verificar_senha() {
                 }
 
                 const userData = JSON.parse(userDataString);
-                atualizarUsuario(userData); // Passa os dados do usuário como parâmetro para a função atualizarUsuario
+                atualizarUsuario(userData);
             } else {
                 console.error('Senha não encontrada. Por favor, verifique a senha digitada.');
                 window.alert('Senha não encontrada. Por favor, verifique a senha digitada.');
@@ -259,3 +269,43 @@ async function verificar_senha() {
         window.alert('Erro ao verificar senha. Por favor, tente novamente.');
     }
 }
+
+async function excluirConta() {
+    const id_cadastro = JSON.parse(localStorage.getItem('userData'))?.id_cadastro;
+
+    if (!id_cadastro) {
+        console.error('ID de cadastro não encontrado');
+        return;
+    }
+
+    if (confirm("Deseja realmente excluir sua conta?")) {
+        if (prompt('Para confirmar a exclusão, escreva: Excluir minha conta') === 'Excluir minha conta') {
+            try {
+                const response = await fetch('http://localhost:3000/apagar_usuario', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ id_cadastro: id_cadastro })
+                });
+
+                if (response.ok) {
+                    alert("Conta excluída com sucesso!");
+                    localStorage.removeItem('userData');
+                    window.location.href = "login.html";
+                } else {
+                    throw new Error('Erro ao excluir a conta');
+                }
+            } catch (error) {
+                alert("Erro ao excluir a conta: " + error.message);
+            }
+        } else {
+            alert("Operação cancelada!");
+        }
+    }
+}
+
+function teste() {
+    let deleteButton = document.getElementById("DeleteConta");
+    deleteButton.addEventListener('click', excluirConta);
+};
