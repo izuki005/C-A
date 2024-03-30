@@ -39,7 +39,7 @@ async function main() {
             to: "falcaomatheus08@gmail.com", // list of receivers
             subject: "Código de verificação", // Subject line
             text: `Estou aqui atoa`, // plain text body
-            html: `Digite este código de verificação para finalizar seu cadastro!<br> <strong style ="font-size: 20pt">${codigo}</strong>`, // html body
+            html: `<h3>Digite este código de verificação para finalizar seu cadastro!<h3><br><br> <strong style ="font-size: 20pt";>${codigo}</strong>`, // html body
         });
         console.log("Message sent: %s", info.messageId);
         // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
@@ -72,7 +72,6 @@ sql.connect(config)
     .then((conn) => {
         console.log('conectou');
         global.conn = conn;
-        main()
     })
     .catch((err) => {
         console.log(err);

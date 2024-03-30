@@ -43,6 +43,55 @@ function habilitarSenha() {
 }
 
 //===========================================
+// Arquivo script.js
+
+const nodemailer = require("nodemailer");
+
+async function enviarEmail() {
+    const email = document.getElementById('cadEmail').value;
+
+    // Configuração do transporte de e-mail
+    const transport = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
+        auth: {
+            user: 'falcaomatheus08@gmail.com',
+            pass: 'gvcf ukxr ykzb tznn', // Cada email tem sua senha única, este é a senha do email falcaomatheus08@gmail.com
+        }
+    });
+
+    try {
+        // Gerar um código de verificação
+        const codigo = gerarCodigo(6);
+
+        // Enviar o email
+        const info = await transport.sendMail({
+            from: email,
+            to: email,
+            subject: 'Código de Verificação',
+            text: `Seu código de verificação é: ${codigo}`,
+            html: `<h3>Digite este código de verificação para finalizar seu cadastro!</h3><br><strong style="font-size: 20pt;">${codigo}</strong>`
+        });
+
+        console.log('Email enviado:', info);
+    } catch (error) {
+        console.error('Erro ao enviar email:', error);
+    }
+}
+
+function gerarCodigo(tamanho) {
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let codigo = '';
+
+    for (let i = 0; i < tamanho; i++) {
+        codigo += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+
+    return codigo;
+}
+
+//=======================================================================
 async function cadastrarUsuario() {
     // Obtém os valores dos inputs
     const nome = document.getElementById('cadNome').value
@@ -63,13 +112,13 @@ async function cadastrarUsuario() {
         // Aqui você pode enviar o formulário ou fazer qualquer outra coisa que desejar
         try {
             // Realiza a chamada de API usando o método fetch
-            const response = await fetch('http://localhost:3000/cadastro_usuario', {
-                method: 'POST', // Método HTTP para a solicitação
-                headers: {
-                    'Content-Type': 'application/json', // Tipo de conteúdo enviado (JSON)
-                },
-                body: JSON.stringify(data), // Converte o objeto em formato JSON
-            });
+            // const response = await fetch('http://localhost:3000/cadastro_usuario', {
+            //     method: 'POST', // Método HTTP para a solicitação
+            //     headers: {
+            //         'Content-Type': 'application/json', // Tipo de conteúdo enviado (JSON)
+            //     },
+            //     body: JSON.stringify(data), // Converte o objeto em formato JSON
+            // });
     
             // Verifica se a solicitação foi bem-sucedida (status 2xx)
             if (response.ok) {
