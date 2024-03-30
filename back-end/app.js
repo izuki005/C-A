@@ -16,15 +16,31 @@ const transport = nodemailer.createTransport({
 
 async function main() {
     try {
+
+        function gerarCodigo(tamanho) {
+            // Defina os caracteres permitidos para o código
+            const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let codigo = '';
+        
+            // Gere um código com o tamanho especificado
+            for (let i = 0; i < tamanho; i++) {
+                codigo += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+            }
+        
+            return codigo;
+        }
+        
+        // Use a função para gerar um código de 6 caracteres
+        const codigo = gerarCodigo(6);
+
         // send mail with defined transport object
         const info = await transport.sendMail({
             from: '"Maddison Foo Koch 👻" <falcaomatheus08@gmail.com>', // sender address
             to: "falcaomatheus08@gmail.com", // list of receivers
-            subject: "Hello ✔", // Subject line
-            text: "Hello world?", // plain text body
+            subject: "Código de verificação", // Subject line
+            text: `Digite este código de verificação para finalizar seu cadastro!\n <strong>${codigo}</strong>`, // plain text body
             html: "<b>Hello world?</b>", // html body
         });
-      
         console.log("Message sent: %s", info.messageId);
         // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
     } catch (error) {
