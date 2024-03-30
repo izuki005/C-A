@@ -38,8 +38,8 @@ async function main() {
             from: '"Maddison Foo Koch 👻" <falcaomatheus08@gmail.com>', // sender address
             to: "falcaomatheus08@gmail.com", // list of receivers
             subject: "Código de verificação", // Subject line
-            text: `Digite este código de verificação para finalizar seu cadastro!\n <strong>${codigo}</strong>`, // plain text body
-            html: "<b>Hello world?</b>", // html body
+            text: `Estou aqui atoa`, // plain text body
+            html: `Digite este código de verificação para finalizar seu cadastro!<br> <strong style ="font-size: 20pt">${codigo}</strong>`, // html body
         });
         console.log("Message sent: %s", info.messageId);
         // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
@@ -54,11 +54,11 @@ app.use(express.json());
 app.use(cors());
 
 const config = {
-    server: 'matheus004',
+    server: 'KAWANGABRIEL',
     database: 'teste',
     port: 1433,
     user: 'sa',
-    password: 'jogo21',
+    password: 'Acabana2009*',
     trustServerCertificate: true,
     options: {
         cryptoCredentialsDetails: {
