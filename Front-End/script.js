@@ -43,41 +43,29 @@ function habilitarSenha() {
 }
 
 //===========================================
-
-const nodemailer = require("nodemailer");
-
 async function enviarEmail() {
     const email = document.getElementById('cadEmail').value;
-
-    // Configuração do transporte de e-mail
-    const transport = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 587,
-        secure: false,
-        auth: {
-            user: 'falcaomatheus08@gmail.com',
-            pass: 'gvcf ukxr ykzb tznn', // Cada email tem sua senha única, este é a senha do email falcaomatheus08@gmail.com
-        }
-    });
-
     try {
-        // Gerar um código de verificação
-        const codigo = gerarCodigo(6);
-
-        // Enviar o email
-        const info = await transport.sendMail({
-            from: email,
-            to: email,
-            subject: 'Código de Verificação',
-            text: `Seu código de verificação é: ${codigo}`,
-            html: `<h3>Digite este código de verificação para finalizar seu cadastro!</h3><br><strong style="font-size: 20pt;">${codigo}</strong>`
+        const response = await fetch('http://localhost:3000/enviar-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email })
         });
 
-        console.log('Email enviado:', info);
+        if (!response.ok) {
+            const errorMessage = await response.text();
+            throw new Error(`Erro ao enviar email: ${errorMessage}`);
+        }
+
+        const result = await response.text();
+        console.log(result);
     } catch (error) {
         console.error('Erro ao enviar email:', error);
     }
 }
+
 
 function gerarCodigo(tamanho) {
     const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
