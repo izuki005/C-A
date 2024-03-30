@@ -43,7 +43,6 @@ function habilitarSenha() {
 }
 
 //===========================================
-// Arquivo script.js
 
 const nodemailer = require("nodemailer");
 
