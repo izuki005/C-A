@@ -2,6 +2,35 @@ const sql = require('mssql');
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const nodemailer = require("nodemailer");
+
+const transport = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    auth: {
+        user: 'falcaomatheus08@gmail.com',
+        pass: 'gvcf ukxr ykzb tznn', // Cada email tem sua senha única, este é a senha do email falcaomatheus08@gmail.com
+    }
+})
+
+async function main() {
+    try {
+        // send mail with defined transport object
+        const info = await transport.sendMail({
+            from: '"Maddison Foo Koch 👻" <falcaomatheus08@gmail.com>', // sender address
+            to: "falcaomatheus08@gmail.com", // list of receivers
+            subject: "Hello ✔", // Subject line
+            text: "Hello world?", // plain text body
+            html: "<b>Hello world?</b>", // html body
+        });
+      
+        console.log("Message sent: %s", info.messageId);
+        // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
+    } catch (error) {
+        console.error('Error sending email:', error);
+    }
+}
 
 const app = express();
 const port = 3000; // porta padrão
@@ -27,6 +56,7 @@ sql.connect(config)
     .then((conn) => {
         console.log('conectou');
         global.conn = conn;
+        main()
     })
     .catch((err) => {
         console.log(err);
