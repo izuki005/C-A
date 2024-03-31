@@ -65,6 +65,7 @@ async function inserirCodigo() {
         // Lógica para tratar a resposta da rota
         if (result === 'Código verificado com sucesso!') {
             // Aqui você pode realizar ações adicionais após a validação do código
+            cadastrarUsuario()
         } else {
             console.log('Código inválido. Por favor, tente novamente.');
             // Aqui você pode lidar com o caso em que o código inserido não corresponde ao esperado
@@ -121,14 +122,14 @@ async function cadastrarUsuario() {
     if (emailRegex.test(email)) {
         // Aqui você pode enviar o formulário ou fazer qualquer outra coisa que desejar
         try {
-            // Realiza a chamada de API usando o método fetch
-            // const response = await fetch('http://localhost:3000/cadastro_usuario', {
-            //     method: 'POST', // Método HTTP para a solicitação
-            //     headers: {
-            //         'Content-Type': 'application/json', // Tipo de conteúdo enviado (JSON)
-            //     },
-            //     body: JSON.stringify(data), // Converte o objeto em formato JSON
-            // });
+            //Realiza a chamada de API usando o método fetch
+            const response = await fetch('http://localhost:3000/cadastro_usuario', {
+                method: 'POST', // Método HTTP para a solicitação
+                headers: {
+                    'Content-Type': 'application/json', // Tipo de conteúdo enviado (JSON)
+                },
+                body: JSON.stringify(data), // Converte o objeto em formato JSON
+            });
     
             // Verifica se a solicitação foi bem-sucedida (status 2xx)
             if (response.ok) {
