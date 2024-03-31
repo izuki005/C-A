@@ -44,7 +44,7 @@ function habilitarSenha() {
 //===========================================
 // essa função deve ser chamada após o usuário enviar o email de verificação
 async function inserirCodigo() {
-    const inCodigo = prompt('Digite o código de verificação que você recebeu em seu e-mail: ')
+    const inCodigo = prompt('Digite o código de verificação que você recebeu em seu e-mail: ');
     try {
         const response = await fetch('http://localhost:3000/verificarHash', {
             method: 'POST',
@@ -62,6 +62,14 @@ async function inserirCodigo() {
         const result = await response.text();
         console.log(result);
 
+        // Lógica para tratar a resposta da rota
+        if (result === 'Código verificado com sucesso!') {
+            // Aqui você pode realizar ações adicionais após a validação do código
+        } else {
+            console.log('Código inválido. Por favor, tente novamente.');
+            // Aqui você pode lidar com o caso em que o código inserido não corresponde ao esperado
+        }
+
     } catch (error) {
         console.error('Erro ao enviar código:', error);
     }
@@ -77,7 +85,7 @@ async function enviarEmail() {
             },
             body: JSON.stringify({ email })
         });
-
+        
         if (!response.ok) {
             const errorMessage = await response.text();
             throw new Error(`Erro ao enviar email: ${errorMessage}`);
@@ -85,6 +93,10 @@ async function enviarEmail() {
 
         const result = await response.text();
         console.log(result);
+
+        // Abrir a função inserirCodigo após o envio bem-sucedido do email
+        inserirCodigo();
+
     } catch (error) {
         console.error('Erro ao enviar email:', error);
     }

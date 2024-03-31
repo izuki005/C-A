@@ -20,11 +20,11 @@ app.use(express.json());
 app.use(cors());
 
 const config = {
-    server: 'KAWANGABRIEL',
+    server: 'matheus004',
     database: 'teste',
     port: 1433,
     user: 'sa',
-    password: 'Acabana2009*',
+    password: 'jogo21',
     trustServerCertificate: true,
     options: {
         cryptoCredentialsDetails: {
@@ -58,6 +58,7 @@ app.get('/cadastro', (req, res) => {
     res.sendFile(path.join(__dirname, '../Front-End/cadastro.html'));
 });
 
+let codigoArmazenado = ''; // Variável global para armazenar o código gerado
 
 function gerarCodigo(tamanho) {
     // Defina os caracteres permitidos para o código
@@ -75,7 +76,7 @@ function gerarCodigo(tamanho) {
 // Rota para enviar e-mail
 app.post('/enviar-email', async (req, res) => {
     const { email } = req.body; // Obtém o e-mail do destinatário do corpo da solicitação
-    const codigo = gerarCodigo(6); // Gera um código de verificação /*/ isso tem que ser encaminhado para a api de verificarHash tbm
+    const codigo = gerarCodigo(6)
 
     try {
         // Enviar o email
@@ -161,6 +162,8 @@ app.post('/enviar-email', async (req, res) => {
             </html>
             `
         });
+        // Armazenar o código gerado
+        codigoArmazenado = codigo;
         res.status(200).send('Email enviado com sucesso!'); // Retorna uma resposta de sucesso ao cliente
     } catch (error) {
         console.error('Erro ao enviar email:', error);
@@ -168,11 +171,12 @@ app.post('/enviar-email', async (req, res) => {
     }
 });
 
+// Rota para verificar o código de verificação
 app.post('/verificarHash', async (req, res) => {
-    const { inCodigo } = req.body;
-    const codigoArmazenado = teste; // Suponha que este seja o código armazenado no backend
-    
+    const { inCodigo } = req.body; // Obtém o código inserido pelo usuário
+
     try {
+        // Comparar o código inserido com o código armazenado
         if (inCodigo === codigoArmazenado) {
             res.status(200).send('Código verificado com sucesso!');
         } else {
