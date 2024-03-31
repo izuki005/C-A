@@ -9,8 +9,8 @@ const transport = nodemailer.createTransport({
     port: 587,
     secure: false,
     auth: {
-        user: 'falcaomatheus08@gmail.com',
-        pass: 'gvcf ukxr ykzb tznn', // Cada email tem sua senha única, este é a senha do email falcaomatheus08@gmail.com
+        user: 'c0d1g04g0r4@gmail.com',
+        pass: 'pigx vbbx ixpj wtlq', // Cada email tem sua senha única, este é a senha do email falcaomatheus08@gmail.com
     }
 })
 
@@ -20,11 +20,11 @@ app.use(express.json());
 app.use(cors());
 
 const config = {
-    server: 'matheus004',
+    server: 'KAWANGABRIEL',
     database: 'teste',
     port: 1433,
     user: 'sa',
-    password: 'jogo21',
+    password: 'Acabana2009*',
     trustServerCertificate: true,
     options: {
         cryptoCredentialsDetails: {
@@ -80,11 +80,86 @@ app.post('/enviar-email', async (req, res) => {
     try {
         // Enviar o email
         const info = await transport.sendMail({
-            from: '"Maddison Foo Koch 👻" <>', // sender address
+            from: `${email}`, // sender address
             to: email,
             subject: 'Código de Verificação',
             text: `Seu código de verificação é: ${codigo}`,
-            html: `<h3>Digite este código de verificação para finalizar seu cadastro!</h3><br><strong style="font-size: 20pt;">${codigo}</strong>`
+            html: `<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Verificação de E-mail</title>
+                <style>
+                    body {
+                        margin: 0;
+                        padding: 0;
+                        font-family: Arial, sans-serif;
+                        background-color: #f5f5f5;
+                    }
+                    .container {
+                        max-width: 600px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        background-color: #fff;
+                        border-radius: 10px;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    }
+                    h1 {
+                        color: #333;
+                        text-align: center;
+                        margin-bottom: 20px;
+                    }
+                    .code-container {
+                        text-align: center;
+                        margin-bottom: 30px;
+                    }
+                    .verification-code {
+                        background-color: #f0f0f0;
+                        padding: 10px 20px;
+                        border-radius: 5px;
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: #333;
+                        text-align: center;
+                    }
+                    .copy-button {
+                        background-color: #007bff;
+                        border: none;
+                        color: #fff;
+                        padding: 10px 20px;
+                        font-size: 18px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        transition: background-color 0.3s;
+                    }
+                    .copy-button:hover {
+                        background-color: #0056b3;
+                        cursor: pointer;
+                    }
+                </style>
+                <script>
+                    function copyCode() {
+                        const codeInput = document.querySelector('verification-code');
+                        codeInput.select();
+                        document.execCommand('copy');
+                        alert('Código copiado para a área de transferência!');
+                    }
+                </script>
+            </head>
+            <body>
+                <div class="container">
+                    <h1>Código de Verificação de E-mail</h1>
+                    <div class="code-container">
+                        <input class="verification-code" value="${codigo}" readonly>
+                        <p>Para copiar o código, selecione o texto acima e pressione Ctrl+C (ou Command+C no Mac).</p>
+                        <br><br>
+                        <button class="copy-button" onclick="copyCode()">Copiar Código</button>
+                    </div>
+                </div>
+            </body>
+            </html>
+            `
         });
         res.status(200).send('Email enviado com sucesso!'); // Retorna uma resposta de sucesso ao cliente
     } catch (error) {

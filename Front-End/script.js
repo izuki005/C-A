@@ -57,6 +57,10 @@ async function enviarEmail() {
         if (!response.ok) {
             const errorMessage = await response.text();
             throw new Error(`Erro ao enviar email: ${errorMessage}`);
+        }else{
+            if (prompt("Digite o código de acesso: ") == ``){ //fora que tem que colocar o código ali com um placeholder ${}
+                //falta esse bloco de código aqui
+            }
         }
 
         const result = await response.text();
