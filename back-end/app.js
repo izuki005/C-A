@@ -75,7 +75,7 @@ function gerarCodigo(tamanho) {
 // Rota para enviar e-mail
 app.post('/enviar-email', async (req, res) => {
     const { email } = req.body; // Obtém o e-mail do destinatário do corpo da solicitação
-    const codigo = gerarCodigo(6); // Gera um código de verificação
+    const codigo = gerarCodigo(6); // Gera um código de verificação /*/ isso tem que ser encaminhado para a api de verificarHash tbm
 
     try {
         // Enviar o email
@@ -167,6 +167,24 @@ app.post('/enviar-email', async (req, res) => {
         res.status(500).send('Erro ao enviar email: ' + error.message); // Retorna uma resposta de erro ao cliente
     }
 });
+
+app.post('/verificarHash', async (req, res) => {
+    const { inCodigo } = req.body;
+    const codigoArmazenado = teste; // Suponha que este seja o código armazenado no backend
+    
+    try {
+        if (inCodigo === codigoArmazenado) {
+            res.status(200).send('Código verificado com sucesso!');
+        } else {
+            res.status(400).send('Código inválido. Tente novamente.');
+        }
+    } catch (error) {
+        console.error('Erro ao verificar código:', error);
+        res.status(500).send('Erro ao verificar código: ' + error.message);
+    }
+});
+
+
 
 app.post('/verificar_login', (req, res) => {
         const { email, senha } = req.body;

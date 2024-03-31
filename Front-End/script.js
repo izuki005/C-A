@@ -41,8 +41,32 @@ function habilitarSenha() {
         verificar_senha(); // Chama a função para atualizar o usuário
     }
 }
-
 //===========================================
+// essa função deve ser chamada após o usuário enviar o email de verificação
+async function inserirCodigo() {
+    const inCodigo = prompt('Digite o código de verificação que você recebeu em seu e-mail: ')
+    try {
+        const response = await fetch('http://localhost:3000/verificarHash', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ inCodigo })
+        });
+
+        if (!response.ok) {
+            const errorMessage = await response.text();
+            throw new Error(`Erro ao verificar código: ${errorMessage}`);
+        }
+
+        const result = await response.text();
+        console.log(result);
+
+    } catch (error) {
+        console.error('Erro ao enviar código:', error);
+    }
+}
+//========================================================================
 async function enviarEmail() {
     const email = document.getElementById('cadEmail').value;
     try {
@@ -57,10 +81,6 @@ async function enviarEmail() {
         if (!response.ok) {
             const errorMessage = await response.text();
             throw new Error(`Erro ao enviar email: ${errorMessage}`);
-        }else{
-            if (prompt("Digite o código de acesso: ") == ``){ //fora que tem que colocar o código ali com um placeholder ${}
-                //falta esse bloco de código aqui
-            }
         }
 
         const result = await response.text();
@@ -69,7 +89,6 @@ async function enviarEmail() {
         console.error('Erro ao enviar email:', error);
     }
 }
-
 //=======================================================================
 async function cadastrarUsuario() {
     // Obtém os valores dos inputs
