@@ -14,51 +14,17 @@ const transport = nodemailer.createTransport({
     }
 })
 
-async function main() {
-    try {
-
-        function gerarCodigo(tamanho) {
-            // Defina os caracteres permitidos para o código
-            const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-            let codigo = '';
-        
-            // Gere um código com o tamanho especificado
-            for (let i = 0; i < tamanho; i++) {
-                codigo += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
-            }
-        
-            return codigo;
-        }
-        
-        // Use a função para gerar um código de 6 caracteres
-        const codigo = gerarCodigo(6);
-
-        // send mail with defined transport object
-        const info = await transport.sendMail({
-            from: '"Maddison Foo Koch 👻" <falcaomatheus08@gmail.com>', // sender address
-            to: "falcaomatheus08@gmail.com", // list of receivers
-            subject: "Código de verificação", // Subject line
-            text: `Estou aqui atoa`, // plain text body
-            html: `Digite este código de verificação para finalizar seu cadastro!<br> <strong style ="font-size: 20pt">${codigo}</strong>`, // html body
-        });
-        console.log("Message sent: %s", info.messageId);
-        // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
-    } catch (error) {
-        console.error('Error sending email:', error);
-    }
-}
-
 const app = express();
 const port = 3000; // porta padrão
 app.use(express.json());
 app.use(cors());
 
 const config = {
-    server: 'KAWANGABRIEL',
+    server: 'matheus004',
     database: 'teste',
     port: 1433,
     user: 'sa',
-    password: 'Acabana2009*',
+    password: 'jogo21',
     trustServerCertificate: true,
     options: {
         cryptoCredentialsDetails: {
@@ -72,7 +38,6 @@ sql.connect(config)
     .then((conn) => {
         console.log('conectou');
         global.conn = conn;
-        main()
     })
     .catch((err) => {
         console.log(err);
@@ -91,6 +56,41 @@ app.use(express.static(path.join(__dirname, '../Front-End')));
 // Rota GET para /cadastro
 app.get('/cadastro', (req, res) => {
     res.sendFile(path.join(__dirname, '../Front-End/cadastro.html'));
+});
+
+
+function gerarCodigo(tamanho) {
+    // Defina os caracteres permitidos para o código
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let codigo = '';
+
+    // Gere um código com o tamanho especificado
+    for (let i = 0; i < tamanho; i++) {
+        codigo += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+
+    return codigo;
+}
+
+// Rota para enviar e-mail
+app.post('/enviar-email', async (req, res) => {
+    const { email } = req.body; // Obtém o e-mail do destinatário do corpo da solicitação
+    const codigo = gerarCodigo(6); // Gera um código de verificação
+
+    try {
+        // Enviar o email
+        const info = await transport.sendMail({
+            from: '"Maddison Foo Koch 👻" <>', // sender address
+            to: email,
+            subject: 'Código de Verificação',
+            text: `Seu código de verificação é: ${codigo}`,
+            html: `<h3>Digite este código de verificação para finalizar seu cadastro!</h3><br><strong style="font-size: 20pt;">${codigo}</strong>`
+        });
+        res.status(200).send('Email enviado com sucesso!'); // Retorna uma resposta de sucesso ao cliente
+    } catch (error) {
+        console.error('Erro ao enviar email:', error);
+        res.status(500).send('Erro ao enviar email: ' + error.message); // Retorna uma resposta de erro ao cliente
+    }
 });
 
 app.post('/verificar_login', (req, res) => {

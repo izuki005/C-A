@@ -43,6 +43,30 @@ function habilitarSenha() {
 }
 
 //===========================================
+async function enviarEmail() {
+    const email = document.getElementById('cadEmail').value;
+    try {
+        const response = await fetch('http://localhost:3000/enviar-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email })
+        });
+
+        if (!response.ok) {
+            const errorMessage = await response.text();
+            throw new Error(`Erro ao enviar email: ${errorMessage}`);
+        }
+
+        const result = await response.text();
+        console.log(result);
+    } catch (error) {
+        console.error('Erro ao enviar email:', error);
+    }
+}
+
+//=======================================================================
 async function cadastrarUsuario() {
     // Obtém os valores dos inputs
     const nome = document.getElementById('cadNome').value
@@ -63,13 +87,13 @@ async function cadastrarUsuario() {
         // Aqui você pode enviar o formulário ou fazer qualquer outra coisa que desejar
         try {
             // Realiza a chamada de API usando o método fetch
-            const response = await fetch('http://localhost:3000/cadastro_usuario', {
-                method: 'POST', // Método HTTP para a solicitação
-                headers: {
-                    'Content-Type': 'application/json', // Tipo de conteúdo enviado (JSON)
-                },
-                body: JSON.stringify(data), // Converte o objeto em formato JSON
-            });
+            // const response = await fetch('http://localhost:3000/cadastro_usuario', {
+            //     method: 'POST', // Método HTTP para a solicitação
+            //     headers: {
+            //         'Content-Type': 'application/json', // Tipo de conteúdo enviado (JSON)
+            //     },
+            //     body: JSON.stringify(data), // Converte o objeto em formato JSON
+            // });
     
             // Verifica se a solicitação foi bem-sucedida (status 2xx)
             if (response.ok) {
