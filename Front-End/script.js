@@ -75,32 +75,83 @@ async function inserirCodigo() {
         console.error('Erro ao enviar código:', error);
     }
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const inputnome = document.querySelector('#cadNome');
+    const inpuremail = document.querySelector('#cadEmail');
+    const inputSenha = document.querySelector("#cadSenha");
+
+    // Função para verificar se os campos estão vazios
+    function verificarCamposVazios() {
+        if (inputnome.value.trim() === '' || inpuremail.value.trim() === '' || inputSenha.value.trim() === '') {
+            alert('Por favor, preencha todos os campos.');
+        } else {
+            alert('Cadastro realizado com sucesso!');
+        }
+    }
+
+    // Adicionar ouvinte de evento de teclado para o campo nome
+    inputnome.addEventListener('keydown', (event) => {
+        if (event.key === "Enter") {
+            verificarCamposVazios();
+        }
+    });
+
+    // Adicionar ouvinte de evento de teclado para o campo email
+    inpuremail.addEventListener('keydown', (event) => {
+        if (event.key === "Enter") {
+            verificarCamposVazios();
+        }
+    });
+
+    // Adicionar ouvinte de evento de teclado para o campo senha
+    inputSenha.addEventListener('keydown', (event) => {
+        if (event.key === "Enter") {
+            verificarCamposVazios();
+        }
+    });
+});
+
+
 //========================================================================
 async function enviarEmail() {
+    const nome = document.getElementById('cadNome').value;
     const email = document.getElementById('cadEmail').value;
-    try {
-        const response = await fetch('http://localhost:3000/enviar-email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email })
-        });
-        
-        if (!response.ok) {
-            const errorMessage = await response.text();
-            throw new Error(`Erro ao enviar email: ${errorMessage}`);
+    const senha = document.getElementById('cadSenha').value;
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var senhaRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/;
+    
+    if (nome.length === 0 || email.length === 0 || senha.length === 0) {
+        alert('Por favor, preencha todos os campos.');
+    } else {
+          // Verifica se o formato do email é válido
+        if (emailRegex.test(email) && senhaRegex.test(senha)) {
+            try {
+                const response = await fetch('http://localhost:3000/enviar-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+                
+                if (!response.ok) {
+                    const errorMessage = await response.text();
+                    throw new Error(`Erro ao enviar email: ${errorMessage}`);
+                }
+
+                const result = await response.text();
+                console.log(result);
+                // Abrir a função inserirCodigo após o envio bem-sucedido do email
+                inserirCodigo();
+
+            } catch (error) {
+                console.error('Erro ao enviar email:', error);
+            }
+        } else {
+            alert('Por favor, insira um email ou senha válidos');
         }
-
-        const result = await response.text();
-        console.log(result);
-
-        // Abrir a função inserirCodigo após o envio bem-sucedido do email
-        inserirCodigo();
-
-    } catch (error) {
-        console.error('Erro ao enviar email:', error);
     }
+    
 }
 //=======================================================================
 async function cadastrarUsuario() {
@@ -108,18 +159,12 @@ async function cadastrarUsuario() {
     const nome = document.getElementById('cadNome').value
     const email = document.getElementById('cadEmail').value
     const senha = document.getElementById('cadSenha').value
-
     // Constrói o objeto de dados a ser enviado para o servidor
     const data = {
         nome: nome,
         email: email,
         senha: senha
     };
-
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      // Verifica se o formato do email é válido
-    if (emailRegex.test(email)) {
         // Aqui você pode enviar o formulário ou fazer qualquer outra coisa que desejar
         try {
             //Realiza a chamada de API usando o método fetch
@@ -139,17 +184,42 @@ async function cadastrarUsuario() {
                 window.alert('Cadastro Realizado')
                 window.location.href = "login.html"; // Redireciona para login.html
                 console.log('Usuário cadastrado com sucesso!');
+                alert('Cadastro realizado com sucesso!');
             } else {
                 console.error('Erro ao cadastrar usuário:', response.status);
             }
         } catch (error) {
             console.error('Erro na chamada de API:', error);
         }
-    } else {
-        alert('Por favor, insira um email válido.');
-    }
 
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const inpuremail = document.querySelector('#logEmail');
+    const inputsenha = document.querySelector("#logSenha");
+
+    // Função para verificar se os campos estão vazios
+    function verificarCamposVazios() {
+        if (inpuremail.value.trim() === '' || inputsenha.value.trim() === '') {
+            alert('Por favor, preencha todos os campos.');
+        } else {
+            alert('Cadastro realizado com sucesso!');
+        }
+    }
+    // Adicionar ouvinte de evento de teclado para o campo email
+    inpuremail.addEventListener('keydown', (event) => {
+        if (event.key === "Enter") {
+            verificarCamposVazios();
+        }
+    });
+
+    // Adicionar ouvinte de evento de teclado para o campo senha
+    inputsenha.addEventListener('keydown', (event) => {
+        if (event.key === "Enter") {
+            verificarCamposVazios();
+        }
+    });
+});
 
 // Função para verificar o usuário
 async function verificarUsuario() {
