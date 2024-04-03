@@ -75,41 +75,38 @@ async function inserirCodigo() {
         console.error('Erro ao enviar código:', error);
     }
 }
-document.addEventListener('DOMContentLoaded', () => {
-    const inputnome = document.querySelector('#cadNome');
-    const inpuremail = document.querySelector('#cadEmail');
-    const inputSenha = document.querySelector("#cadSenha");
 
-    // Função para verificar se os campos estão vazios
-    function verificarCamposVazios() {
-        if (inputnome.value.trim() === '' || inpuremail.value.trim() === '' || inputSenha.value.trim() === '') {
+//==========VERIFICADOR DE NOME EMAIL E SENHA PARTE CADASTRO======================
+
+// Adiciona ouvinte de evento de teclado para o campo de nome
+// const nomeInput = document.getElementById("cadNome");
+// nomeInput.addEventListener('keydown', verificarCamposCad);
+
+// // Adiciona ouvinte de evento de teclado para o campo de email
+// const emailInput = document.getElementById("cadEmail");
+// emailInput.addEventListener('keydown', verificarCamposCad);
+
+// // Adiciona ouvinte de evento de teclado para o campo de senha
+// const senhaInput = document.getElementById("cadSenha");
+// senhaInput.addEventListener('keydown', verificarCamposCad);
+
+function verificarCamposCad(event) {
+    const nomeInput = document.getElementById('cadNome')
+    const emailInput = document.getElementById('cadEmail')
+    const senhaInput = document.getElementById('cadSenha')
+
+    if (event.key === "Enter") {
+        const nome = nomeInput.value.trim();
+        const email = emailInput.value.trim();
+        const senha = senhaInput.value.trim();
+
+        if (nome.length === 0 || email.length === 0 || senha.length === 0) {
             alert('Por favor, preencha todos os campos.');
-        } else {
-            alert('Cadastro realizado com sucesso!');
+        }else{
         }
     }
+}
 
-    // Adicionar ouvinte de evento de teclado para o campo nome
-    inputnome.addEventListener('keydown', (event) => {
-        if (event.key === "Enter") {
-            verificarCamposVazios();
-        }
-    });
-
-    // Adicionar ouvinte de evento de teclado para o campo email
-    inpuremail.addEventListener('keydown', (event) => {
-        if (event.key === "Enter") {
-            verificarCamposVazios();
-        }
-    });
-
-    // Adicionar ouvinte de evento de teclado para o campo senha
-    inputSenha.addEventListener('keydown', (event) => {
-        if (event.key === "Enter") {
-            verificarCamposVazios();
-        }
-    });
-});
 
 
 //========================================================================
@@ -193,33 +190,24 @@ async function cadastrarUsuario() {
         }
 
 }
+//===================VERIFICADOR DE EMAIL E SENHA CAMPO ENTER PARTE LOGIN ============================
 
-document.addEventListener('DOMContentLoaded', () => {
-    const inpuremail = document.querySelector('#logEmail');
-    const inputsenha = document.querySelector("#logSenha");
+function verificarCamposLog(event) {
+    const emailInput = document.getElementById('logEmail')
+    const senhaInput = document.getElementById('logSenha')
 
-    // Função para verificar se os campos estão vazios
-    function verificarCamposVazios() {
-        if (inpuremail.value.trim() === '' || inputsenha.value.trim() === '') {
+    if (event.key === "Enter") {
+        const email = emailInput.value.trim();
+        const senha = senhaInput.value.trim();
+
+        if (email.length === 0 || senha.length === 0) {
             alert('Por favor, preencha todos os campos.');
-        } else {
-            alert('Cadastro realizado com sucesso!');
+        }else{
+            verificarUsuario()
         }
     }
-    // Adicionar ouvinte de evento de teclado para o campo email
-    inpuremail.addEventListener('keydown', (event) => {
-        if (event.key === "Enter") {
-            verificarCamposVazios();
-        }
-    });
-
-    // Adicionar ouvinte de evento de teclado para o campo senha
-    inputsenha.addEventListener('keydown', (event) => {
-        if (event.key === "Enter") {
-            verificarCamposVazios();
-        }
-    });
-});
+}
+//===============================================================
 
 // Função para verificar o usuário
 async function verificarUsuario() {

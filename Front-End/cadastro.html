@@ -6,7 +6,6 @@
     <title>Código Agora</title>
     <link rel="stylesheet" href="./src/assets/styles/vars.css">
     <link rel="stylesheet" href="./src/assets/styles/style-cadastro.css">
-    <script src="script.js"></script>
 </head>
 <body>
     <header>
@@ -31,7 +30,7 @@
             </ul>
         </nav>
     </header>
-
+    
     <section>
         <div  class="container">
             <div class="container__lefth">
@@ -39,13 +38,13 @@
                 
                 <div class="container__lefth__dados_cadastro">
                     <div class="dados-row">
-                        <p class="dados"><input id="cadNome" class="input-tranparent" type="text"><span class="fa fa-user"></span></p>
+                        <p class="dados"><input id="cadNome" onkeydown="verificarCamposCad(event)" class="input-tranparent" type="text"><span class="fa fa-user"></span></p>
                     </div>
                     <div class="dados-row">
-                        <p class="dados"><input id="cadEmail" class="input-tranparent" type="email"><span class="fa fa-envelope"></span></p>
+                        <p class="dados"><input id="cadEmail" onkeydown="verificarCamposCad(event)" class="input-tranparent" type="email"><span class="fa fa-envelope"></span></p>
                     </div>
                     <div class="dados-row">
-                        <p class="dados"><input id="cadSenha" class="input-tranparent" type="password"><span class="fa fa-lock"></span></p>
+                        <p class="dados"><input id="cadSenha" onkeydown="verificarCamposCad(event)" class="input-tranparent" type="password"><span class="fa fa-lock"></span></p>
                     </div>
                 </div>
                 <!-- <a href="login.html">
@@ -71,5 +70,6 @@
     </section>
     
     <script src="https://kit.fontawesome.com/062f506ca7.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
 </html>
