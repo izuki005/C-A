@@ -4,15 +4,13 @@ const path = require('path');
 const cors = require('cors');
 const nodemailer = require("nodemailer");
 
-const transport = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
     auth: {
-        user: 'c0d1g04g0r4@gmail.com',
-        pass: 'pigx vbbx ixpj wtlq', // Cada email tem sua senha única, este é a senha do email falcaomatheus08@gmail.com
+      user: 'falcaomatheus08@gmail.com',
+      pass: 'skex tnfx rjbo ebio'
     }
-})
+  });
 
 const app = express();
 const port = 3000; // porta padrão
@@ -20,11 +18,11 @@ app.use(express.json());
 app.use(cors());
 
 const config = {
-    server: 'KAWANGABRIEL',
+    server: 'matheus004',
     database: 'teste',
     port: 1433,
     user: 'sa',
-    password: 'Acabana2009*',
+    password: 'jogo21',
     trustServerCertificate: true,
     options: {
         cryptoCredentialsDetails: {
@@ -80,8 +78,9 @@ app.post('/enviar-email', async (req, res) => {
 
     try {
         // Enviar o email
-        const info = await transport.sendMail({
-            from: `${email}`, // sender address
+        const info = await transporter.sendMail({
+            from: 'Codigo_Agora <falcaomatheus08@gmail.com>', // Remetente personalizado
+            replyTo: 'matheus.falcao@faculdadecesusc.edu.br', // Foto do remetente
             to: email,
             subject: 'Código de Verificação',
             text: `Seu código de verificação é: ${codigo}`,
@@ -170,6 +169,7 @@ app.post('/enviar-email', async (req, res) => {
         res.status(500).send('Erro ao enviar email: ' + error.message); // Retorna uma resposta de erro ao cliente
     }
 });
+
 
 // Rota para verificar o código de verificação
 app.post('/verificarHash', async (req, res) => {
