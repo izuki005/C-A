@@ -115,7 +115,7 @@ async function enviarEmail() {
     const email = document.getElementById('cadEmail').value;
     const senha = document.getElementById('cadSenha').value;
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    var senhaRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/;
+    var senhaRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).*$/;; // Exemplo da senha: Naruto@123
     
     if (nome.length === 0 || email.length === 0 || senha.length === 0) {
         alert('Por favor, preencha todos os campos.');
@@ -181,7 +181,6 @@ async function cadastrarUsuario() {
                 window.alert('Cadastro Realizado')
                 window.location.href = "login.html"; // Redireciona para login.html
                 console.log('Usuário cadastrado com sucesso!');
-                alert('Cadastro realizado com sucesso!');
             } else {
                 console.error('Erro ao cadastrar usuário:', response.status);
             }

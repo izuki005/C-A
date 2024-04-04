@@ -12,6 +12,7 @@ var transporter = nodemailer.createTransport({
     }
   });
 
+
 const app = express();
 const port = 3000; // porta padrão
 app.use(express.json());
@@ -79,7 +80,7 @@ app.post('/enviar-email', async (req, res) => {
     try {
         // Enviar o email
         const info = await transporter.sendMail({
-            from: 'Codigo_Agora <falcaomatheus08@gmail.com>', // Remetente personalizado
+            from: 'ADM_Codigo_Agora <falcaomatheus08@gmail.com>', // Remetente personalizado
             replyTo: 'matheus.falcao@faculdadecesusc.edu.br', // Foto do remetente
             to: email,
             subject: 'Código de Verificação',
