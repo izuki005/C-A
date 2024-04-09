@@ -38,14 +38,14 @@
                 
                 <div class="container__lefth__dados_cadastro">
                     <div class="dados-row">
-                        <p class="dados"><input id="cadNome" onkeydown="verificarCamposCad(event)" class="input-tranparent" type="text"><span class="fa fa-user"></span></p>
+                        <p class="dados"><input id="cadNome" placeholder="Digite seu Nome" onkeydown="verificarCamposCad(event)" class="input-tranparent" type="text"><span class="fa fa-user"></span></p>
                     </div>
                     <div class="dados-row">
-                        <p class="dados"><input id="cadEmail" onkeydown="verificarCamposCad(event)" class="input-tranparent" type="email"><span class="fa fa-envelope"></span></p>
+                        <p class="dados"><input id="cadEmail" placeholder="Digite seu E-mail" onkeydown="verificarCamposCad(event)" class="input-tranparent" type="email"><span class="fa fa-envelope"></span></p>
                     </div>
                     <div class="dados-row">
-                      <p class="dados"><input id="cadSenha" onkeydown="verificarCamposCad(event)" class="input-tranparent" type="password"><span class="fa fa-lock"></span></p>  
-                      <input type="checkbox" id="check" value=""> <label for="check"></label>
+                      <p class="dados"><input id="cadSenha" placeholder="Digite sua Senha" onkeydown="verificarCamposCad(event)" maxlength="8" class="input-tranparent" type="password"><span class="fa fa-lock"></span></p>  
+                      <input type="checkbox" id="check" onclick="mostrarsenha()" value=""> Mostrar Senha<label for="check"></label>
                       </p>
                     </div>
                 </div>
