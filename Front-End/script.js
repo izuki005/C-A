@@ -1,3 +1,13 @@
+// Função Para mostrar a senha
+function mostrarsenha() {
+    var passwordField = document.getElementById("cadSenha");
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+    } else {
+        passwordField.type = "password";
+    }
+}
+
 // Função para habilitar edição do nome
 function habilitarNome() {
     const nome = document.getElementById('confNome');
@@ -115,41 +125,45 @@ async function enviarEmail() {
     const email = document.getElementById('cadEmail').value;
     const senha = document.getElementById('cadSenha').value;
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    var senhaRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).*$/;; // Exemplo da senha: Naruto@123
+    var senhaRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).*$/; // Exemplo da senha: Jogo!123
     
     if (nome.length === 0 || email.length === 0 || senha.length === 0) {
         alert('Por favor, preencha todos os campos.');
     } else {
-          // Verifica se o formato do email é válido
-        if (emailRegex.test(email) && senhaRegex.test(senha)) {
-            try {
-                const response = await fetch('http://localhost:3000/enviar-email', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email })
-                });
-                
-                if (!response.ok) {
-                    const errorMessage = await response.text();
-                    throw new Error(`Erro ao enviar email: ${errorMessage}`);
+        // Verifica se o formato do email é válido
+        if (emailRegex.test(email)) {
+            if (senhaRegex.test(senha)) {
+                try {
+                    const response = await fetch('http://localhost:3000/enviar-email', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email })
+                    });
+                    
+                    if (!response.ok) {
+                        const errorMessage = await response.text();
+                        throw new Error(`Erro ao enviar email: ${errorMessage}`);
+                    }
+
+                    const result = await response.text();
+                    console.log(result);
+                    // Abrir a função inserirCodigo após o envio bem-sucedido do email
+                    inserirCodigo();
+
+                } catch (error) {
+                    console.error('Erro ao enviar email:', error);
                 }
-
-                const result = await response.text();
-                console.log(result);
-                // Abrir a função inserirCodigo após o envio bem-sucedido do email
-                inserirCodigo();
-
-            } catch (error) {
-                console.error('Erro ao enviar email:', error);
+            } else {
+                alert('Essa senha que você digitou não é valida, segue o exemplo: Jogo!123');
             }
         } else {
-            alert('Por favor, insira um email ou senha válidos');
+            alert('Por favor, insira um email válido.');
         }
     }
-    
 }
+
 //=======================================================================
 async function cadastrarUsuario() {
     // Obtém os valores dos inputs
