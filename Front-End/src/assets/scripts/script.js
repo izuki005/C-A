@@ -124,6 +124,7 @@ async function enviarEmail() {
     const nome = document.getElementById('cadNome').value;
     const email = document.getElementById('cadEmail').value;
     const senha = document.getElementById('cadSenha').value;
+    
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var senhaRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).*$/; // Exemplo da senha: Jogo!123
     
@@ -440,3 +441,21 @@ function teste() {
     let deleteButton = document.getElementById("DeleteConta");
     deleteButton.addEventListener('click', excluirConta);
 };
+
+function modal(){
+    const div = document.getElementById("modal");
+        if (div.classList.contains('fade')){
+            div.classList.remove('fade')
+            div.classList.add('hidden')
+        } else {
+            div.classList.add('fade')
+            div.classList.remove('hidden')
+        }
+        setTimeout(() => {
+            if (div.classList.contains('fade')){
+            div.classList.add('in')
+            } else {
+            div.classList.remove('in')
+            }
+        }, 100);
+}

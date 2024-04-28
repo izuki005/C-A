@@ -19,11 +19,11 @@ app.use(express.json());
 app.use(cors());
 
 const config = {
-    server: 'matheus004',
+    server: 'KAWANGABRIEL',
     database: 'teste',
     port: 1433,
     user: 'sa',
-    password: 'jogo21',
+    password: 'Acabana2009*',
     trustServerCertificate: true,
     options: {
         cryptoCredentialsDetails: {

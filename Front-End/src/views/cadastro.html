@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Código Agora</title>
-    <link rel="stylesheet" href="./src/assets/styles/vars.css">
-    <link rel="stylesheet" href="./src/assets/styles/style-cadastro.css">
+    <link rel="stylesheet" href="../assets/styles/vars.css">
+    <link rel="stylesheet" href="../assets/styles/style-cadastro.css">
 </head>
 <body>
     <header>
         <nav class="navbar">
-            <img id="logo" src="./src/assets/imgs/fundo-login.png" alt="logo">
+            <img id="logo" src="../assets/imgs/fundo-login.png" alt="logo">
             <ul>
                 <li>
                     <a href="index.html">
@@ -32,6 +32,16 @@
     </header>
     
     <section>
+        <div id="modal" class="hidden" >
+            <div id="base">
+                <div>
+                    <button onclick="modal()">X</button>
+                </div>
+                <h3>Digite o código</h3>
+                <input type="text" name="" id="cod">
+                <button onclick="inserirCodigo()">Verificar</button>
+            </div>
+        </div> <!--Esse modal verifica o código do e-mail-->
         <div  class="container">
             <div class="container__lefth">
                 <h1 class="">Cadastre-se</h1>
@@ -44,18 +54,17 @@
                         <p class="dados"><input id="cadEmail" placeholder="Digite seu E-mail" onkeydown="verificarCamposCad(event)" class="input-tranparent" type="email"><span class="fa fa-envelope"></span></p>
                     </div>
                     <div class="dados-row">
-                      <p class="dados"><input id="cadSenha" placeholder="Digite sua Senha" onkeydown="verificarCamposCad(event)" maxlength="8" class="input-tranparent" type="password"><span class="fa fa-lock"></span></p>  
-                      <input type="checkbox" id="check" onclick="mostrarsenha()" value=""> Mostrar Senha<label for="check"></label>
-                      </p>
+                        <p class="dados"><input id="cadSenha" placeholder="Digite sua Senha" onkeydown="verificarCamposCad(event)" maxlength="12" class="input-tranparent" type="password"><span class="fa fa-lock"></span></p>  
+                        <p class="check">
+                            <input type="checkbox" id="check" onclick="mostrarsenha()" value=""> Mostrar Senha
+                        </p>
                     </div>
                 </div>
-                <!-- <a href="login.html">
-                </a> -->
                 <button onclick="enviarEmail()" class="container__button">Cadastrar</button>
             </div>
             
             <div class="container__right">
-                <img src="./src/assets/imgs/fundo-cadastro.png" alt="fundo-login">
+                <img src="../assets/imgs/fundo-cadastro.png" alt="fundo-login">
                 <div class="container__right__texto">
                     <h2>Ainda não fez <span class="span-laranja">login</span> ?</h2>
                     <br>
@@ -72,6 +81,6 @@
     </section>
     
     <script src="https://kit.fontawesome.com/062f506ca7.js" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="../assets/scripts/cadastro.js"></script>
 </body>
 </html>
