@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Código Agora</title>
-    <link rel="stylesheet" href="./src/assets/styles/vars.css">
-    <link rel="stylesheet" href="./src/assets/styles/style-login.css">
+    <link rel="stylesheet" href="../assets/styles/vars.css">
+    <link rel="stylesheet" href="../assets/styles/style-cadastro.css">
+    <script src="../assets/scripts/script.js"></script>
 </head>
 <body>
     <header>
         <nav class="navbar">
-            <img id="logo" src="./src/assets/imgs/fundo-login.png" alt="logo">
+            <img id="logo" src="../assets/imgs/fundo-login.png" alt="logo">
             <ul>
                 <li>
                     <a href="index.html">
@@ -34,41 +35,41 @@
     <section>
         <div  class="container">
             <div class="container__lefth">
-                <h1 class="">Login</h1>
+                <h1 class="">Cadastre-se</h1>
                 
                 <div class="container__lefth__dados_cadastro">
                     <div class="dados-row">
-                        <p class="dados"><input id="logEmail" class="input-tranparent" type="text"><span class="fa fa-envelope"></span></p>
+                        <p class="dados"><input id="cadNome" class="input-tranparent" type="text"><span class="fa fa-user"></span></p>
                     </div>
                     <div class="dados-row">
-                        <p class="dados"><input id="logSenha" class="input-tranparent" type="password"><span class="fa fa-lock"></span></p>
+                        <p class="dados"><input id="cadEmail" class="input-tranparent" type="email"><span class="fa fa-envelope"></span></p>
+                    </div>
+                    <div class="dados-row">
+                        <p class="dados"><input id="cadSenha" class="input-tranparent" type="password"><span class="fa fa-lock"></span></p>
                     </div>
                 </div>
-            <!-- <a href="inicio-jogo.html"> 
-            </a> -->
-            <button onclick="verificarUsuario()" class="container__button">Começar</button>
+                <!-- <a href="login.html">
+                </a> -->
+                <button onclick="cadastrarUsuario()" class="container__button">Cadastrar</button>
             </div>
             
             <div class="container__right">
+                <img src="../assets/imgs/fundo-cadastro.png" alt="fundo-login">
                 <div class="container__right__texto">
-                    <h2>Já fez seu <span class="span-laranja">cadastro</span> ?</h2>
+                    <h2>Ainda não fez <span class="span-laranja">login</span> ?</h2>
                     <br>
-                    <h3>Faça seu cadastro e comece o<br> quanto antes</h3>
+                    <h3>Faça login e continue sua jornada</h3>
                     <br>
-                    <h6>A cada etapa, um novo desafio</h6>
+                    <h6>A cada novo nível, sua lógica se fortalece.</h6>
                     <br>
                     <p class="p__link-cad">
-                        <a href="cadastro.html">Fazer meu cadastro aqui</a>
+                        <a href="login.html">Fazer meu login aqui</a>
                     </p>
-                    <div class="container__right__img">
-                        <img src="./src/assets/imgs/img-cadastro-ilha.png" alt="fundo-login">
-                    </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <script src="script.js"></script>
     <script src="https://kit.fontawesome.com/062f506ca7.js" crossorigin="anonymous"></script>
 </body>
 </html>

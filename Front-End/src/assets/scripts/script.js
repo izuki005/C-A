@@ -1,3 +1,13 @@
+// Função Para mostrar a senha
+function mostrarsenha() {
+    var passwordField = document.getElementById("cadSenha");
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+    } else {
+        passwordField.type = "password";
+    }
+}
+
 // Função para habilitar edição do nome
 function habilitarNome() {
     const nome = document.getElementById('confNome');
@@ -41,28 +51,134 @@ function habilitarSenha() {
         verificar_senha(); // Chama a função para atualizar o usuário
     }
 }
-
 //===========================================
+// essa função deve ser chamada após o usuário enviar o email de verificação
+async function inserirCodigo() {
+    const inCodigo = prompt('Digite o código de verificação que você recebeu em seu e-mail: ');
+    try {
+        const response = await fetch('http://localhost:3000/verificarHash', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ inCodigo })
+        });
+
+        if (!response.ok) {
+            const errorMessage = await response.text();
+            throw new Error(`Erro ao verificar código: ${errorMessage}`);
+        }
+
+        const result = await response.text();
+        console.log(result);
+
+        // Lógica para tratar a resposta da rota
+        if (result === 'Código verificado com sucesso!') {
+            // Aqui você pode realizar ações adicionais após a validação do código
+            cadastrarUsuario()
+        } else {
+            console.log('Código inválido. Por favor, tente novamente.');
+            // Aqui você pode lidar com o caso em que o código inserido não corresponde ao esperado
+        }
+
+    } catch (error) {
+        console.error('Erro ao enviar código:', error);
+    }
+}
+
+//==========VERIFICADOR DE NOME EMAIL E SENHA PARTE CADASTRO======================
+
+// Adiciona ouvinte de evento de teclado para o campo de nome
+// const nomeInput = document.getElementById("cadNome");
+// nomeInput.addEventListener('keydown', verificarCamposCad);
+
+// // Adiciona ouvinte de evento de teclado para o campo de email
+// const emailInput = document.getElementById("cadEmail");
+// emailInput.addEventListener('keydown', verificarCamposCad);
+
+// // Adiciona ouvinte de evento de teclado para o campo de senha
+// const senhaInput = document.getElementById("cadSenha");
+// senhaInput.addEventListener('keydown', verificarCamposCad);
+
+function verificarCamposCad(event) {
+    const nomeInput = document.getElementById('cadNome')
+    const emailInput = document.getElementById('cadEmail')
+    const senhaInput = document.getElementById('cadSenha')
+
+    if (event.key === "Enter") {
+        const nome = nomeInput.value.trim();
+        const email = emailInput.value.trim();
+        const senha = senhaInput.value.trim();
+
+        if (nome.length === 0 || email.length === 0 || senha.length === 0) {
+            alert('Por favor, preencha todos os campos.');
+        }else{
+        }
+    }
+}
+
+
+
+//========================================================================
+async function enviarEmail() {
+    const nome = document.getElementById('cadNome').value;
+    const email = document.getElementById('cadEmail').value;
+    const senha = document.getElementById('cadSenha').value;
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var senhaRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).*$/; // Exemplo da senha: Jogo!123
+    
+    if (nome.length === 0 || email.length === 0 || senha.length === 0) {
+        alert('Por favor, preencha todos os campos.');
+    } else {
+        // Verifica se o formato do email é válido
+        if (emailRegex.test(email)) {
+            if (senhaRegex.test(senha)) {
+                try {
+                    const response = await fetch('http://localhost:3000/enviar-email', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email })
+                    });
+                    
+                    if (!response.ok) {
+                        const errorMessage = await response.text();
+                        throw new Error(`Erro ao enviar email: ${errorMessage}`);
+                    }
+
+                    const result = await response.text();
+                    console.log(result);
+                    // Abrir a função inserirCodigo após o envio bem-sucedido do email
+                    inserirCodigo();
+
+                } catch (error) {
+                    console.error('Erro ao enviar email:', error);
+                }
+            } else {
+                alert('Essa senha que você digitou não é valida, segue o exemplo: Jogo!123');
+            }
+        } else {
+            alert('Por favor, insira um email válido.');
+        }
+    }
+}
+
+//=======================================================================
 async function cadastrarUsuario() {
     // Obtém os valores dos inputs
     const nome = document.getElementById('cadNome').value
     const email = document.getElementById('cadEmail').value
     const senha = document.getElementById('cadSenha').value
-
     // Constrói o objeto de dados a ser enviado para o servidor
     const data = {
         nome: nome,
         email: email,
         senha: senha
     };
-
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      // Verifica se o formato do email é válido
-    if (emailRegex.test(email)) {
         // Aqui você pode enviar o formulário ou fazer qualquer outra coisa que desejar
         try {
-            // Realiza a chamada de API usando o método fetch
+            //Realiza a chamada de API usando o método fetch
             const response = await fetch('http://localhost:3000/cadastro_usuario', {
                 method: 'POST', // Método HTTP para a solicitação
                 headers: {
@@ -85,11 +201,26 @@ async function cadastrarUsuario() {
         } catch (error) {
             console.error('Erro na chamada de API:', error);
         }
-    } else {
-        alert('Por favor, insira um email válido.');
-    }
 
 }
+//===================VERIFICADOR DE EMAIL E SENHA CAMPO ENTER PARTE LOGIN ============================
+
+function verificarCamposLog(event) {
+    const emailInput = document.getElementById('logEmail')
+    const senhaInput = document.getElementById('logSenha')
+
+    if (event.key === "Enter") {
+        const email = emailInput.value.trim();
+        const senha = senhaInput.value.trim();
+
+        if (email.length === 0 || senha.length === 0) {
+            alert('Por favor, preencha todos os campos.');
+        }else{
+            verificarUsuario()
+        }
+    }
+}
+//===============================================================
 
 // Função para verificar o usuário
 async function verificarUsuario() {
