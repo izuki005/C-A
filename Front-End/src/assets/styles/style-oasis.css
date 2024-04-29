@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-image: url(../imgs/fundo-estrelado-amarelo.png);
+    background-color: #283134;
+    font-family: var(--font-roboto);
+}
+/*estilos dentro do header*/
+header{
+    /* border: blue 1px solid; */
+    font-size: 16pt;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+}
+
+h1{
+    margin-right: 38%;
+    color: #FFBF65;
+    opacity: 0.1;
+}
+
+div img{
+    margin-left: 60px;
+}
+
+/*estilos dentro da section*/
+section{
+    /* border: 1px solid blue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0 100px 0;
+}
+
+.pai-sec{
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px white solid;
+}
+.pai-sec__filho-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin: 0 20px;
+}
+.filho-div__ponto{
+    background-color: aliceblue;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -10px;
+}
+
+section img{
+    margin: 0 0 0 0;
+    width: 200px;
+}
+
+/*estilos dentro do footer*/
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    width: 158px;
+    height: 76px;
+    border-radius: 17.76px;
+    border-color: #FFBF65;
+    background: none;
+    cursor: pointer;
+}
+
+footer .botao{
+    margin-left: 42px ;
+}
+
+.saida-inicio, .botao{
+    color: #FFBF65;
+    box-shadow: -6.56px 8.53px 10px rgba(0, 0, 0, 0.25);
+}

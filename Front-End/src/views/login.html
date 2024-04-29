@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Código Agora</title>
-    <link rel="stylesheet" href="./src/assets/styles/vars.css">
-    <link rel="stylesheet" href="./src/assets/styles/style-login.css">
+    <link rel="stylesheet" href="../assets/styles/vars.css">
+    <link rel="stylesheet" href="../assets/styles/style-login.css">
 </head>
 <body>
     <header>
         <nav class="navbar">
-            <img id="logo" src="./src/assets/imgs/fundo-login.png" alt="logo">
+            <img id="logo" src="../assets/imgs/fundo-login.png" alt="logo">
             <ul>
                 <li>
-                    <a href="index.html">
+                    <a href="index">
                         Página inicial
                     </a>
                 </li>
@@ -23,7 +23,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="cadastro.html">
+                    <a href="cadastro">
                         Inscreva-se
                     </a>
                 </li>
@@ -38,14 +38,15 @@
                 
                 <div class="container__lefth__dados_cadastro">
                     <div class="dados-row">
-                        <p class="dados"><input id="logEmail" class="input-tranparent" type="text"><span class="fa fa-envelope"></span></p>
+                        <p class="dados"><input id="logEmail" onkeydown="verificarCamposLog(event)" class="input-tranparent" type="text"><span class="fa fa-envelope"></span></p>
                     </div>
                     <div class="dados-row">
-                        <p class="dados"><input id="logSenha" class="input-tranparent" type="password"><span class="fa fa-lock"></span></p>
+                        <p class="dados"><input id="logSenha" onkeydown="verificarCamposLog(event)" class="input-tranparent" type="password"><span class="fa fa-lock"></span></p>
+                        <p class="check">
+                            <input type="checkbox" id="check" onclick="mostrarsenha()" value=""> Mostrar Senha
+                        </p>
                     </div>
                 </div>
-            <!-- <a href="inicio-jogo.html"> 
-            </a> -->
             <button onclick="verificarUsuario()" class="container__button">Começar</button>
             </div>
             
@@ -58,17 +59,17 @@
                     <h6>A cada etapa, um novo desafio</h6>
                     <br>
                     <p class="p__link-cad">
-                        <a href="cadastro.html">Fazer meu cadastro aqui</a>
+                        <a href="cadastro">Fazer meu cadastro aqui</a>
                     </p>
                     <div class="container__right__img">
-                        <img src="./src/assets/imgs/img-cadastro-ilha.png" alt="fundo-login">
+                        <img src="../assets/imgs/img-cadastro-ilha.png" alt="fundo-login">
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <script src="script.js"></script>
+    <script src="../assets/scripts/login.js"></script>
     <script src="https://kit.fontawesome.com/062f506ca7.js" crossorigin="anonymous"></script>
 </body>
 </html>

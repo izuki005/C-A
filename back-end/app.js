@@ -4,49 +4,14 @@ const path = require('path');
 const cors = require('cors');
 const nodemailer = require("nodemailer");
 
-const transport = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
     auth: {
-        user: 'falcaomatheus08@gmail.com',
-        pass: 'gvcf ukxr ykzb tznn', // Cada email tem sua senha única, este é a senha do email falcaomatheus08@gmail.com
+      user: 'falcaomatheus08@gmail.com',
+      pass: 'skex tnfx rjbo ebio'
     }
-})
+  });
 
-async function main() {
-    try {
-
-        function gerarCodigo(tamanho) {
-            // Defina os caracteres permitidos para o código
-            const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-            let codigo = '';
-        
-            // Gere um código com o tamanho especificado
-            for (let i = 0; i < tamanho; i++) {
-                codigo += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
-            }
-        
-            return codigo;
-        }
-        
-        // Use a função para gerar um código de 6 caracteres
-        const codigo = gerarCodigo(6);
-
-        // send mail with defined transport object
-        const info = await transport.sendMail({
-            from: '"Maddison Foo Koch 👻" <falcaomatheus08@gmail.com>', // sender address
-            to: "falcaomatheus08@gmail.com", // list of receivers
-            subject: "Código de verificação", // Subject line
-            text: `Digite este código de verificação para finalizar seu cadastro!\n <strong>${codigo}</strong>`, // plain text body
-            html: "<b>Hello world?</b>", // html body
-        });
-        console.log("Message sent: %s", info.messageId);
-        // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
-    } catch (error) {
-        console.error('Error sending email:', error);
-    }
-}
 
 const app = express();
 const port = 3000; // porta padrão
@@ -70,9 +35,8 @@ const config = {
 
 sql.connect(config)
     .then((conn) => {
-        console.log('conectou');
+        console.log('conectado ao Banco de Dados');
         global.conn = conn;
-        main()
     })
     .catch((err) => {
         console.log(err);
@@ -85,13 +49,169 @@ function execSQLQuery(sqlQry, res){
                 .catch(err => res.json(err)); // Em caso de erro
 }
 
-// Servir os arquivos estáticos
-app.use(express.static(path.join(__dirname, '../Front-End')));
+// Serve os arquivos estáticos na pasta 'styles'
+app.use(express.static(path.join(__dirname, '../Front-End/src')));
+//----------------------------------------------------------------------------------------------------------------------------------------
 
 // Rota GET para /cadastro
 app.get('/cadastro', (req, res) => {
-    res.sendFile(path.join(__dirname, '../Front-End/cadastro.html'));
+    res.sendFile(path.join(__dirname, '../Front-End/src/views/cadastro.html'));
 });
+
+app.get('/config', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Front-End/src/views/config.html'));
+});
+
+app.get('/index', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Front-End/src/views/index.html'));
+});
+
+app.get('/inicio-jogo', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Front-End/src/views/inicio-jogo.html'));
+});
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Front-End/src/views/login.html'));
+});
+
+app.get('/oasis', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Front-End/src/views/oasis.html'));
+});
+//----------------------------------------------------------------------------------------------------------------------------------------
+
+let codigoArmazenado = ''; // Variável global para armazenar o código gerado
+
+function gerarCodigo(tamanho) {
+    // Defina os caracteres permitidos para o código
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let codigo = '';
+
+    // Gere um código com o tamanho especificado
+    for (let i = 0; i < tamanho; i++) {
+        codigo += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+
+    return codigo;
+}
+
+// Rota para enviar e-mail
+app.post('/enviar-email', async (req, res) => {
+    const { email } = req.body; // Obtém o e-mail do destinatário do corpo da solicitação
+    const codigo = gerarCodigo(6)
+
+    try {
+        // Enviar o email
+        const info = await transporter.sendMail({
+            from: 'ADM_Codigo_Agora <falcaomatheus08@gmail.com>', // Remetente personalizado
+            replyTo: 'matheus.falcao@faculdadecesusc.edu.br', // Foto do remetente
+            to: email,
+            subject: 'Código de Verificação',
+            text: `Seu código de verificação é: ${codigo}`,
+            html: `<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Verificação de E-mail</title>
+                <style>
+                    body {
+                        margin: 0;
+                        padding: 0;
+                        font-family: Arial, sans-serif;
+                        background-color: #f5f5f5;
+                    }
+                    .container {
+                        max-width: 600px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        background-color: #fff;
+                        border-radius: 10px;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    }
+                    h1 {
+                        color: #333;
+                        text-align: center;
+                        margin-bottom: 20px;
+                    }
+                    .code-container {
+                        text-align: center;
+                        margin-bottom: 30px;
+                    }
+                    .verification-code {
+                        background-color: #f0f0f0;
+                        padding: 10px 20px;
+                        border-radius: 5px;
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: #333;
+                        text-align: center;
+                    }
+                    .copy-button {
+                        background-color: #007bff;
+                        border: none;
+                        color: #fff;
+                        padding: 10px 20px;
+                        font-size: 18px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        transition: background-color 0.3s;
+                    }
+                    .copy-button:hover {
+                        background-color: #0056b3;
+                        cursor: pointer;
+                    }
+                </style>
+                <script>
+                    function copyCode() {
+                        const codeInput = document.querySelector('verification-code');
+                        codeInput.select();
+                        document.execCommand('copy');
+                        alert('Código copiado para a área de transferência!');
+                    }
+                </script>
+            </head>
+            <body>
+                <div class="container">
+                    <h1>Código de Verificação de E-mail</h1>
+                    <div class="code-container">
+                        <input class="verification-code" value="${codigo}" readonly>
+                        <p>Para copiar o código, selecione o texto acima e pressione Ctrl+C (ou Command+C no Mac).</p>
+                        <br><br>
+                        <button class="copy-button" onclick="copyCode()">Copiar Código</button>
+                    </div>
+                </div>
+            </body>
+            </html>
+            `
+        });
+        // Armazenar o código gerado
+        codigoArmazenado = codigo;
+        res.status(200).send('Email enviado com sucesso!'); // Retorna uma resposta de sucesso ao cliente
+    } catch (error) {
+        console.error('Erro ao enviar email:', error);
+        res.status(500).send('Erro ao enviar email: ' + error.message); // Retorna uma resposta de erro ao cliente
+    }
+});
+
+
+// Rota para verificar o código de verificação
+app.post('/verificarHash', async (req, res) => {
+    const { inCodigo } = req.body; // Obtém o código inserido pelo usuário
+
+    try {
+        // Comparar o código inserido com o código armazenado
+        if (inCodigo === codigoArmazenado) {
+            res.status(200).send('Código verificado com sucesso!');
+        } else {
+            res.status(400).send('Código inválido. Tente novamente.');
+        }
+    } catch (error) {
+        console.error('Erro ao verificar código:', error);
+        res.status(500).send('Erro ao verificar código: ' + error.message);
+    }
+});
+
+
 
 app.post('/verificar_login', (req, res) => {
         const { email, senha } = req.body;
@@ -124,7 +244,7 @@ app.post('/verificar_login', (req, res) => {
             });
     });
     
-// Cadastrar tipo_produto
+// Cadastrar o usuário
 app.post('/cadastro_usuario', (req, res) => {
     const { nome, email, senha } = req.body;
 
@@ -217,7 +337,7 @@ app.post('/atualizar_usuario', (req, res) => {
         .catch((err) => res.status(500).json({ mensagem: 'Erro interno no servidor', error: err.message }));
 });
 
-// Rota de exclusão de tipo_produto
+// Rota de exclusão do usuário
 app.delete('/apagar_usuario', (req, res) => {
     const id_cadastro = req.body.id_cadastro; // Obtém o ID a ser excluído dos parâmetros da URL
 
@@ -237,5 +357,5 @@ app.delete('/apagar_usuario', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Servidor está rodando na porta ${port}`);
+    console.log(`Servidor está rodando na rota http://localhost:${port}/cadastro`);
 });
