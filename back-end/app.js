@@ -19,11 +19,11 @@ app.use(express.json());
 app.use(cors());
 
 const config = {
-    server: 'KAWANGABRIEL',
+    server: 'matheus004',
     database: 'teste',
     port: 1433,
     user: 'sa',
-    password: 'Acabana2009*',
+    password: 'jogo21',
     trustServerCertificate: true,
     options: {
         cryptoCredentialsDetails: {
@@ -35,7 +35,7 @@ const config = {
 
 sql.connect(config)
     .then((conn) => {
-        console.log('conectou');
+        console.log('conectado ao Banco de Dados');
         global.conn = conn;
     })
     .catch((err) => {
@@ -50,11 +50,11 @@ function execSQLQuery(sqlQry, res){
 }
 
 // Servir os arquivos estáticos
-app.use(express.static(path.join(__dirname, '../Front-End')));
+app.use(express.static(path.join(__dirname, '../Front-End/src/assets/styles')));
 
 // Rota GET para /cadastro
 app.get('/cadastro', (req, res) => {
-    res.sendFile(path.join(__dirname, '../Front-End/cadastro.html'));
+    res.sendFile(path.join(__dirname, '../Front-End/src/views/cadastro.html'));
 });
 
 let codigoArmazenado = ''; // Variável global para armazenar o código gerado
@@ -222,7 +222,7 @@ app.post('/verificar_login', (req, res) => {
             });
     });
     
-// Cadastrar tipo_produto
+// Cadastrar o usuário
 app.post('/cadastro_usuario', (req, res) => {
     const { nome, email, senha } = req.body;
 
@@ -315,7 +315,7 @@ app.post('/atualizar_usuario', (req, res) => {
         .catch((err) => res.status(500).json({ mensagem: 'Erro interno no servidor', error: err.message }));
 });
 
-// Rota de exclusão de tipo_produto
+// Rota de exclusão do usuário
 app.delete('/apagar_usuario', (req, res) => {
     const id_cadastro = req.body.id_cadastro; // Obtém o ID a ser excluído dos parâmetros da URL
 
@@ -335,5 +335,5 @@ app.delete('/apagar_usuario', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Servidor está rodando na porta ${port}`);
+    console.log(`Servidor está rodando na rota http://localhost:${port}/cadastro`);
 });
