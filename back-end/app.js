@@ -49,13 +49,35 @@ function execSQLQuery(sqlQry, res){
                 .catch(err => res.json(err)); // Em caso de erro
 }
 
-// Servir os arquivos estáticos
-app.use(express.static(path.join(__dirname, '../Front-End/src/assets/styles')));
+// Serve os arquivos estáticos na pasta 'styles'
+app.use(express.static(path.join(__dirname, '../Front-End/src')));
+//----------------------------------------------------------------------------------------------------------------------------------------
 
 // Rota GET para /cadastro
 app.get('/cadastro', (req, res) => {
     res.sendFile(path.join(__dirname, '../Front-End/src/views/cadastro.html'));
 });
+
+app.get('/config', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Front-End/src/views/config.html'));
+});
+
+app.get('/index', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Front-End/src/views/index.html'));
+});
+
+app.get('/inicio-jogo', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Front-End/src/views/inicio-jogo.html'));
+});
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Front-End/src/views/login.html'));
+});
+
+app.get('/oasis', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Front-End/src/views/oasis.html'));
+});
+//----------------------------------------------------------------------------------------------------------------------------------------
 
 let codigoArmazenado = ''; // Variável global para armazenar o código gerado
 
