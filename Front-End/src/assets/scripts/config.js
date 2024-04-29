@@ -59,7 +59,7 @@ async function excluirConta() {
                 if (response.ok) {
                     alert("Conta excluída com sucesso!");
                     localStorage.removeItem('userData');
-                    window.location.href = "login.html";
+                    window.location.href = "login";
                 } else {
                     throw new Error('Erro ao excluir a conta');
                 }
