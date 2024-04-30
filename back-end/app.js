@@ -49,11 +49,12 @@ function execSQLQuery(sqlQry, res){
                 .catch(err => res.json(err)); // Em caso de erro
 }
 
-// Serve os arquivos estáticos na pasta 'styles'
+// Serve os arquivos estáticos na pastas 'src' e "views"
 app.use(express.static(path.join(__dirname, '../Front-End/src')));
+app.use(express.static(path.join(__dirname, '../Front-End/src/views')));
 //----------------------------------------------------------------------------------------------------------------------------------------
+// Rotas GET
 
-// Rota GET para /cadastro
 app.get('/cadastro', (req, res) => {
     res.sendFile(path.join(__dirname, '../Front-End/src/views/cadastro.html'));
 });
