@@ -19,11 +19,11 @@ app.use(express.json());
 app.use(cors());
 
 const config = {
-    server: 'KAWANGABRIEL',
+    server: 'matheus004',
     database: 'teste',
     port: 1433,
     user: 'sa',
-    password: 'Acabana2009*',
+    password: 'jogo21',
     trustServerCertificate: true,
     options: {
         cryptoCredentialsDetails: {
@@ -52,6 +52,20 @@ function execSQLQuery(sqlQry, res){
 // Serve os arquivos estáticos na pastas 'src' e "views"
 app.use(express.static(path.join(__dirname, '../Front-End/src')));
 app.use(express.static(path.join(__dirname, '../Front-End/src/views')));
+//----------------------------------------------------------------------------------------------------------------------------------------
+app.set('view engine', 'pug');
+
+// Definir o diretório de visualização
+app.set('views', path.join(__dirname, '../Front-End/src/views/templates'));
+
+// Servir arquivos estáticos da pasta de imagens
+app.use('/imgs', express.static(path.join(__dirname, '../Front-End/src/views/templates/imgs')));
+
+// Rota para renderizar um arquivo Pug
+app.get('/pug', (req, res) => {
+    res.render('base', { title: 'FUNCIONOU ATÉ COM COR!!!', message: 'CARAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI' });
+});
+
 //----------------------------------------------------------------------------------------------------------------------------------------
 // Rotas GET
 
