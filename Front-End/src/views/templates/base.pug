@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='styles.css')
+
+    style.
+      /* Estilos CSS embutidos */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+      }
+      h1 {
+        color: #007bff;
+        text-align: center;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      img {
+        width: 400px; /* ajuste o tamanho conforme necessário */
+        height: auto; /* mantém a proporção original */
+      }
+  body
+    div.container
+      header
+        img(src='imgs/joinha.gif', alt='Logo')
+        h1= title
+      main
+        p= message
+        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget efficitur neque. Integer et dui sit amet urna placerat lacinia.
+        // Mais conteúdo...hhhhhhh
+      footer
+        p © 2024 Meu Site
