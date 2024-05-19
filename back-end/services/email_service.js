@@ -24,4 +24,6 @@ async function enviarEmail(email) {
   return codigo;
 }
 
-module.exports = enviarEmail;
+module.exports = {
+  enviarEmail
+};
