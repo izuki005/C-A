@@ -56,7 +56,7 @@ function habilitarSenha() {
 async function inserirCodigo() {
     const inCodigo = prompt('Digite o código de verificação que você recebeu em seu e-mail: ');
     try {
-        const response = await fetch('http://localhost:3000/verificarHash', {
+        const response = await fetch('http://localhost:3000/email/verificar', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -135,7 +135,7 @@ async function enviarEmail() {
         if (emailRegex.test(email)) {
             if (senhaRegex.test(senha)) {
                 try {
-                    const response = await fetch('http://localhost:3000/enviar-email', {
+                    const response = await fetch('http://localhost:3000/email/enviar', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -180,7 +180,7 @@ async function cadastrarUsuario() {
         // Aqui você pode enviar o formulário ou fazer qualquer outra coisa que desejar
         try {
             //Realiza a chamada de API usando o método fetch
-            const response = await fetch('http://localhost:3000/cadastro_usuario', {
+            const response = await fetch('http://localhost:3000/user/cadastrar', {
                 method: 'POST', // Método HTTP para a solicitação
                 headers: {
                     'Content-Type': 'application/json', // Tipo de conteúdo enviado (JSON)
@@ -235,7 +235,7 @@ async function verificarUsuario() {
     }
 
     try {
-        const response = await fetch('http://localhost:3000/verificar_login', {
+        const response = await fetch('http://localhost:3000/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -331,7 +331,7 @@ async function atualizarUsuario(userData) {
 
         console.log('Dados a serem enviados para atualização:', data);
 
-        const response = await fetch('http://localhost:3000/atualizar_usuario', {
+        const response = await fetch('http://localhost:3000/user/atualizar', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -366,7 +366,7 @@ async function verificar_senha() {
     try {
         const data = { senha: senhaDigitada };
 
-        const response = await fetch('http://localhost:3000/verificar_senha', {
+        const response = await fetch('http://localhost:3000/user/verificar_senha', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -413,7 +413,7 @@ async function excluirConta() {
     if (confirm("Deseja realmente excluir sua conta?")) {
         if (prompt('Para confirmar a exclusão, escreva: Excluir minha conta') === 'Excluir minha conta') {
             try {
-                const response = await fetch('http://localhost:3000/apagar_usuario', {
+                const response = await fetch('http://localhost:3000/user/excluir', {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
