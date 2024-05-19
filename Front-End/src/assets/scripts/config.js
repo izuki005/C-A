@@ -38,22 +38,24 @@ function teste() {
 //==============================================================================================
 
 async function excluirConta() {
-    const id_cadastro = JSON.parse(localStorage.getItem('userData'))?.id_cadastro;
+    const userDataString = localStorage.getItem('userData');
+    const userData = JSON.parse(userDataString);
 
-    if (!id_cadastro) {
+    if (!userData || !userData.id_cadastro) {
         console.error('ID de cadastro não encontrado');
         return;
     }
 
     if (confirm("Deseja realmente excluir sua conta?")) {
-        if (prompt('Para confirmar a exclusão, escreva: Excluir minha conta') === 'Excluir minha conta') {
+        const confirmation = prompt('Para confirmar a exclusão, escreva: Excluir minha conta');
+        if (confirmation === 'Excluir minha conta') {
             try {
-                const response = await fetch('http://localhost:3000/apagar_usuario', {
-                    method: 'DELETE',
+                const response = await fetch('http://localhost:3000/user/excluir', {
+                    method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ id_cadastro: id_cadastro })
+                    body: JSON.stringify({ id_cadastro: userData.id_cadastro })
                 });
 
                 if (response.ok) {
@@ -127,7 +129,7 @@ async function verificar_senha() {
     try {
         const data = { senha: senhaDigitada };
 
-        const response = await fetch('http://localhost:3000/verificar_senha', {
+        const response = await fetch('http://localhost:3000/user/verificar_senha', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -196,7 +198,7 @@ async function atualizarUsuario(userData) {
 
         console.log('Dados a serem enviados para atualização:', data);
 
-        const response = await fetch('http://localhost:3000/atualizar_usuario', {
+        const response = await fetch('http://localhost:3000/user/atualizar', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
