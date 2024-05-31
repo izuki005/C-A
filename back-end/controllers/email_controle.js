@@ -3,7 +3,7 @@ const gerarCodigo = require('../utils/gerar_codigo');
 
 let codigoArmazenado = '';
 
-exports.enviarEmail = async (req, res) => {
+async function enviarEmail (req, res) {
   const { email } = req.body;
   const codigo = gerarCodigo(6);
 
@@ -32,7 +32,7 @@ exports.enviarEmail = async (req, res) => {
   }
 };
 
-exports.verificarCodigo = (req, res) => {
+async function verificarCodigo (req, res) {
   const { inCodigo } = req.body;
 
   if (inCodigo === codigoArmazenado) {
@@ -40,4 +40,8 @@ exports.verificarCodigo = (req, res) => {
   } else {
     res.status(400).send('Código inválido. Tente novamente.');
   }
+};
+
+module.exports = {
+  enviarEmail, verificarCodigo
 };
