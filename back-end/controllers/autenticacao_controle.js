@@ -1,6 +1,4 @@
-const sql = require('../db/database');
-
-exports.verificarLogin = (req, res) => {
+async function verificarLogin(req, res) {
   const { email, senha } = req.body;
   if (!email || !senha) {
     return res.status(400).json({ mensagem: 'Email ou senha não foram fornecidos na solicitação.' });
@@ -12,19 +10,23 @@ exports.verificarLogin = (req, res) => {
     WHERE email = @Email AND senha = @Senha
   `;
 
-  global.conn.request()
-    .input('Email', email)
-    .input('Senha', senha)
-    .query(checkLoginQuery)
-    .then((result) => {
-      if (result.recordset.length > 0) {
-        res.status(200).json(result.recordset[0]);
-      } else {
-        res.status(404).json({ mensagem: 'Usuário não encontrado.' });
-      }
-    })
-    .catch((err) => {
-      console.error('Erro ao verificar o login:', err);
-      res.status(500).json({ mensagem: 'Erro interno no servidor.' });
-    });
+  try {
+    const result = await global.conn.request()
+      .input('Email', email)
+      .input('Senha', senha)
+      .query(checkLoginQuery);
+    
+    if (result.recordset.length > 0) {
+      return res.status(200).json(result.recordset[0]);
+    } else {
+      return res.status(404).json({ mensagem: 'Usuário não encontrado.' });
+    }
+  } catch (err) {
+    console.error('Erro ao verificar o login:', err);
+    return res.status(500).json({ mensagem: 'Erro interno no servidor.' });
+  }
+}
+
+module.exports = {
+  verificarLogin
 };
