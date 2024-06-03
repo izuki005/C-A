@@ -1,11 +1,9 @@
-const { enviarEmail, verificarCodigo } = require('../../controllers/email_controle');
+const { enviarEmail, verificarCodigo, setCodigoArmazenado } = require('../../controllers/email_controle');
 const transporter = require('../../config/nodemailer_config');
-const gerarCodigo = require('../../utils/gerar_codigo');
 
 jest.mock('../../config/nodemailer_config');
-jest.mock('../../utils/gerar_codigo');
+jest.mock('../../utils/gerar_codigo', () => jest.fn().mockReturnValue('123456'));
 
-//////////////////////////////////////////// VERIFICANDO EMAIL ///////////////////////////////////////////////////////////////////////////
 describe('enviarEmail', () => {
   let req;
   let res;
@@ -16,11 +14,12 @@ describe('enviarEmail', () => {
       status: jest.fn().mockReturnThis(),
       send: jest.fn(),
     };
-    gerarCodigo.mockReturnValue('123456');
   });
 
   it('deve enviar o email com sucesso', async () => {
     transporter.sendMail.mockResolvedValue({});
+    const codigo = '123456';
+    setCodigoArmazenado(codigo);
 
     await enviarEmail(req, res);
 
@@ -29,7 +28,7 @@ describe('enviarEmail', () => {
       replyTo: 'matheus.falcao@faculdadecesusc.edu.br',
       to: 'teste@example.com',
       subject: 'Código de Verificação',
-      text: 'Seu código de verificação é: 123456',
+      text: `Seu código de verificação é: ${codigo}`,
       html: expect.any(String),
     });
     expect(res.status).toHaveBeenCalledWith(200);
@@ -47,7 +46,6 @@ describe('enviarEmail', () => {
   });
 });
 
-//////////////////////////////////////////// VERIFICANDO CODIGO ENVIADO POR EMAIL ///////////////////////////////////////////////////////////////////////////
 describe('verificarCodigo', () => {
   let req;
   let res;
@@ -58,11 +56,13 @@ describe('verificarCodigo', () => {
       status: jest.fn().mockReturnThis(),
       send: jest.fn(),
     };
-    // Simular o código armazenado
-    req.body.inCodigo = '123456';
   });
 
   it('deve verificar o código com sucesso', async () => {
+    const codigo = '123456';
+    req.body.inCodigo = codigo;
+    setCodigoArmazenado(codigo);
+
     await verificarCodigo(req, res);
 
     expect(res.status).toHaveBeenCalledWith(200);
