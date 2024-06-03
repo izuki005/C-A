@@ -1,4 +1,4 @@
-async function cadastrarUsuario  (req, res) {
+async function cadastrarUsuario (req, res) {
   const { nome, email, senha } = req.body;
 
   try {
@@ -24,7 +24,7 @@ async function cadastrarUsuario  (req, res) {
 
     res.status(200).json({ mensagem: 'Cadastro registrado com sucesso.' });
   } catch (err) {
-    res.status(500).json({ mensagem: 'Erro interno no servidor', error: err.message });
+    res.status(500).json({ mensagem: 'Erro interno no servidor', error: err.message }); // Linha 61
   }
 };
 
@@ -58,12 +58,12 @@ async function atualizarUsuario (req, res) {
 
     res.status(200).json({ mensagem: 'Cadastro atualizado com sucesso.' });
   } catch (err) {
-    res.status(500).json({ mensagem: 'Erro interno no servidor', error: err.message });
+    res.status(500).json({ mensagem: 'Erro interno no servidor', error: err.message }); // Linha 80
   }
 };
 
 
-async function excluirUsuario  (req, res)  {
+async function excluirUsuario (req, res)  {
   const id_cadastro = req.body.id_cadastro;
 
   try {
@@ -77,7 +77,7 @@ async function excluirUsuario  (req, res)  {
 
     res.status(200).json({ mensagem: 'Conta excluída com sucesso' });
   } catch (err) {
-    res.status(500).json({ error: 'Erro ao excluir a conta', details: err.message });
+    res.status(500).json({ error: 'Erro ao excluir a conta', details: err.message }); // Linha 102
   }
 };
 
@@ -102,7 +102,6 @@ async function verificarSenha(req, res) {
     res.status(500).json({ mensagem: 'Erro interno no servidor', details: err.message });
   }
 };
-
 
 module.exports = {
   cadastrarUsuario, atualizarUsuario, excluirUsuario, verificarSenha

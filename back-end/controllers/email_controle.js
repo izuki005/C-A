@@ -30,18 +30,24 @@ async function enviarEmail (req, res) {
   } catch (error) {
     res.status(500).send('Erro ao enviar email: ' + error.message);
   }
-};
+}
 
 async function verificarCodigo (req, res) {
   const { inCodigo } = req.body;
-
+  
   if (inCodigo === codigoArmazenado) {
     res.status(200).send('Código verificado com sucesso!');
   } else {
     res.status(400).send('Código inválido. Tente novamente.');
   }
-};
+}
+
+function setCodigoArmazenado(codigo) {
+  codigoArmazenado = codigo;
+}
 
 module.exports = {
-  enviarEmail, verificarCodigo
+  enviarEmail,
+  verificarCodigo,
+  setCodigoArmazenado
 };

@@ -1,14 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth_rota');
 const emailRoutes = require('./routes/email_rota');
 const userRoutes = require('./routes/user_rota');
-const { connectDatabase } = require('./db/database');
 
 const app = express();
-const port = 3000;
 
 app.use(express.json());
 app.use(cors());
@@ -57,13 +54,4 @@ app.get('/pug', (req, res) => {
     res.render('base', { title: 'FUNCIONOU ATÉ COM COR!!!', message: 'CARAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI' });
 });
 
-
-connectDatabase()
-  .then(() => {
-    app.listen(port, () => {
-      console.log(`Servidor rodando em http://localhost:${port}`);
-    });
-  })
-  .catch((err) => {
-    console.error('Erro ao conectar ao banco de dados:', err);
-  });
+module.exports = app;

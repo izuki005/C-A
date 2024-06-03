@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const userControle = require('../controllers/user_controle');
+const user = require('../controllers/user_controle');
 
-router.post('/cadastrar', userControle.cadastrarUsuario);
-router.post('/atualizar', userControle.atualizarUsuario);
-router.post('/excluir', userControle.excluirUsuario);
-router.post('/verificar_senha', userControle.verificarSenha);
+router.post('/cadastrar', user.cadastrarUsuario);
+router.post('/atualizar', user.atualizarUsuario);
+router.post('/excluir', user.excluirUsuario);
+router.post('/verificar_senha', user.verificarSenha);
 
 module.exports = router;
