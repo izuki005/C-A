@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+
 async function cadastrarUsuario (req, res) {
   const { nome, email, senha } = req.body;
 
@@ -11,6 +13,8 @@ async function cadastrarUsuario (req, res) {
       return res.status(400).json({ mensagem: 'Erro: Este email já está cadastrado' });
     }
 
+    const hashedSenha = crypto.createHash('md5').update(senha).digest('hex');
+
     const insertQuery = `
       INSERT INTO cadastro (nome, email, senha)
       VALUES (@Nome, @Email, @Senha)
@@ -19,12 +23,12 @@ async function cadastrarUsuario (req, res) {
     await global.conn.request()
       .input('Nome', nome)
       .input('Email', email)
-      .input('Senha', senha)
+      .input('Senha', hashedSenha) // Inserir a senha criptografada
       .query(insertQuery);
 
     res.status(200).json({ mensagem: 'Cadastro registrado com sucesso.' });
   } catch (err) {
-    res.status(500).json({ mensagem: 'Erro interno no servidor', error: err.message }); // Linha 61
+    res.status(500).json({ mensagem: 'Erro interno no servidor', error: err.message });
   }
 };
 
@@ -41,6 +45,8 @@ async function atualizarUsuario (req, res) {
       return res.status(400).json({ mensagem: 'Erro: ID de usuário não encontrado' });
     }
 
+    const hashedSenha = crypto.createHash('md5').update(senha).digest('hex')
+
     const updateQuery = `
       UPDATE cadastro 
       SET nome = @Nome,
@@ -52,7 +58,7 @@ async function atualizarUsuario (req, res) {
     await global.conn.request()
       .input('Nome', nome)
       .input('Email', email)
-      .input('Senha', senha)
+      .input('Senha', hashedSenha)
       .input('IdCadastro', id_cadastro)
       .query(updateQuery);
 
@@ -86,22 +92,23 @@ async function verificarSenha(req, res) {
   const { senha } = req.body;
 
   try {
+    const hashedSenha = crypto.createHash('md5').update(senha).digest('hex');
+
     const checarSenha = `SELECT COUNT(*) AS count FROM cadastro WHERE senha=@Senha`;
     const result = await global.conn.request()
-      .input('Senha', senha)
+      .input('Senha', hashedSenha) // Verificar a senha criptografada
       .query(checarSenha);
 
     const count = result.recordset[0].count;
     if (count > 0) {
       res.status(200).json({ senhaEncontrada: true });
     } else {
-      // Se a senha não for encontrada, retornar um status de erro 404 - Not Found
       res.status(404).json({ error: 'Senha não encontrada' });
     }
   } catch (err) {
     res.status(500).json({ mensagem: 'Erro interno no servidor', details: err.message });
   }
-};
+}
 
 module.exports = {
   cadastrarUsuario, atualizarUsuario, excluirUsuario, verificarSenha
