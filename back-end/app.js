@@ -24,30 +24,11 @@ app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 app.use('/email', emailRoutes);
 
-// Servindo HTMLs
-app.get('/cadastro', (req, res) => {
-    res.sendFile(path.join(__dirname, '../Front-End/src/views/cadastro.html'));
-});
+// Importar o arquivo de rotas
+const viewRoutes = require('./routes/view_routes');
 
-app.get('/config', (req, res) => {
-    res.sendFile(path.join(__dirname, '../Front-End/src/views/config.html'));
-});
-
-app.get('/index', (req, res) => {
-    res.sendFile(path.join(__dirname, '../Front-End/src/views/index.html'));
-});
-
-app.get('/inicio-jogo', (req, res) => {
-    res.sendFile(path.join(__dirname, '../Front-End/src/views/inicio-jogo.html'));
-});
-
-app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, '../Front-End/src/views/login.html'));
-});
-
-app.get('/oasis', (req, res) => {
-    res.sendFile(path.join(__dirname, '../Front-End/src/views/oasis.html'));
-});
+// Usar as rotas
+app.use(viewRoutes);
 
 // Rota para renderizar um arquivo Pug
 app.get('/pug', (req, res) => {
