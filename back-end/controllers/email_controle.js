@@ -3,11 +3,21 @@ const gerarCodigo = require('../utils/gerar_codigo');
 
 let codigoArmazenado = '';
 
-async function enviarEmail (req, res) {
+async function enviarEmail(req, res) {
   const { email } = req.body;
   const codigo = gerarCodigo(6);
 
   try {
+    // Check if email already exists in the database
+    const checkEmailQuery = `SELECT 1 FROM cadastro WHERE email = @Email`;
+    const checkResult = await global.conn.request()
+      .input('Email', email)
+      .query(checkEmailQuery);
+
+    if (checkResult.recordset.length > 0) {
+      return res.status(400).json({ mensagem: 'Erro: Este email já está cadastrado' });
+    }
+
     await transporter.sendMail({
       from: 'ADM_Codigo_Agora <falcaomatheus08@gmail.com>',
       replyTo: 'matheus.falcao@faculdadecesusc.edu.br',
@@ -26,15 +36,17 @@ async function enviarEmail (req, res) {
     });
 
     codigoArmazenado = codigo;
+    console.log('Email enviado com sucesso:', email);
     res.status(200).send('Email enviado com sucesso!');
   } catch (error) {
+    console.error('Erro ao enviar email:', error);
     res.status(500).send('Erro ao enviar email: ' + error.message);
   }
 }
 
-async function verificarCodigo (req, res) {
+async function verificarCodigo(req, res) {
   const { inCodigo } = req.body;
-  
+
   if (inCodigo === codigoArmazenado) {
     res.status(200).send('Código verificado com sucesso!');
   } else {

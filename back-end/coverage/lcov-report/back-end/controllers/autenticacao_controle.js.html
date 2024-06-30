@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">13.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/12</span>
+                <span class='fraction'>2/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/6</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">13.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/12</span>
+                <span class='fraction'>2/15</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -95,22 +95,18 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">2x</span>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -119,54 +115,76 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">async function verificarLogin(req, res) {
-  const { email, senha } = req.body;
-  if (!email || !senha) {
-    return res.status(400).json({ mensagem: 'Email ou senha não foram fornecidos na solicitação.' });
-  }
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const crypto = require('crypto');
 &nbsp;
-  const checkLoginQuery = `
-    SELECT id_cadastro, nome, email, senha 
-    FROM cadastro 
-    WHERE email = @Email AND senha = @Senha
-  `;
-&nbsp;
-  try {
-    const result = await global.conn.request()
-      .input('Email', email)
-      .input('Senha', senha)
-      .query(checkLoginQuery);
-    
-<span class="cstat-no" title="statement not covered" >    if (result.recordset.length &gt; 0) {</span>
-<span class="cstat-no" title="statement not covered" >      return res.status(200).json(result.recordset[0]);</span>
-    } else {
-<span class="cstat-no" title="statement not covered" >      return res.status(404).json({ mensagem: 'Usuário não encontrado.' });</span>
+async function <span class="fstat-no" title="function not covered" >verificarLogin(</span>req, res) {
+    const { email, senha } = <span class="cstat-no" title="statement not covered" >req.body;</span>
+<span class="cstat-no" title="statement not covered" >    if (!email || !senha) {</span>
+<span class="cstat-no" title="statement not covered" >        return res.status(400).json({ mensagem: 'Email ou senha não foram fornecidos na solicitação.' });</span>
     }
-  } catch (err) {
-    console.error('Erro ao verificar o login:', err);
-    return res.status(500).json({ mensagem: 'Erro interno no servidor.' });
+  
+<span class="cstat-no" title="statement not covered" >    try {</span>
+        const criptografada = <span class="cstat-no" title="statement not covered" >crypto.createHash('md5').update(senha).digest('hex');</span>
+  
+        const checkLoginQuery = <span class="cstat-no" title="statement not covered" >`</span>
+            SELECT id_cadastro, nome, email, senha 
+            FROM cadastro 
+            WHERE email = @Email AND senha = @Senha
+        `;
+  
+        const result = <span class="cstat-no" title="statement not covered" >await global.conn.request()</span>
+            .input('Email', email)
+            .input('Senha', criptografada)
+            .query(checkLoginQuery);
+        
+<span class="cstat-no" title="statement not covered" >        if (result.recordset.length &gt; 0) {</span>
+            const user = <span class="cstat-no" title="statement not covered" >result.recordset[0];</span>
+            // Retornando a senha original em vez da hash
+<span class="cstat-no" title="statement not covered" >            user.senha = senha;</span>
+<span class="cstat-no" title="statement not covered" >            return res.status(200).json(user);</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >            return res.status(404).json({ mensagem: 'Usuário não encontrado.' });</span>
+        }
+    } catch (err) {
+<span class="cstat-no" title="statement not covered" >        return res.status(500).json({ mensagem: 'Erro interno no servidor.' });</span>
+    }
   }
-}
-&nbsp;
-module.exports = {
-  verificarLogin
-};
-&nbsp;</pre></td></tr></table></pre>
+  
+  module.exports = {
+    verificarLogin
+  };
+  </pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-05-31T18:33:41.158Z
+                at 2024-06-30T23:21:48.969Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
