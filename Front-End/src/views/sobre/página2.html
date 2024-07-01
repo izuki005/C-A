@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilo de Ensino para Iniciantes</title>
+    <!-- Link para o arquivo CSS do Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Link para seu CSS personalizado -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #1d1d1d; /* Cor de fundo escura */
+            color: #fff; /* Cor do texto */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar-->
+<nav class="navbar col-12 position-fixed mx-auto navbar-expand-lg navbar-dark" style="background: linear-gradient(to right, #FFD700, #DAA520); z-index: 999;">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img src="imgs/logo-c.a.png" alt="Logo do CÓDIGO AGORA" width="300px">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html" style="color: #fff; font-weight: bold;">Início 🏠</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="página3.html" style="color: #fff; font-weight: bold;">Básico ❄️</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="página4.html" style="color: #fff; font-weight: bold;">Intermediário 🌳</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="página5.html" style="color: #fff; font-weight: bold;">Avançado 🌋</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<br><br><br>
+
+<!-- Conteúdo principal-->
+<section class="conteudo-principal">
+    <div class="container">
+        <h1 class="display-4">Explorando o <strong style="color: orange;">🏜️ Mundo do Deserto 🏜️</strong> - Módulo Iniciante</h1>
+        <p>
+            Bem-vindo ao módulo "Iniciante" do nosso curso de lógica de programação de ensino gamificado, onde você começará sua jornada no mundo árido do Deserto 🌵. Assim como um viajante no deserto busca recursos para sobreviver, você explorará os conceitos fundamentais de programação neste ambiente desafiador usando a linguagem Portugol.
+        </p>
+
+        <h2>Oásis de Conhecimento:</h2>
+        <p>
+            Em sua jornada pelo Deserto, você encontrará diversos "oásis de conhecimento", representando conceitos vitais de programação. Alguns dos principais "oásis" que você explorará incluem:
+        </p>
+        <ul>
+            <li>Escopo de Programa: Aprenda a organizar e estruturar seu código.</li>
+            <li>Comandos de Seleção: Navegue pelas encruzilhadas das decisões em seu programa.</li>
+            <li>Variáveis: Descubra reservatórios para armazenar e manipular dados.</li>
+            <li>Tipos: Conheça os diferentes tipos de dados encontrados na programação.</li>
+            <li>Interação: Saiba como interagir com o usuário enquanto enfrenta temperaturas extremas.</li>
+            <li>Condição: Encontre refúgios de lógica para guiar seu caminho.</li>
+            <li>Repetição: Aprenda a superar obstáculos repetidamente.</li>
+        </ul>
+
+        <h2>Rastros no Deserto:</h2>
+        <p>
+            Para dar vida a esses conceitos, imagine que você é um aventureiro solitário no Deserto, seguindo rastros misteriosos. Aqui está um exemplo prático baseado nessa premissa:
+        </p>
+        <pre style="background-color: #333; color: #fff; padding: 10px;">
+            <code>
+        Algoritmo SeguindoRastros
+            Declare rastro1, rastro2, rastro3, descoberta: Real
+        
+            Escreva("Siga os rastros no Deserto:")
+            Escreva("Rastro 1: ")
+            Leia(rastro1)
+        
+            Escreva("Rastro 2: ")
+            Leia(rastro2)
+        
+            Escreva("Rastro 3: ")
+            Leia(rastro3)
+        
+            Se rastro1 > rastro2 E rastro1 > rastro3 Então
+                descoberta <- "Rastro 1"
+            Senão
+                Se rastro2 > rastro1 E rastro2 > rastro3 Então
+                    descoberta <- "Rastro 2"
+                Senão
+                    descoberta <- "Rastro 3"
+                FimSe
+            FimSe
+        
+            Escreva("Você descobriu o rastro de ", descoberta)
+        FimAlgoritmo
+            </code>
+        </pre>
+        <p>
+            Neste exemplo, você está seguindo rastros no Deserto e usando estruturas condicionais para determinar qual rastro seguir. Essa é uma analogia para o uso de estruturas de decisão em programação. Agora, logo abaixo você verá resoluções do mesmo problema em Python (🐍), C (🅒) e Java (☕).
+        </p>
+
+        <!-- Carrossel de Código-->
+        <div id="codeCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#codeCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#codeCarousel" data-slide-to="1"></li>
+                <li data-target="#codeCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <!-- Python-->
+                <div class="carousel-item active">
+                    <h2>Código em 🐍:</h2>
+                    <pre style="background-color: #333; color: #fff; padding: 10px;">
+                       <code>
+                            rastro1 = float(input("Rastro 1: "))
+                            rastro2 = float(input("Rastro 2: "))
+                            rastro3 = float(input("Rastro 3: "))
+
+                            if rastro1 > rastro2 and rastro1 > rastro3:
+                                descoberta = "Rastro 1"
+                            else:
+                                if rastro2 > rastro1 and rastro2 > rastro3:
+                                    descoberta = "Rastro 2"
+                                else:
+                                    descoberta = "Rastro 3"
+
+                            print("Você descobriu o rastro de", descoberta)
+                        </code>
+                    </pre>
+                </div>
+                <!-- C -->
+                <div class="carousel-item">
+                    <h2>Código em 🅒:</h2>
+                    <pre style="background-color: #333; color: #fff; padding: 10px;">
+                        <code>
+                            #include <stdio.h>
+
+                            int main() {
+                                float rastro1, rastro2, rastro3;
+                                char descoberta[20];
+
+                                printf("Rastro 1: ");
+                                scanf("%f", &rastro1);
+
+                                printf("Rastro 2: ");
+                                scanf("%f", &rastro2);
+
+                                printf("Rastro 3: ");
+                                scanf("%f", &rastro3);
+
+                                if (rastro1 > rastro2 && rastro1 > rastro3)
+                                    strcpy(descoberta, "Rastro 1");
+                                else {
+                                    if (rastro2 > rastro1 && rastro2 > rastro3)
+                                        strcpy(descoberta, "Rastro 2");
+                                    else
+                                        strcpy(descoberta, "Rastro 3");
+                                }
+
+                                printf("Você descobriu o rastro de %s", descoberta);
+
+                                return 0;
+                            }
+                        </code>
+                    </pre>
+                </div>
+
+                <!-- Java -->
+                <div class="carousel-item">
+                    <h2>Código em ☕:</h2>
+                    <pre style="background-color: #333; color: #fff; padding: 10px;">
+                        <code>
+                            import java.util.Scanner;
+
+                            public class SeguindoRastros {
+                                public static void main(String[] args) {
+                                    Scanner input = new Scanner(System.in);
+                                    float rastro1, rastro2, rastro3;
+                                    String descoberta;
+
+                                    System.out.print("Rastro 1: ");
+                                    rastro1 = input.nextFloat();
+
+                                    System.out.print("Rastro 2: ");
+                                    rastro2 = input.nextFloat();
+
+                                    System.out.print("Rastro 3: ");
+                                    rastro3 = input.nextFloat();
+
+                                    if (rastro1 > rastro2 && rastro1 > rastro3)
+                                        descoberta = "Rastro 1";
+                                    else {
+                                        if (rastro2 > rastro1 && rastro2 > rastro3)
+                                            descoberta = "Rastro 2";
+                                        else
+                                            descoberta = "Rastro 3";
+                                    }
+
+                                    System.out.println("Você descobriu o rastro de " + descoberta);
+                                }
+                            }
+                        </code>
+                    </pre>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#codeCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#codeCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Próximo</span>
+            </a>
+        </div>        
+
+        <h2>Desafios do Deserto 🌄:</h2>
+        <p>
+            À medida que você avança pelo Deserto, enfrentará desafios emocionantes que testarão sua habilidade de programação. Imagine resolver quebra-cabeças para encontrar o próximo "oásis de conhecimento" enquanto navega pelas dunas e evita armadilhas.
+        </p>
+
+        <h2>Avançando para o Próximo Mundo 🌍:</h2>
+        <p>
+            Após conquistar o Deserto e dominar os conceitos do módulo Iniciante, você estará pronto para escolher um novo mundo e avançar para o próximo módulo, o "Básico mundo do <strong style="color: #00bfff;">GELO ❄️</strong> ". Cada mundo oferece novos desafios e oportunidades de aprendizado, preparando você para se tornar um programador habilidoso.
+        </p>
+        <p>
+            Continue sua jornada e lembre-se de que, assim como um verdadeiro viajante, a prática constante é a chave para o sucesso em programação. Boa sorte na sua aventura!
+        </p>
+        <h2>Escolha Sua Linguagem de Programação 📝:</h2>
+        <p>
+            Após concluir o módulo Iniciante no mundo do deserto, é hora de escolher a linguagem com a qual você deseja continuar sua jornada de programação. Temos por enquanto 3 linguagens disponíveis para ensino, cada uma com suas características únicas.
+        </p>
+
+        <p>
+            Escolha uma das seguintes linguagens e siga em frente:
+        </p>
+
+        <ul>
+            <li>
+                <strong style="color: #FFD700;">Linguagem Python:</strong> Uma linguagem de programação versátil e popular, conhecida por sua sintaxe simples e legibilidade. É amplamente utilizada no desenvolvimento web, ciência de dados e automação.
+            </li>
+            <li>
+                <strong style="color: #00bfff;">Linguagem C:</strong> É uma linguagem poderosa que oferece controle de baixo nível, usada em sistemas embarcados, jogos e desenvolvimento de software de alto desempenho.
+            </li>
+            <li>
+                <strong style="color: red;">Linguagem Java:</strong> Uma linguagem amplamente utilizada em desenvolvimento de aplicativos Android e em empresas. Possui uma forte ênfase na orientação a objetos.
+            </li>
+        </ul>
+
+        <p>
+            Após escolher sua linguagem, você continuará sua jornada de programação com base nela. Lembre-se de que cada linguagem oferece oportunidades e desafios exclusivos, então escolha aquela que mais se adequa aos seus objetivos e interesses.
+        </p>
+
+        <p>
+            Boa sorte com sua escolha e aproveite o próximo mundo da programação!
+        </p>
+
+        <h2 style="color: red;">Além do Portugol:</h2>
+        <p>
+            Após o término do módulo Iniciante, você deixará o Portugol para trás e estará pronto para enfrentar projetos em linguagens de programação do mundo real. Este é um passo importante em sua jornada para se tornar um programador profissional.
+        </p>
+    </div>
+</section>
+
+<!-- Adicione os scripts do Bootstrap no final do corpo -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

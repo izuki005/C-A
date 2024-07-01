@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo Intermediário</title>
+    <!-- Link para o arquivo CSS do Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Link para seu CSS personalizado -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Navbar (barra de navegação)-->
+<nav class="navbar col-12 position-fixed mx-auto navbar-expand-lg navbar-dark" style="background: linear-gradient(to right, #228B22, #008000); z-index: 999;">
+
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img src="imgs/logo-c.a.png" alt="Logo do CÓDIGO AGORA" width="300px" height="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html" style="color: #fff; font-weight: bold;">Inicio 🏠</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="página2.html" style="color: #fff; font-weight: bold;">Iniciante 🏜️</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="página3.html" style="color: #fff; font-weight: bold;">Básico ❄️</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="página5.html" style="color: #fff; font-weight: bold;">Avançado 🌋</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<br><br>
+
+<!-- Conteúdo principal -->
+<section class="conteudo-principal" style="background-color: #222; color: #fff; padding: 30px;">
+    <div class="container">
+        <h1 class="display-4">Explorando a <strong style="color: green;">🌲 Floresta 🌲</strong> - Módulo Intermediário</h1>
+        <p>
+            Bem-vindo ao módulo Intermediário do nosso curso de lógica de programação de ensino gamificado, onde você entrará no mundo exuberante e denso da Floresta. Nesse ambiente envolvente, você irá construir sobre os conceitos fundamentais de programação que aprendeu nos módulos anteriores, usando a linguagem de programação escolhida no módulo Básico.
+        </p>
+
+        <h2>Desbravando a Floresta🌳:</h2>
+        <p>
+            No coração da Floresta, você encontrará uma série de desafios de programação e projetos que exigirão o conhecimento adquirido no módulo Básico. Alguns dos principais conceitos que você explorará aqui incluem:
+        </p>
+        <ul>
+            <li>Dominando Funções: Aprenda a encapsular código e criar blocos reutilizáveis.</li>
+            <li>Navegando com Ponteiros: Compreenda a gestão de memória por meio de ponteiros.</li>
+        </ul>
+
+        <h2>Missão na Floresta🌳:</h2>
+        <p>
+            Em sua jornada pela densa Floresta, você enfrentará um desafio intrigante. Sua tarefa é criar um programa que auxilie na catalogação de espécies de árvores na floresta. Isso ajudará os pesquisadores a estudar e conservar a biodiversidade da região.
+        </p>
+        
+        <p><strong style="color: yellow;">OBS 📝</strong>: Vamos supor que você escolheu a linguagem Python no mundo do deserto</p>
+        <pre style="background-color: #333; color: #fff; padding: 10px;">
+            <code>
+                # Declare uma lista para armazenar as espécies de árvores
+                arvores = [None] * 100
+                contador = 0
+                
+                print("Registre as espécies de árvores encontradas na Floresta:")
+                
+                # Leia as espécies de árvores e as armazene na lista
+                while contador < 100:
+                    especie = input(f"Espécie de árvore {contador + 1}: ")
+                    arvores[contador] = especie
+                    contador += 1
+                    continuar = input("Deseja continuar? (S/N): ").upper()
+                    if continuar != "S":
+                        break
+                
+                print("Espécies de árvores catalogadas:")
+                for i in range(contador):
+                    print(f"{i + 1}: {arvores[i]}")
+            </code>
+        </pre>
+        
+        <p>
+            Seu desafio é implementar este algoritmo para catalogar as espécies de árvores na Floresta. Além disso, você pode melhorar o programa adicionando recursos adicionais, como a contagem de quantas vezes cada espécie de árvore foi encontrada.
+        </p>
+        
+        <h2>Avançando para o Próximo Mundo 🌍:</h2>
+<p>
+    Após conquistar a Floresta e dominar os conceitos do módulo Intermediário, você estará pronto para escolher um novo mundo e avançar para o próximo módulo, o "Avançado mundo do <strong style="color: orangered;">VULCÃO 🌋</strong> ".
+</p>
+    </div>
+</section>
+
+<!-- Link para o arquivo JavaScript do Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
