@@ -21,6 +21,7 @@
   "description": "",
   "devDependencies": {
     "jest": "^29.7.0",
+    "jest-mock-console": "^2.0.0",
     "nodemailer-mock": "^2.0.6",
     "supertest": "^7.0.0"
   }

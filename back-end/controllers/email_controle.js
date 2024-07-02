@@ -36,10 +36,8 @@ async function enviarEmail(req, res) {
     });
 
     codigoArmazenado = codigo;
-    console.log('Email enviado com sucesso:', email);
     res.status(200).send('Email enviado com sucesso!');
   } catch (error) {
-    console.error('Erro ao enviar email:', error);
     res.status(500).send('Erro ao enviar email: ' + error.message);
   }
 }
