@@ -9,8 +9,8 @@ async function enviarEmail() {
     }
   
     try {
-      // Verificar se o email já está cadastrado antes de enviar o email de verificação
-      const checkResponse = await fetch('http://localhost:3000/email/enviar', {
+      // Enviar a requisição para verificar e enviar o email
+      const response = await fetch('http://localhost:3000/email/enviar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -18,33 +18,12 @@ async function enviarEmail() {
         body: JSON.stringify({ email })
       });
   
-      if (!checkResponse.ok) {
-        const errorMessage = await checkResponse.text();
-        throw new Error(`Erro ao verificar email: ${errorMessage}`);
-      }
-  
-      const checkResult = await checkResponse.json();
-  
-      if (checkResult.emailExists) {
-        alert('Este email já está cadastrado. Por favor, use outro email.');
-        return;
-      }
-  
-      // Se o email não estiver cadastrado, envia o email de verificação
-      const enviarResponse = await fetch('http://localhost:3000/email/enviar', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email })
-      });
-  
-      if (!enviarResponse.ok) {
-        const errorMessage = await enviarResponse.text();
+      if (!response.ok) {
+        const errorMessage = await response.text();
         throw new Error(`Erro ao enviar email: ${errorMessage}`);
       }
   
-      const result = await enviarResponse.text();
+      const result = await response.text();
       console.log(result);
   
       // Chama a função inserirCodigo após o envio bem-sucedido do email
@@ -59,7 +38,7 @@ async function enviarEmail() {
         alert('Erro ao enviar email. Por favor, tente novamente mais tarde.');
       }
     }
-  }  
+}  
 //=======================================================================================================
 
 function modal(){
