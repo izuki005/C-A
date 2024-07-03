@@ -47,7 +47,7 @@ async function verificarUsuario() {
             localStorage.setItem('userData', JSON.stringify(userData));
             console.log('Usuário encontrado com sucesso!', userData);
             window.alert('USUÁRIO EXISTENTE');
-            window.location.href = "inicio-jogo";
+            window.location.href = "capa_jogo.html";
         } else {
             console.error(responseData.mensagem);
             window.alert(responseData.mensagem);
