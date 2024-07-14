@@ -1,8 +1,0 @@
-#about {
-    background-image: url('../../../assets/imgs/fundo-estrelado-amarelo.png'); /* Substitua pelo caminho da sua imagem */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 50px 0;
-    color: rgb(0, 0, 0); /* Utilize !important se necessário para forçar a aplicação do estilo */
-}

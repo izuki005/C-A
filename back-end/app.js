@@ -31,8 +31,8 @@ const viewRoutes = require('./routes/view_routes');
 app.use(viewRoutes);
 
 // Rota para renderizar um arquivo Pug
-app.get('/pug', (req, res) => {
-    res.render('base', { title: 'FUNCIONOU ATÉ COM COR!!!', message: 'CARAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI' });
+app.get('/index.pug', (req, res) => {
+    res.render('index.pug', { title: 'FUNCIONOU ATÉ COM COR!!!', message: 'CARAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI' });
 });
 
 module.exports = app;

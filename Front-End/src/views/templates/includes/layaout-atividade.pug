@@ -1,0 +1,31 @@
+doctype html
+html(lang="pt-BR")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title teste layout atividade
+        link(rel="stylesheet", href="../assets/styles-pug/layaout-atividade.css")
+    body
+        header 
+            img(src="../assets/imgs-pug/oasis-01.png", alt="", srcset="").img-header-left
+            h2.h2-header Qual dos comandos vai exibir a frase "<span>Hello, World!</span>" no console?
+            div.div-img-header
+                img(src="../assets/imgs-pug/config.png", alt="", srcset="").img-header-right
+        section
+            div.terminal
+                div.terminal-header
+                    img(src="../assets/imgs-pug/logo-python.png", alt="", srcset="")
+                //- Nessa parte terminal centro vai conter o espaço para a resposta que será adicionada pelo usuário
+                div.terminal-centro
+                    div.espaco-resposta
+                        div.resposta-usuario
+                            input(type="text" value="print")#conteudo
+                        p ("Hello, World!")
+
+                div.terminal-resposta
+                    button(type="button").terminal-button Testar
+                    
+            //- Nessa parte abaixo o conteúdo detro dos botões para dar a resposta virão do banco
+            div.resposta 
+                button(type="button").botoes-resposta print 
+                button(type="button").botoes-resposta if
