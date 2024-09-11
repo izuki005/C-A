@@ -1,0 +1,16 @@
+extends layout_01.pug
+
+block header
+    header.cabecalho
+        h1#h1 Página 2
+
+block botoes_terminal    
+    div.pai_botoes_terminal
+        button(onclick="escrever()").botoes_terminal#botao_teste1 input=
+        button(onclick="escrever2()").botoes_terminal#botao_teste2 escreva seu nome
+    block botoes    
+        div.pai_botoes
+            a(href="/") 
+                button.botoes <-
+            a(href="page2") 
+                button.botoes ->

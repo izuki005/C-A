@@ -1,0 +1,15 @@
+:root {
+    --cor-do-fundo: #a6292967;
+    --cor-do-texto: #474444;
+}
+
+.texto {
+    color: var(--cor-do-texto)
+}
+
+.fundo {
+    background-color: var(--cor-do-fundo);
+    width: 800px;
+    height: 200px;
+    border-bottom: 1px solid black;
+}

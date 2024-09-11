@@ -1,0 +1,17 @@
+//- layout.pug
+doctype html
+html(lang="pt-BR")
+    include head.pug
+    body 
+        include header.pug
+        section.fundo 
+            input#input_text(type="text", name="" placeholder='escreva aqui')
+            button(type="button" onclick='escrever()') aperte aqui
+            h1 hello word!
+            h2 !{titulo}
+            h3.texto #{mensagem}
+        section 
+            block conteudo 
+                p teste blabla
+
+           

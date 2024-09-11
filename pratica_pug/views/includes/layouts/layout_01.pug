@@ -1,0 +1,29 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+        link(rel="stylesheet", href="/css/layout_01.css")
+        script(src="/js/script.js") 
+    body.corpo 
+
+        block header
+            header.cabecalho
+                h1#h1 Hello Word!
+        
+        block section
+            section.section 
+                div.terminal
+                    p.p texto1
+                    p.p texto2
+            block botoes_terminal    
+                div.pai_botoes_terminal
+                    button(onclick="escrever()").botoes_terminal#botao_teste1 print
+                    button(onclick="escrever2()").botoes_terminal#botao_teste2 "Hello Word!"
+
+                block botoes    
+                    div.pai_botoes
+                        button.botoes <-
+                        a(href="page2") 
+                            button.botoes ->
