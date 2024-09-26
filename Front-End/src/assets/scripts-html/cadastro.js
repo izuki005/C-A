@@ -123,7 +123,7 @@ async function cadastrarUsuario() {
             document.getElementById('cadEmail').value = ''; // Limpa o campo email
             document.getElementById('cadSenha').value = ''; // Limpa o campo senha
             window.alert('Cadastro Realizado');
-            window.location.href = "login.html"; // Redireciona para login.html
+            window.location.href = "login"; // Redireciona para login.html
             console.log('Usuário cadastrado com sucesso!');
         } else {
             console.error('Erro ao cadastrar usuário:', response.status);

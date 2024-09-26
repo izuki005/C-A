@@ -194,7 +194,7 @@ async function cadastrarUsuario() {
                 document.getElementById('cadEmail').value = ''; // Limpa o campo email
                 document.getElementById('cadSenha').value = ''; // Limpa o campo senha
                 window.alert('Cadastro Realizado')
-                window.location.href = "login.html"; // Redireciona para login.html
+                window.location.href = "login"; // Redireciona para login
                 console.log('Usuário cadastrado com sucesso!');
             } else {
                 console.error('Erro ao cadastrar usuário:', response.status);
@@ -256,7 +256,7 @@ async function verificarUsuario() {
             localStorage.setItem('userData', JSON.stringify(userData));
             console.log('Usuário encontrado com sucesso!', userData);
             window.alert('USUÁRIO EXISTENTE');
-            window.location.href = "inicio-jogo.html";
+            window.location.href = "inicio-jogo";
         } else {
             console.error(responseData.mensagem);
             window.alert(responseData.mensagem);
@@ -424,7 +424,7 @@ async function excluirConta() {
                 if (response.ok) {
                     alert("Conta excluída com sucesso!");
                     localStorage.removeItem('userData');
-                    window.location.href = "login.html";
+                    window.location.href = "login";
                 } else {
                     throw new Error('Erro ao excluir a conta');
                 }

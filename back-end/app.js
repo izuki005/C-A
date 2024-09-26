@@ -13,7 +13,8 @@ app.use(cors());
 // Serve arquivos estáticos
 app.use(express.static(path.join(__dirname, '../Front-End/src')));
 app.use(express.static(path.join(__dirname, '../Front-End/src/views')));
-app.use('/imgs', express.static(path.join(__dirname, '../Front-End/src/views/templates/imgs')));
+app.use(express.static(path.join(__dirname, '../Front-End/src/assets')));
+
 
 // Configuração do template engine
 app.set('view engine', 'pug');
