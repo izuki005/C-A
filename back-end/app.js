@@ -32,8 +32,37 @@ const viewRoutes = require('./routes/view_routes');
 app.use(viewRoutes);
 
 // Rota para renderizar um arquivo Pug
-app.get('/index.pug', (req, res) => {
-    res.render('index.pug', { title: 'FUNCIONOU ATÉ COM COR!!!', message: 'CARAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI' });
-});
+// app.get('/index.pug', (req, res) => {
+
+//     let teste01 = {
+//         nome: "Kawan Gabriel",
+//         idade: 20,
+//         altura: 1.73
+//     }
+//     res.render('index.pug', teste01);
+// });
+//===================================================
+app.get('/conteudos', async (req, res) => {
+    // Pega o id_conteudo da query string ou usa 1 como padrão
+    const id_conteudo = parseInt(req.query.id_conteudo) || 1; 
+  
+    try {
+      const query = `SELECT titulo, descricao FROM conteudos WHERE id_conteudo = @IdConteudo`;
+      const result = await global.conn.request()
+        .input('IdConteudo', id_conteudo)
+        .query(query);
+  
+      if (result.recordset.length > 0) {
+        const conteudo = result.recordset[0];
+        res.render('conteudo.pug', { conteudo, id_conteudo });
+      } else {
+        res.status(404).json({ mensagem: 'Conteúdo não encontrado.' });
+      }
+    } catch (err) {
+      res.status(500).json({ mensagem: 'Erro ao buscar o conteúdo', details: err.message });
+    }
+  });
+    
+
 
 module.exports = app;
