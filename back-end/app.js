@@ -17,8 +17,8 @@ app.use(express.static(path.join(__dirname, '../Front-End/src/assets')));
 
 
 // Configuração do template engine
-app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '../Front-End/src/views/templates'));
+app.set('view engine', 'pug');
 
 // Rotas
 app.use('/auth', authRoutes);
