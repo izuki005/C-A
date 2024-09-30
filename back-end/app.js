@@ -18,6 +18,7 @@ app.use(express.static(path.join(__dirname, '../Front-End/src/assets')));
 
 // Configuração do template engine
 app.set('views', path.join(__dirname, '../Front-End/src/views/templates'));
+// app.set('views', path.join(__dirname, '../Front-End/src/views/templates/includes'));
 app.set('view engine', 'pug');
 
 // Rotas
@@ -32,14 +33,14 @@ const viewRoutes = require('./routes/view_routes');
 app.use(viewRoutes);
 
 // Rota para renderizar um arquivo Pug
-// app.get('/index.pug', (req, res) => {
+// app.get('/teste', (req, res) => {
 
 //     let teste01 = {
 //         nome: "Kawan Gabriel",
 //         idade: 20,
 //         altura: 1.73
 //     }
-//     res.render('index.pug', teste01);
+//     res.render('layout-conteudo.pug', teste01);
 // });
 //===================================================
 app.get('/conteudos', async (req, res) => {
@@ -54,7 +55,7 @@ app.get('/conteudos', async (req, res) => {
   
       if (result.recordset.length > 0) {
         const conteudo = result.recordset[0];
-        res.render('conteudo.pug', { conteudo, id_conteudo });
+        res.render('conteudos.pug', { conteudo, id_conteudo });
       } else {
         res.status(404).json({ mensagem: 'Conteúdo não encontrado.' });
       }
