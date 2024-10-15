@@ -6,9 +6,11 @@ function carregarDados() {
             carregarInformacoes(userData);
         } else {
             console.error('Dados do usuário não encontrados no armazenamento local');
+            // Adicione um feedback visual para o usuário, se necessário
         }
     } catch (error) {
         console.error('Erro ao carregar dados do usuário do armazenamento local:', error);
+        // Adicione um feedback visual para o usuário, se necessário
     }
 }
 //============================================================================================
@@ -17,16 +19,34 @@ async function carregarInformacoes(userData) {
     try {
         console.log('Dados do usuário recebidos:', userData);
 
-        if (userData && userData.nome && userData.email && userData.senha) {
+        if (userData && userData.nome && userData.email) { // Remova senha se não for necessário
             // Atribui os valores aos campos HTML
             document.getElementById('confNome').value = userData.nome;
             document.getElementById('confEmail').value = userData.email;
-            document.getElementById('confSenha').value = userData.senha;
+            document.getElementById('confSenha').value = userData.senha; // Considere não armazenar a senha
+
+            // Verifica se o usuário tem as fases no userData
+            if (userData.fases && Array.isArray(userData.fases)) {
+                // Filtra as fases completadas
+                const fasesCompletadas = userData.fases.filter(fase => fase.completada);
+
+                // Exibe a quantidade de fases completadas
+                const quantidadeCompletadas = fasesCompletadas.length;
+                console.log(`Fases completadas: ${quantidadeCompletadas}`);
+
+                // Exibe essa quantidade em um campo HTML
+                document.getElementById('fasesCompletadas').innerText = `Fases completadas: ${quantidadeCompletadas}`;
+            } else {
+                console.warn('Nenhuma fase encontrada para o usuário.');
+                document.getElementById('fasesCompletadas').innerText = 'Fases completadas: 0';
+            }
         } else {
             console.error('Dados do usuário incompletos:', userData);
+            // Adicione um feedback visual para o usuário, se necessário
         }
     } catch (error) {
         console.error('Erro ao carregar informações do usuário:', error);
+        // Adicione um feedback visual para o usuário, se necessário
     }
 }
 //============================================================================================

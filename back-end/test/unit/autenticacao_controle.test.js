@@ -1,4 +1,10 @@
 const { verificarLogin } = require('../../controllers/autenticacao_controle');
+const { buscarFasesUsuario } = require('../../controllers/autenticacao_controle');
+
+jest.mock('../../controllers/autenticacao_controle', () => ({
+    ...jest.requireActual('../../controllers/autenticacao_controle'),
+    buscarFasesUsuario: jest.fn(), // Mock da função buscarFasesUsuario
+}));
 
 describe('verificarLogin', () => {
     let req;
@@ -8,12 +14,12 @@ describe('verificarLogin', () => {
         req = { body: {} };
         res = {
             status: jest.fn().mockReturnThis(),
-            json: jest.fn()
+            json: jest.fn(),
         };
         global.conn = {
             request: jest.fn().mockReturnThis(),
             input: jest.fn().mockReturnThis(),
-            query: jest.fn()
+            query: jest.fn(),
         };
     });
 
@@ -26,17 +32,30 @@ describe('verificarLogin', () => {
         expect(res.json).toHaveBeenCalledWith({ mensagem: 'Email ou senha não foram fornecidos na solicitação.' });
     });
 
-    it('deve retornar os dados do usuário se o login for bem-sucedido', async () => {
+    it('deve retornar os dados do usuário e fases se o login for bem-sucedido', async () => {
         req.body = { email: 'teste@example.com', senha: 'senha123' };
 
         global.conn.query.mockResolvedValue({
             recordset: [{ id_cadastro: 1, nome: 'Teste', email: 'teste@example.com', senha: 'senha123' }]
         });
 
+        buscarFasesUsuario.mockResolvedValue([
+            { nome_fase: 'Fase 1', nome_oasis: 'Oasis 1', completada: true },
+            { nome_fase: 'Fase 2', nome_oasis: 'Oasis 2', completada: false },
+        ]);
+
         await verificarLogin(req, res);
 
         expect(res.status).toHaveBeenCalledWith(200);
-        expect(res.json).toHaveBeenCalledWith({ id_cadastro: 1, nome: 'Teste', email: 'teste@example.com', senha: 'senha123' });
+        expect(res.json).toHaveBeenCalledWith({
+            id_cadastro: 1,
+            nome: 'Teste',
+            email: 'teste@example.com',
+            fases: [
+                { nome_fase: 'Fase 1', nome_oasis: 'Oasis 1', completada: true },
+                { nome_fase: 'Fase 2', nome_oasis: 'Oasis 2', completada: false }
+            ]
+        });
     });
 
     it('deve retornar uma mensagem de erro se o usuário não for encontrado', async () => {

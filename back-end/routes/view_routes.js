@@ -31,5 +31,9 @@ router.get('/capa_jogo', (req, res) => {
     res.sendFile(path.join(__dirname, '../../Front-End/src/views/html/capa_jogo.html'));
 });
 
+router.get('/conteudos', (req, res) => {
+    res.render('../../Front-End/src/views/templates/conteudos.pug'); // Sem a extensão .pug
+});
+
 
 module.exports = router;

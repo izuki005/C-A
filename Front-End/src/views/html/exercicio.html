@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício</title>
+    <style>
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 25px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        #progress-fill {
+            height: 20px;
+            background-color: #76c7c0;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            border-radius: 25px;
+            width: 0;
+        }
+
+        .exercise {
+            margin-top: 20px;
+        }
+
+        .exercise label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .exercise input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #76c7c0;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #63b3ae;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Exercício</h1>
+
+    <!-- Barra de Progresso -->
+    <div class="progress-bar">
+        <div id="progress-fill">0%</div>
+    </div>
+
+    <!-- Pergunta do exercício -->
+    <div class="exercise">
+        <label for="answer">Qual é a capital da França?</label>
+        <input type="text" id="answer" placeholder="Digite sua resposta...">
+        <button onclick="submitAnswer('Paris')">Enviar Resposta</button>
+    </div>
+
+    <!-- Carrega o arquivo jogo.js -->
+    <script src="../../assets/scripts-html/jogo.js"></script>
+</body>
+</html>

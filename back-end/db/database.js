@@ -1,11 +1,11 @@
 const sql = require('mssql');
 
 const config = {
-    server: 'DESKTOP-4UV37RA',
+    server: 'matheus004',
     database: 'teste',
     port: 1433,
     user: 'sa',
-    password: 'Acabana2009*',
+    password: 'jogo21',
     trustServerCertificate: true,
     options: {
         cryptoCredentialsDetails: {

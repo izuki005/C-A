@@ -8,7 +8,7 @@ async function enviarEmail(req, res) {
   const codigo = gerarCodigo(6);
 
   try {
-    // Check if email already exists in the database
+    // Chekando se o E-mail existe no  banco de dados
     const checkEmailQuery = `SELECT 1 FROM cadastro WHERE email = @Email`;
     const checkResult = await global.conn.request()
       .input('Email', email)
