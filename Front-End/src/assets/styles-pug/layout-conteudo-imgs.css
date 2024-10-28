@@ -5,15 +5,26 @@ body{
 
 header{ 
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+.div-header{
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid black;
-    height: 188.33px;
+    width: 1350px;
+    margin-bottom: 0;
+    /* border: 1px solid blue; */
 }
 
 header h2{
     color: #fff;
     font-size: 20pt;
+    margin: 50px 500px 0 0;
+    /* border: 1px solid black; */
 }
 
 .img-header-left{
@@ -34,7 +45,19 @@ header h2{
     height: auto;
     /* border: 1px solid red; */
 }
+.header-div-p{
+    color: #fff;
+    font-size: 16pt;
+    width: 740px;
+    margin:0 200px 0 0;
+    display: flex;
+    /* border: 1px solid black; */
+    /* padding: 0px; */
+}
 
+.header-div-p p{
+   margin-top: 0; 
+}
 /* .h2-header{
     color: #fff;
     font-size: 20pt;
@@ -45,19 +68,11 @@ header h2{
 section{
     display: flex;
     justify-content: center;
-    height: 388px;
+    /* height: 388px; */
     border: 1px solid rgb(255, 2, 213);
     position: relative;
 }
-section .div-p{
-    width: 700px;
-    height: 280px;
-    color: #fff;
-    font-size: 16pt;
-    border: 1px solid rgb(2, 129, 255);
-}
 section .div2{
-    border: 1px solid rgb(251, 255, 2);
     position: absolute;
     display: flex;
     justify-content: space-between;
@@ -65,7 +80,6 @@ section .div2{
     width: 1010px;
     margin-top: 370px;
 }
-
 section .div2 button{
     width: 126px;
     height: 60px;
@@ -75,27 +89,3 @@ section .div2 button{
     color: #fff;
     cursor: pointer;
 }
-
-/* section{
-    display: flex;
-    justify-content: center;
-    border: 1px solid yellow;
-    position: relative;
-}
-section .div2{
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid black;
-    width: 1010px;
-    margin-top: 370px;
-}
-section .div2 button{
-    width: 126px;
-    height: 60px;
-    border-radius: 6px;
-    border: none;
-    background: #514D4D;
-    color: #fff;
-    cursor: pointer;
-} */
