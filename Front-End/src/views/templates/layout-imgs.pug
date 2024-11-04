@@ -16,7 +16,7 @@ html(lang="pt-BR")
                 p= conteudo.descricao             
         section 
             div
-                img(src="../assets/imgs-pug/imagem_marcada.png", alt="", srcset="").img-marcada
+                img(src="../assets/imgs-pug/imagem_marcada.png", alt="")#img-marcada
             div.div2
                 // Botão para ir para o conteúdo anterior
                 button(onclick="carregarConteudoAnterior()") Conteúdo Anterior
@@ -27,6 +27,7 @@ html(lang="pt-BR")
         script.
             let idConteudo = !{id_conteudo}; // Passa o valor do ID do backend para o JavaScript
             console.log(idConteudo)
-
+            let teste = document.querySelector("#img-marcada")
+            
         // Incluindo o script
         script(src="/assets/scripts-pug/teste.js")

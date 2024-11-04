@@ -46,7 +46,8 @@ app.get('/atividades', (req, res) => {
 //     res.render('layout-imgs.pug');
 // });
 app.get('/conteudos-imgs', async (req, res) => {
-  const id_conteudo = 4; // Definindo ID 4 para buscar o conteúdo específico
+  // Obtém o id_conteudo da query string ou usa 4 como padrão
+  const id_conteudo = parseInt(req.query.id_conteudo) || 4;
 
   try {
       const query = `SELECT titulo, descricao FROM conteudos WHERE id_conteudo = @IdConteudo`;
@@ -64,6 +65,7 @@ app.get('/conteudos-imgs', async (req, res) => {
       res.status(500).json({ mensagem: 'Erro ao buscar o conteúdo', details: err.message });
   }
 });
+
 
 //===================================================
 app.get('/conteudos', async (req, res) => {
