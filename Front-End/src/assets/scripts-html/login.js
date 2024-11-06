@@ -19,6 +19,7 @@ async function verificarUsuario() {
     const email = document.getElementById('logEmail')?.value;
     const senha = document.getElementById('logSenha')?.value;
 
+    // Validação de campos
     if (!email || !senha) {
         console.error('Preencha todos os campos');
         window.alert('Preencha todos os campos');
@@ -26,6 +27,7 @@ async function verificarUsuario() {
     }
 
     try {
+        // Chamada para a API
         const response = await fetch('http://localhost:3000/auth/login', {
             method: 'POST',
             headers: {
@@ -36,20 +38,26 @@ async function verificarUsuario() {
 
         const responseData = await response.json();
 
+        // Verificação da resposta da API
         if (response.ok) {
             const userData = {
-                id_cadastro: responseData.id_cadastro, // Corrigido para id_cadastro
+                id_cadastro: responseData.id_cadastro,
                 nome: responseData.nome,
                 email: responseData.email,
-                senha: responseData.senha
+                senha: responseData.senha, 
+                fases: responseData.fases
             };
 
+            // Armazenar os dados do usuário no localStorage
             localStorage.setItem('userData', JSON.stringify(userData));
+
             console.log('Usuário encontrado com sucesso!', userData);
             window.alert('USUÁRIO EXISTENTE');
+
+            // Redireciona o usuário para a página de jogo
             window.location.href = "capa_jogo";
         } else {
-            console.error(responseData.mensagem);
+            console.error(`Erro: ${responseData.mensagem}`, response.status);
             window.alert(responseData.mensagem);
         }
     } catch (error) {

@@ -4,6 +4,7 @@ const path = require('path');
 const authRoutes = require('./routes/auth_rota');
 const emailRoutes = require('./routes/email_rota');
 const userRoutes = require('./routes/user_rota');
+const faseRoutes = require('./routes/fases_rota');
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.set('view engine', 'pug');
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 app.use('/email', emailRoutes);
+app.use('/fase',faseRoutes);
 
 // Importar o arquivo de rotas
 const viewRoutes = require('./routes/view_routes');
