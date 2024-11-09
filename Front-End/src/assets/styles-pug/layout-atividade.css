@@ -47,6 +47,24 @@ section{
     height: 400px;
     /* border: 1px solid rgb(251, 255, 2); */
 }
+section .div2{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid black; */
+    width: 1010px;
+    margin-top: 370px;
+}
+section .div2 button{
+    width: 126px;
+    height: 60px;
+    border-radius: 6px;
+    border: none;
+    background: #514D4D;
+    color: #fff;
+    cursor: pointer;
+}
+
 .terminal{
     border: 2px solid rgb(181, 109, 2, 0.8);
     border-radius: 8px;

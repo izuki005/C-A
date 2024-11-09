@@ -8,7 +8,7 @@ html(lang="pt-BR")
     body
         header 
             img(src="../assets/imgs-pug/oasis-01.png", alt="", srcset="").img-header-left
-            h2.h2-header Qual dos comandos vai exibir a frase "<span>Hello, World!</span>" no console?
+            h2.h2-header #{conteudo.titulo}
             div.div-img-header
                 img(src="../assets/imgs-pug/config.png", alt="", srcset="").img-header-right
         section
@@ -21,11 +21,21 @@ html(lang="pt-BR")
                         div.resposta-usuario
                             input(type="text" value="print")#conteudo
                         p ("Hello, World!")
-
                 div.terminal-resposta
                     button(type="button").terminal-button Testar
-                    
+            div.div2
+                // Botão para ir para o conteúdo anterior
+                button(onclick="carregarConteudoAnterior()") Conteúdo Anterior
+                // Botão para ir para o próximo conteúdo
+                button(onclick="carregarProximoConteudo()") Próximo Conteúdo
             //- Nessa parte abaixo o conteúdo detro dos botões para dar a resposta virão do banco
             div.resposta 
                 button(type="button").botoes-resposta print 
                 button(type="button").botoes-resposta if
+
+        script(src="/assets/scripts-pug/teste.js") 
+
+        script.
+            let idConteudo = !{id_conteudo}; // Passa o valor do ID do backend para o JavaScript
+            console.log(idConteudo)
+        

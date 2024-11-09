@@ -5,16 +5,18 @@ function carregarProximoConteudo() {
     idConteudo += 1;
     
     if (idConteudo <= 3) {
-        // Redireciona para a rota /conteudos
         window.location.href = `/conteudos?id_conteudo=${idConteudo}`;
     } else if (idConteudo >= 4 && idConteudo <= 7) {
-        // Redireciona para a rota /conteudos-imgs
         window.location.href = `/conteudos-imgs?id_conteudo=${idConteudo}`;
+    } else if (idConteudo >= 8 && idConteudo <= 10) {
+        // Inclui id_conteudo na rota
+        window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`;
+        // window.location.href = `/conteudos-atividades`;
     } else {
-        idConteudo = 7;  // Limite máximo
+        idConteudo = 10;  // Limite máximo
     }
-
 }
+
 
 function carregarConteudoAnterior() {
     if (idConteudo > 1) {
