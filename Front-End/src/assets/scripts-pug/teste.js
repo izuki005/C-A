@@ -69,17 +69,20 @@ function atualizarImagem() {
     // Seleciona o elemento da imagem no DOM
     const imagem = document.getElementById("img-marcada");
 
-    // Verifica se o elemento foi encontrado antes de tentar definir o src
-    if (imagem) {
-        if (idConteudo === 5) {
-            imagem.src = "../assets/imgs-pug/imagem_marcada_2.png";
-        } else if (idConteudo === 6) {
-            imagem.src = "../assets/imgs-pug/imagem_marcada_3.png";
-        } else if (idConteudo === 7) {
-            imagem.src = "../assets/imgs-pug/imagem_marcada_4.png";
+    // Verifica se o idConteudo corresponde aos casos em que a imagem deve ser alterada
+    if (idConteudo >= 5 && idConteudo <= 7) {
+        // Verifica se o elemento foi encontrado antes de tentar definir o src
+        if (imagem) {
+            if (idConteudo === 5) {
+                imagem.src = "../imgs-pug/imagem_marcada_2.png";
+            } else if (idConteudo === 6) {
+                imagem.src = "../imgs-pug/imagem_marcada_3.png";
+            } else if (idConteudo === 7) {
+                imagem.src = "../imgs-pug/imagem_marcada_4.png";
+            }
+        } else {
+            console.error("Elemento de imagem não encontrado!");
         }
-    } else {
-        console.error("Elemento de imagem não encontrado!");
     }
 }
 
