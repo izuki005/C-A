@@ -201,3 +201,13 @@ div .terminal-resposta{
     cursor: pointer;
 }
 
+/* Para o botão que foi clicado (meio apagado) */
+.apagado {
+    opacity: 0.5;
+    pointer-events: none; /* Desativa interações com o botão */
+}
+
+/* Esconde o botão */
+.escondido {
+    display: none;
+}
