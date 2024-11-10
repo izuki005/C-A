@@ -89,3 +89,20 @@ footer .botao{
     color: #FFBF65;
     box-shadow: -6.56px 8.53px 10px rgba(0, 0, 0, 0.25);
 }
+
+.bloqueado {
+    position: relative;
+    opacity: 0.5;
+}
+
+.bloqueado::after {
+    content: "Bloqueado";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000;
+}

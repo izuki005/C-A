@@ -86,22 +86,39 @@ function atualizarImagem() {
     }
 }
 
-// função da rota de atividades
+// Função para testar a resposta e alterar os botões
 function teste_campo() {
-    //validar se o campo de texto possui algum valor antes de ativar a função para ir para próxima parte da atividade
-    let campo = document.querySelector("#conteudo")
+    let campo = document.querySelector("#conteudo");
+    let botaoTestar = document.querySelector('.terminal-button');
+    let botaoPrint = document.querySelector('.botoes-resposta');
+    let espacoResposta = document.querySelector('.espaco-resposta');
+    
+    // Se o campo não estiver correto, avisa o usuário
     if (campo.value != "print") {
-        alert("Observe sua lógica e tente novamente!")
+        alert("Observe sua lógica e tente novamente!");
     } else {
-        carregarProximoConteudo()
+        // Caso o campo esteja correto, altera os botões
+        botaoTestar.classList.add("apagado"); // Torna o botão Testar apagado
+        botaoPrint.classList.add("escondido"); // Esconde o botão Print
+        espacoResposta.classList.add("escondido"); // Esconde o espaço de resposta (campo de input)
+
+        // Redireciona para o próximo conteúdo (se necessário)
+        carregarProximoConteudo();
     }
 }
-// pega o valor do botao e coloca no input
-function botoes() {
-    let botao1 = document.querySelector('.botoes-resposta')
-    let campo = document.querySelector('#conteudo')
-    let tit = document.querySelector('.h2-header')
-    campo.value = botao1.innerText
-    tit.innerText = "Clique em testar para exibir!"
-}
 
+// Função para preencher o campo com o texto do botão e alterar o layout
+function botoes() {
+    let botao1 = document.querySelector('.botoes-resposta');
+    let campo = document.querySelector('#conteudo');
+    let tit = document.querySelector('.h2-header');
+
+    // Preenche o campo com o texto do botão
+    campo.value = botao1.innerText;
+    tit.innerText = "Clique em testar para exibir!";
+
+    // Apaga o botão Print e exibe o Testar
+    botao1.classList.add("apagado");  // Torna o botão Print apagado
+    let botaoTestar = document.querySelector('.terminal-button');
+    botaoTestar.classList.remove("apagado"); // Torna o botão Testar visível
+}
