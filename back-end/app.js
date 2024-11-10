@@ -37,7 +37,6 @@ app.use(viewRoutes);
 // Rota para renderizar um arquivo Pug
 app.get('/conteudos-atividades', async (req, res) => {
   const id_conteudo = parseInt(req.query.id_conteudo) || 8; // Usa o valor da query string ou 8 como padrão
-
   try {
       const query = `SELECT titulo, descricao FROM conteudos WHERE id_conteudo = @IdConteudo`;
       const result = await global.conn.request()
@@ -46,7 +45,7 @@ app.get('/conteudos-atividades', async (req, res) => {
 
       if (result.recordset.length > 0) {
           const conteudo = result.recordset[0];
-          res.render('layout-atividade.pug', { conteudo, id_conteudo });
+          res.render('layout-atividade.pug', { conteudo, id_conteudo});
       } else {
           res.status(404).json({ mensagem: 'Conteúdo não encontrado.' });
       }

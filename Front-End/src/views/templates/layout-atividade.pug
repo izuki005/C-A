@@ -14,24 +14,25 @@ html(lang="pt-BR")
         section
             div.terminal
                 div.terminal-header
+                    div.fundo_abas  
                     img(src="../assets/imgs-pug/logo-python.png", alt="", srcset="")
+                    div.linha_vertical_abas
+                    p Console
+                    div.linha_vertical_abas
                 //- Nessa parte terminal centro vai conter o espaço para a resposta que será adicionada pelo usuário
                 div.terminal-centro
                     div.espaco-resposta
                         div.resposta-usuario
-                            input(type="text" value="print")#conteudo
-                        p ("Hello, World!")
+                            input(type="text")#conteudo
+                        p#paragrafo ("Hello, World!")
                 div.terminal-resposta
-                    button(type="button").terminal-button Testar
+                    button(type="button" onclick="teste_campo()").terminal-button Testar
             div.div2
                 // Botão para ir para o conteúdo anterior
                 button(onclick="carregarConteudoAnterior()") Conteúdo Anterior
-                // Botão para ir para o próximo conteúdo
-                button(onclick="carregarProximoConteudo()") Próximo Conteúdo
             //- Nessa parte abaixo o conteúdo detro dos botões para dar a resposta virão do banco
             div.resposta 
-                button(type="button").botoes-resposta print 
-                button(type="button").botoes-resposta if
+                button(type="button" onclick="botoes()").botoes-resposta print 
 
         script(src="/assets/scripts-pug/teste.js") 
 

@@ -36,6 +36,7 @@ span{
 .h2-header{
     color: #fff;
     font-size: 20pt;
+    width: 800px;
 }
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -78,14 +79,37 @@ section .div2 button{
 .terminal-header{
     display: flex;
     justify-content: start;
-    /* border: 2px solid #B56D02; */
+    align-items: center;
+    /* border: 2px solid #7e7870; */
     width: 700px;
+    height: 38px;
+    position: relative;
 }
 .terminal-header img{
     width: 30px;
-    height: auto;
+    height: 30px;
     margin-left: 10px;
+    /* border: 2px solid #B56D02; */
 }
+.terminal-header .linha_vertical_abas{
+    height: 38px;
+    width: 2px;
+    background: #B56D02;
+    margin: 0 6px 0 6px;
+}
+.terminal-header .fundo_abas{
+    height: 38px;
+    width: 46px;
+    background: rgba(181, 109, 2, 0.098);
+    margin-left: 0; /* vai mudar quando a seleção for para o console*/
+    position: absolute;
+}
+
+.terminal-header p{
+    color: #fff;
+    /* border: 2px solid #B56D02; */
+}
+
 .terminal-centro{
     border: 2px solid rgb(181, 109, 2, 0.8);
     width: 700px;
@@ -99,7 +123,7 @@ section .div2 button{
     /* border: 1px solid black; */
     display: flex;
     align-items: center;
-    padding: 0 0 0 10px;
+    padding: 0 0 0 30px;
 }
 .resposta-usuario{
     /* background-color: #283134; */
