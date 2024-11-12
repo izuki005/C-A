@@ -1,69 +1,95 @@
-// const { type } = require("os");
-
 document.addEventListener("DOMContentLoaded", () => {
     atualizarImagem();
-    // quando for o conteudo numero 9, o layout de atividade deve ser modificado dinacinamicamente coforme o figma
-    if (idConteudo == 9) {
-        conteudo("#conteudo")
-        conteudo("#paragrafo")
-        let resposta_console = document.querySelector('.espaco-resposta')
-        let fundo_abas = document.querySelector('.fundo_abas')
-        let insert_button = document.querySelector('.div2')
-        insert_button.innerHTML += `
-        <button oncliclick = "carregarProximoConteudo()">Próximo Conteúdo</button>
-        `
-        fundo_abas.style.width = '64px'
-        fundo_abas.style.margin = '0 0 0 48px'
-        resposta_console.innerHTML = `
-        <p>Hello, World!</p>
-        `
+
+    if (idConteudo == 8) {
+        let botao = document.querySelector(".resposta");
+        botao.innerHTML += `<button class="botoes-resposta" onclick="botoes(event)">print</button>`;
+    } else if (idConteudo == 9) {
+        conteudo(".linha_vertical_abas_terminal_resposta");
+        conteudo(".img_botao_reset");
+        conteudo(".conteudo");
+        conteudo("#paragrafo");
+        conteudo(".terminal-button2 ");
+        let resposta_console = document.querySelector('.espaco-resposta');
+        let fundo_abas = document.querySelector('.fundo_abas');
+        let insert_button = document.querySelector('.div2');
+        insert_button.innerHTML += `<button onclick="carregarProximoConteudo()" class="next">Próximo Conteúdo</button>`;
+        fundo_abas.style.width = '64px';
+        fundo_abas.style.margin = '0 0 0 48px';
+        resposta_console.innerHTML = `<p>Hello, World!</p>`;
+    } else if (idConteudo == 10) {
+        conteudo(".button1_div2");
+        let insert_button = document.querySelector('.div2');
+        
+        // Insere o botão no início da div (antes de qualquer outro conteúdo)
+        insert_button.insertAdjacentHTML('afterbegin', `<button id="botaoEspecial">Conteúdo Anterior</button>`);
+    
+        // Modifica o onclick do botão para redirecionar para /oasis
+        document.getElementById("botaoEspecial").onclick = function() {
+            window.location.href = "/conteudos-atividades?id_conteudo=8";
+        };
+    }
+     else if (idConteudo == 13) {
+        let botao = document.querySelector(".resposta");
+        botao.innerHTML += `<button class="botoes-resposta" onclick="botoes(event)">print</button>`;
+        botao.innerHTML += `<button class="botoes-resposta" onclick="botoes(event)">if</button>`;
+    } else if (idConteudo == 14) {
+        conteudo(".button2_div2")
+        let insert_button = document.querySelector('.div2');
+        insert_button.innerHTML += `<button id="botaoEspecial">Próximo Conteúdo</button>`;
+        // Modifica o onclick do botão para redirecionar para /oasis
+        document.getElementById("botaoEspecial").onclick = function() {
+            window.location.href = "/oasis";
+        };
     }
 });
+
 // remove as tags para exibir o console apenas com a resposta
 let conteudo = (id) => {
     let tag = document.querySelector(id)
     if (tag) {
         tag.remove()
+    } else {
+        alert("está tag não existe! Seu identificador deve estar errado!")
     }
 }
 
-
-function carregarProximoConteudo() {
-    idConteudo += 1;
-    
+function navegarConteudo(idConteudo) {
     if (idConteudo <= 3) {
         window.location.href = `/conteudos?id_conteudo=${idConteudo}`;
     } else if (idConteudo >= 4 && idConteudo <= 7) {
         window.location.href = `/conteudos-imgs?id_conteudo=${idConteudo}`;
-    } else if (idConteudo >= 8 && idConteudo <= 10) {
-        // Inclui id_conteudo na rota
+    } else if (idConteudo >= 8 && idConteudo <= 9) {
         window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`;
-        // window.location.href = `/conteudos-atividades`;
+    } else if (idConteudo >= 10 && idConteudo <= 12) {
+        window.location.href = `/conteudos?id_conteudo=${idConteudo}`;
+    } else if (idConteudo == 13) {
+        window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`;
+    } else if (idConteudo == 14) {
+        window.location.href = `/conteudos?id_conteudo=${idConteudo}`;
     } else {
-        idConteudo = 10;  // Limite máximo
+        console.warn("Conteúdo fora do limite permitido.");
     }
 }
 
-
-
+function carregarProximoConteudo() {
+    if (idConteudo < 14) {  // Define um limite máximo
+        idConteudo += 1;
+        navegarConteudo(idConteudo);
+    } else {
+        console.warn("Você está no último conteúdo.");
+    }
+}
 
 function carregarConteudoAnterior() {
-    if (idConteudo > 1) {
+    if (idConteudo > 1) {  // Define um limite mínimo
         idConteudo -= 1;
-        if (idConteudo <= 3) {
-            window.location.href = `/conteudos?id_conteudo=${idConteudo}`;
-        } else if (idConteudo >= 4 && idConteudo <= 7) {
-            window.location.href = `/conteudos-imgs?id_conteudo=${idConteudo}`; 
-        } else if (idConteudo >= 8 && idConteudo <= 10) {
-            // Inclui id_conteudo na rota
-            window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`;
-            // window.location.href = `/conteudos-atividades`;
-        }
+        navegarConteudo(idConteudo);
     } else {
         window.location.href = '/oasis';
     }
-
 }
+
 
 function atualizarImagem() {
     // Seleciona o elemento da imagem no DOM
@@ -86,39 +112,85 @@ function atualizarImagem() {
     }
 }
 
+function recarregar_pagina() {
+    location.reload()
+}
+
 // Função para testar a resposta e alterar os botões
 function teste_campo() {
-    let campo = document.querySelector("#conteudo");
+    let campo = document.querySelector(".conteudo");
     let botaoTestar = document.querySelector('.terminal-button');
     let botaoPrint = document.querySelector('.botoes-resposta');
     let espacoResposta = document.querySelector('.espaco-resposta');
+    let tit = document.querySelector(".h2-header")
     
     // Se o campo não estiver correto, avisa o usuário
     if (campo.value != "print") {
-        alert("Observe sua lógica e tente novamente!");
+        tit.innerText = "Observe sua lógica e tente novamente!";
+    } else if (idConteudo == 13) {
+        conteudo(".img_botao_reset")
+        conteudo(".linha_vertical_abas_terminal_resposta")
+        conteudo(".botoes-resposta")
+        conteudo(".botoes-resposta")
+        conteudo(".terminal-button2")
+        let resposta_console = document.querySelector('.espaco-resposta')
+        let fundo_abas = document.querySelector('.fundo_abas')
+        let insert_button = document.querySelector('.div2')
+        // insert_button.innerHTML += `<button onclick ="carregarConteudoAnterior()">Conteúdo Anterior</button>`
+        insert_button.innerHTML += `<button onclick ="carregarProximoConteudo()" class="next">Próximo Conteúdo</button>`
+        fundo_abas.style.width = '64px'
+        fundo_abas.style.margin = '0 0 0 48px'
+        resposta_console.innerHTML = `<p>Hello, World!</p>`
+        tit.innerText = "Muito bem! Sua mensagem foi exibida na tela/console com sucesso!"
+    } else if (campo.value == "if"){
+        tit.innerText = "Pense sobre o que aprendeu. Qual dos comandos vai exibir a frase 'Hello, World!' no console?";
     } else {
-        // Caso o campo esteja correto, altera os botões
-        botaoTestar.classList.add("apagado"); // Torna o botão Testar apagado
-        botaoPrint.classList.add("escondido"); // Esconde o botão Print
-        espacoResposta.classList.add("escondido"); // Esconde o espaço de resposta (campo de input)
-
-        // Redireciona para o próximo conteúdo (se necessário)
+        
         carregarProximoConteudo();
     }
 }
 
-// Função para preencher o campo com o texto do botão e alterar o layout
-function botoes() {
-    let botao1 = document.querySelector('.botoes-resposta');
-    let campo = document.querySelector('#conteudo');
+// Adiciona evento de clique a todos os botões com a classe "botoes-resposta"
+document.querySelectorAll(".botoes-resposta").forEach(botao => {
+    botao.addEventListener("click", (event) => botoes(event));
+});
+
+function botoes(event) {
+    let botaoClicado = event.target;
     let tit = document.querySelector('.h2-header');
 
-    // Preenche o campo com o texto do botão
-    campo.value = botao1.innerText;
-    tit.innerText = "Clique em testar para exibir!";
+    // Verifica se o elemento tit existe antes de acessar innerText
+    if (tit) {
+        tit.innerText = "Clique em testar para exibir!";
+    }
 
-    // Apaga o botão Print e exibe o Testar
-    botao1.classList.add("apagado");  // Torna o botão Print apagado
+    let campos = document.querySelectorAll('.conteudo');
+
+    for (let campo of campos) {
+        if (campo.value === "") {
+            campo.value = botaoClicado.innerText;
+            break;
+        }
+    }
+
+    let todosPreenchidos = Array.from(campos).every(campo => campo.value !== "");
+
+    if (todosPreenchidos) {
+        document.querySelectorAll(".botoes-resposta").forEach(botao => {
+            botao.classList.add("apagado");
+        });
+    }
+
+    // Verifica se botaoClicado existe antes de adicionar a classe "apagado"
+    if (botaoClicado) {
+        botaoClicado.classList.add("apagado");
+    }
+
     let botaoTestar = document.querySelector('.terminal-button');
-    botaoTestar.classList.remove("apagado"); // Torna o botão Testar visível
+    if (botaoTestar) {
+        botaoTestar.classList.remove("apagado");
+    }
 }
+
+
+

@@ -56,7 +56,7 @@ section .div2{
     width: 1010px;
     margin-top: 370px;
 }
-section .div2 button{
+section .div2 button {
     width: 126px;
     height: 60px;
     border-radius: 6px;
@@ -65,7 +65,9 @@ section .div2 button{
     color: #fff;
     cursor: pointer;
 }
-
+.next {
+    margin-left: 885px;
+}
 .terminal{
     border: 2px solid rgb(181, 109, 2, 0.8);
     border-radius: 8px;
@@ -96,6 +98,17 @@ section .div2 button{
     width: 2px;
     background: #B56D02;
     margin: 0 6px 0 6px;
+}
+.linha_vertical_abas_terminal_resposta{
+    height: 30px;
+    width: 2px;
+    background: rgb(181, 109, 2, 0.8);
+    margin: 0 6px 0 6px;
+}
+.img_botao_reset {
+    width: auto;
+    height: 30px;
+    cursor: pointer;
 }
 .terminal-header .fundo_abas{
     height: 38px;
@@ -134,7 +147,7 @@ section .div2 button{
     justify-content: center;
     align-items: center;
 }
-input#conteudo{
+.conteudo{
     background-color: #283134;
     width: 50px;
     height: 20px;
@@ -147,13 +160,27 @@ input#conteudo{
 
 .terminal-resposta{
     width: 700px;
+    height: 30px;
     /* border: 1px solid palevioletred; */
 }
 div .terminal-resposta{
     display: flex;
     justify-content: end;
 }
-.terminal-button{
+.terminal-button1{
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    background: transparent;
+    /* background-color: rgb(181, 109, 2, 0.8); */
+    /* border-left: 1px solid rgb(181, 109, 2, 0.8);
+    border-right: 1px solid rgb(181, 109, 2, 0.8); */
+    border: none;
+    outline: none;
+    /* border-radius: 0 0 6px 0; */
+    cursor: pointer;
+}
+.terminal-button2{
     width: 100px;
     height: 30px;
     color: #fff;
@@ -163,7 +190,7 @@ div .terminal-resposta{
     border-radius: 0 0 6px 0;
     cursor: pointer;
 }
-.terminal-button:hover{
+.terminal-button2:hover{
     width: 100px;
     height: 30px;
     color: #fff;
@@ -204,7 +231,7 @@ div .terminal-resposta{
 /* Para o botão que foi clicado (meio apagado) */
 .apagado {
     opacity: 0.5;
-    pointer-events: none; /* Desativa interações com o botão */
+    pointer-events: none; 
 }
 
 /* Esconde o botão */
