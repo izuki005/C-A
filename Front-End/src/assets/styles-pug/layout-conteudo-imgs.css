@@ -96,3 +96,21 @@ section .div2 button{
 /* section div #img-marcada{
     width: 100px;
 } */
+
+#barra-progresso-container {
+    width: 80%; /* Ajusta a largura do container da barra */
+    max-width: 600px; /* Limite máximo de largura para telas grandes */
+    background-color: #333333; /* Cor de fundo mais escura */
+    border-radius: 10px; /* Arredondamento das bordas */
+    overflow: hidden;
+    height: 10px; /* Altura reduzida */
+    margin: 20px auto; /* Centraliza a barra e dá espaço acima e abaixo */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+}
+
+#barra-progresso {
+    height: 100%;
+    background-color: #4caf50; /* Cor da barra de progresso */
+    width: 0%; /* Inicia vazio */
+    transition: width 0.6s ease-in-out; /* Animação de preenchimento */
+}

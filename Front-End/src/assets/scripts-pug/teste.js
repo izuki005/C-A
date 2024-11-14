@@ -192,5 +192,42 @@ function botoes(event) {
     }
 }
 
+async function atualizarBarraDeProgresso() {
+    const barraProgresso = document.getElementById('barra-progresso');
+    const totalConteudos = 14;
+    const progresso = (idConteudo / totalConteudos) * 100;
+
+    // Atualiza a largura da barra de progresso
+    barraProgresso.style.width = `${progresso}%`;
+
+    if (idConteudo === totalConteudos) {
+        const userDataString = localStorage.getItem('userData')
+
+        if (userDataString) {
+            const userData = JSON.parse(userDataString);
+            const id_cadastro = userData.id_cadastro;
+
+            try {
+                // Chamada para completar a fase
+                const response = await fetch('http://localhost:3000/fase/completar_fase', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ id_fase: 1, id_cadastro: id_cadastro })
+                });
+
+                const data = await response.json();
+                console.log('Fase completada:', data);
+            } catch (error) {
+                console.error('Erro ao completar a fase:', error);
+            }
+        } else {
+            console.error('Dados do usuário não encontrados no localStorage');
+        }
+    }
+}
 
 
+// Chama a função para carregar o progresso quando a página carregar
+window.addEventListener('load', atualizarBarraDeProgresso);
