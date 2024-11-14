@@ -35,18 +35,33 @@ const viewRoutes = require('./routes/view_routes');
 app.use(viewRoutes);
 
 // Rota para renderizar um arquivo Pug
-app.get('/atividades', (req, res) => {
+app.get('/conteudos-atividades', async (req, res) => {
+  const id_conteudo = parseInt(req.query.id_conteudo) || 8; // Usa o valor da query string ou 8 como padrão
+  try {
+      const query = `SELECT titulo, descricao FROM conteudos WHERE id_conteudo = @IdConteudo`;
+      const result = await global.conn.request()
+          .input('IdConteudo', id_conteudo)
+          .query(query);
 
-    let teste01 = {
-        nome: "Kawan Gabriel",
-        idade: 20,
-        altura: 1.73
-    }
-    res.render('layout-atividade.pug', teste01);
+      if (result.recordset.length > 0) {
+          const conteudo = result.recordset[0];
+          res.render('layout-atividade.pug', { conteudo, id_conteudo});
+      } else {
+          res.status(404).json({ mensagem: 'Conteúdo não encontrado.' });
+      }
+  } catch (err) {
+      res.status(500).json({ mensagem: 'Erro ao buscar o conteúdo', details: err.message });
+  }
 });
-// app.get('/conteudos-imgs', (req, res) => {
-//     res.render('layout-imgs.pug');
+// app.get('/conteudos-atividades', (req, res) => {
+//   const conteudo = {
+//     titulo: 'Título da Atividade'
+//   };
+//   res.render('layout-atividade', { conteudo });
 // });
+
+
+
 app.get('/conteudos-imgs', async (req, res) => {
   // Obtém o id_conteudo da query string ou usa 4 como padrão
   const id_conteudo = parseInt(req.query.id_conteudo) || 4;
