@@ -27,5 +27,5 @@ async function connectDatabase() {
 
 module.exports = {
     connectDatabase,
-    sql, // Aqui estamos exportando a instância do sql
+    sql,
 };
