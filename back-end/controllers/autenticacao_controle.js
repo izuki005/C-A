@@ -67,7 +67,46 @@ async function buscarFasesUsuario(id_cadastro) {
     }
 }
 
+
+// Função para obter informações do usuário por id_cadastro
+async function obterInformacoesUsuario(req, res) {
+    const { id_cadastro } = req.params;
+
+    if (!id_cadastro) {
+        return res.status(400).json({ mensagem: 'ID de cadastro não foi fornecido.' });
+    }
+
+    try {
+        const getUserQuery = `
+            SELECT id_cadastro, nome, email 
+            FROM cadastro 
+            WHERE id_cadastro = @id_cadastro
+        `;
+
+        const userResult = await global.conn.request()
+            .input('id_cadastro', id_cadastro)
+            .query(getUserQuery);
+
+        if (userResult.recordset.length > 0) {
+            const user = userResult.recordset[0];
+
+            // Busca as fases do usuário
+            const fases = await buscarFasesUsuario(user.id_cadastro);
+
+            // Retorna as informações do usuário junto com as fases
+            return res.status(200).json({ ...user, fases });
+        } else {
+            return res.status(404).json({ mensagem: 'Usuário não encontrado.' });
+        }
+    } catch (err) {
+        console.error('Erro ao obter informações do usuário:', err);
+        return res.status(500).json({ mensagem: 'Erro interno no servidor.' });
+    }
+}
+
+
 module.exports = {
     verificarLogin,
-    buscarFasesUsuario
+    buscarFasesUsuario,
+    obterInformacoesUsuario
 };

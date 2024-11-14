@@ -1,16 +1,29 @@
-function carregarDados() {
+async function carregarDados() {
     try {
+        // Obter os dados do usuário do localStorage
         const userDataString = localStorage.getItem('userData');
-        if (userDataString) {
-            const userData = JSON.parse(userDataString);
-            carregarInformacoes(userData);
-        } else {
+        if (!userDataString) {
             console.error('Dados do usuário não encontrados no armazenamento local');
-            // Adicione um feedback visual para o usuário, se necessário
+            return;
+        }
+
+        const userData = JSON.parse(userDataString);
+
+        // Fazer a requisição para obter as informações atualizadas do usuário pelo id_cadastro
+        const response = await fetch(`http://localhost:3000/auth/info/${userData.id_cadastro}`);
+        if (response.ok) {
+            const userDataAtualizado = await response.json();
+
+            // Atualizar o localStorage com os dados mais recentes do usuário
+            localStorage.setItem('userData', JSON.stringify(userDataAtualizado));
+
+            // Carregar as informações do usuário na interface
+            carregarInformacoes(userDataAtualizado);
+        } else {
+            console.error('Erro ao buscar informações atualizadas do usuário:', response.statusText);
         }
     } catch (error) {
         console.error('Erro ao carregar dados do usuário do armazenamento local:', error);
-        // Adicione um feedback visual para o usuário, se necessário
     }
 }
 //============================================================================================
