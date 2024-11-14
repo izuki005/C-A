@@ -1,12 +1,17 @@
-const db = require('../db/database');
+const db = require('../db/database'); // Importa o módulo db
 
 // Função para completar a fase
 async function completarFase(req, res) {
     const { id_fase, id_cadastro } = req.body; // Pega o ID da fase e do usuário do corpo da requisição
 
     try {
-        // Cria uma nova requisição SQL
-        const request = new db.sql.Request();
+        // Verifica se a conexão com o banco está ativa
+        if (!global.conn || !global.conn.connected) {
+            return res.status(500).json({ message: 'Conexão com o banco de dados não estabelecida.' });
+        }
+
+        // Cria uma nova requisição SQL utilizando a conexão global
+        const request = new db.sql.Request(global.conn);
         request.input('id_cadastro', db.sql.Int, id_cadastro);
         request.input('id_fase', db.sql.Int, id_fase);
 
@@ -16,7 +21,7 @@ async function completarFase(req, res) {
         );
 
         // Verifica se a fase foi encontrada
-        const fase = resultFase.recordset[0];
+        const fase = resultFase.recordset.length > 0 ? resultFase.recordset[0] : null;
         if (!fase) {
             return res.status(404).json({ message: 'Fase não encontrada ou não disponível para o usuário' });
         }
