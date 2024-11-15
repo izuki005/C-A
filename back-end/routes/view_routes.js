@@ -26,6 +26,9 @@ router.get('/login', (req, res) => {
 router.get('/oasis', (req, res) => {
     res.sendFile(path.join(__dirname, '../../Front-End/src/views/html/oasis.html'));
 });
+router.get('/oasis-teste', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../Front-End/src/views/html/oasis-teste.html'));
+});
 
 router.get('/capa_jogo', (req, res) => {
     res.sendFile(path.join(__dirname, '../../Front-End/src/views/html/capa_jogo.html'));
