@@ -220,8 +220,4 @@ footer {
     top: -50px;
   }
   
-/* Estilos para quando um oásis estiver bloqueado */
-.bloqueado {
-    opacity: 0.5; /* Torna o oásis mais claro para indicar que está bloqueado */
-    pointer-events: none; /* Desabilita cliques no oásis bloqueado */
-}
+
