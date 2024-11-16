@@ -85,3 +85,65 @@ async function carregarOasis() {
 // Adiciona um ouvinte de evento para garantir que a função 'carregarOasis' seja executada
 // apenas após o DOM estar completamente carregado
 document.addEventListener('DOMContentLoaded', carregarOasis);
+
+// Seleciona todos os pontos e o canvas SVG
+const pontos = document.querySelectorAll('.filho-div__ponto');
+const svgContainer = document.querySelector('section');
+const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+svg.setAttribute('class', 'lines');
+svg.setAttribute('width', `${svgContainer.offsetWidth}px`);
+svg.setAttribute('height', `${svgContainer.offsetHeight}px`);
+svg.style.position = 'absolute';
+svg.style.top = '0';
+svg.style.left = '0';
+svg.style.zIndex = '0';
+svgContainer.appendChild(svg);
+
+// Função para criar e animar uma linha SVG
+function createLine(x1, y1, x2, y2) {
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', x1);
+    line.setAttribute('y1', y1);
+    line.setAttribute('x2', x2);
+    line.setAttribute('y2', y2);
+    line.setAttribute('stroke', 'white');
+    line.setAttribute('stroke-width', '2');
+
+    // Adiciona os atributos para a animação
+    const length = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2); // Comprimento da linha
+    line.setAttribute('stroke-dasharray', length);
+    line.setAttribute('stroke-dashoffset', length);
+
+    // Adiciona a linha ao SVG
+    svg.appendChild(line);
+    
+    // Inicia a animação
+    setTimeout(() => {
+        line.style.transition = 'stroke-dashoffset 1s linear';
+        line.setAttribute('stroke-dashoffset', '0');
+    }, 100); // Atraso para iniciar a animação
+}
+
+// Função para conectar os pontos em sequência
+function connectPoints() {
+    for (let i = 0; i < pontos.length - 1; i++) {
+        const pontoAtual = pontos[i].getBoundingClientRect();
+        const pontoProximo = pontos[i + 1].getBoundingClientRect();
+        
+        // Coordenadas dos pontos (ajustadas para o SVG)
+        const x1 = pontoAtual.left + pontoAtual.width / 2 - svgContainer.offsetLeft;
+        const y1 = pontoAtual.top + pontoAtual.height / 2 - svgContainer.offsetTop;
+        const x2 = pontoProximo.left + pontoProximo.width / 2 - svgContainer.offsetLeft;
+        const y2 = pontoProximo.top + pontoProximo.height / 2 - svgContainer.offsetTop;
+        
+        
+        // Cria a linha com um pequeno atraso para efeito em sequência
+        setTimeout(() => createLine(x1, y1, x2, y2), i * 1000);
+    }
+}
+// Inicia a conexão entre os pontos
+connectPoints();
+
+window.addEventListener('resize', function() {
+    location.reload();  // Recarrega a página
+});
