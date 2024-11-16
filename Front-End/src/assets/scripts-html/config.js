@@ -254,3 +254,13 @@ async function atualizarUsuario(userData) {
         window.alert('Erro ao atualizar usuário');
     }
 }
+
+//=====================================================================================
+function voltarPaginaAnterior() {
+    const referrer = document.referrer; // Pega a URL da página anterior
+    if (referrer) {
+        window.location.href = referrer; // Volta para a página anterior
+    } else {
+        window.location.href = '/inicio-jogo'; // Fallback para a página inicial
+    }
+}
