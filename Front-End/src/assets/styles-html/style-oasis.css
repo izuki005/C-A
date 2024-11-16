@@ -99,7 +99,7 @@ section{
     justify-content: center;
     width: 300px;
     height: 1px;
-    background: #fff;
+    background: #fff;   
     left: 135px;
     bottom: -5px;
     transform-origin: 0 50%; /* Define a origem da rotação no lado esquerdo */
