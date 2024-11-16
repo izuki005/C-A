@@ -119,3 +119,7 @@ function conectarPontos(pontos, ultimoIndex) {
 
 // Garantir que carregarOasis seja executado após o DOM estar pronto
 document.addEventListener('DOMContentLoaded', carregarOasis);
+
+window.addEventListener('resize', function() {
+    location.reload();  // Recarrega a página
+});
