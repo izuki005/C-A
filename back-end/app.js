@@ -86,25 +86,29 @@ app.get('/conteudos-imgs', async (req, res) => {
 
 //===================================================
 app.get('/conteudos', async (req, res) => {
-    // Pega o id_conteudo da query string ou usa 1 como padrão
-    const id_conteudo = parseInt(req.query.id_conteudo) || 1; 
-  
-    try {
-      const query = `SELECT titulo, descricao FROM conteudos WHERE id_conteudo = @IdConteudo`;
-      const result = await global.conn.request()
-        .input('IdConteudo', id_conteudo)
-        .query(query);
-  
-      if (result.recordset.length > 0) {
-        const conteudo = result.recordset[0];
-        res.render('layout-conteudo.pug', { conteudo, id_conteudo });
-      } else {
-        res.status(404).json({ mensagem: 'Conteúdo não encontrado.' });
-      }
-    } catch (err) {
-      res.status(500).json({ mensagem: 'Erro ao buscar o conteúdo', details: err.message });
+  // Pega o id_conteudo da query string ou usa 1 como padrão
+  const id_conteudo = parseInt(req.query.id_conteudo) || 1;
+
+  try {
+    const query = `SELECT titulo, descricao FROM conteudos WHERE id_conteudo = @IdConteudo`;
+    const result = await global.conn.request()
+      .input('IdConteudo', id_conteudo)
+      .query(query);
+
+    if (result.recordset.length > 0) {
+      const conteudo = result.recordset[0];
+
+      // Substitui as quebras de linha na descrição por <br>
+      conteudo.descricao = conteudo.descricao.replace(/\n/g, '<br>');
+
+      res.render('layout-conteudo.pug', { conteudo, id_conteudo });
+    } else {
+      res.status(404).json({ mensagem: 'Conteúdo não encontrado.' });
     }
-  });
+  } catch (err) {
+    res.status(500).json({ mensagem: 'Erro ao buscar o conteúdo', details: err.message });
+  }
+});
     
 
 
