@@ -45,6 +45,10 @@ app.get('/conteudos-atividades', async (req, res) => {
 
       if (result.recordset.length > 0) {
           const conteudo = result.recordset[0];
+
+          // Substitui as quebras de linha na descrição por <br>
+          conteudo.descricao = conteudo.descricao.replace(/\n/g, '<br>')
+
           res.render('layout-atividade.pug', { conteudo, id_conteudo});
       } else {
           res.status(404).json({ mensagem: 'Conteúdo não encontrado.' });
@@ -74,6 +78,10 @@ app.get('/conteudos-imgs', async (req, res) => {
 
       if (result.recordset.length > 0) {
           const conteudo = result.recordset[0];
+
+          // Substitui as quebras de linha na descrição por <br>
+          conteudo.descricao = conteudo.descricao.replace(/\n/g, '<br>')
+
           res.render('layout-imgs.pug', { conteudo, id_conteudo });
       } else {
           res.status(404).json({ mensagem: 'Conteúdo não encontrado.' });
