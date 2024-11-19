@@ -19,7 +19,8 @@ html(lang="pt-BR")
                     img(src="../assets/imgs-pug/config.png", alt="Configurações", srcset="").img-header-right
         section 
             div.div-p
-                p= conteudo.descricao    
+                // Interpreta as quebras de linha como HTML
+                p !{conteudo.descricao}    
             div.div2
                 // Botão para ir para o conteúdo anterior
                 button(onclick="carregarConteudoAnterior()").button1_div2 Conteúdo Anterior
