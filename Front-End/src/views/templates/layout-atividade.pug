@@ -30,11 +30,12 @@ html(lang="pt-BR")
                     div.espaco-resposta
                         div.resposta-usuario
                             input(type="text" disabled).conteudo
-                        p.paragrafo ("Hello, World!")
+                        p#paragrafo ("Hello, World!")
                         // Adicione a descrição do conteúdo aqui
                         p !{conteudo.descricao}
                 div.terminal-resposta
                     div.linha_vertical_abas_terminal_resposta
+                    
                     img(src="../assets/imgs-pug/botao_reset_codigo.png", alt="", onclick="recarregar_pagina()").img_botao_reset
                     button(type="button" onclick="teste_campo()").terminal-button2 Testar
             div.div2
