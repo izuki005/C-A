@@ -104,9 +104,8 @@ async function obterInformacoesUsuario(req, res) {
     }
 }
 
-
 module.exports = {
     verificarLogin,
     buscarFasesUsuario,
-    obterInformacoesUsuario
+    obterInformacoesUsuario,
 };

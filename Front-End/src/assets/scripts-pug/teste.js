@@ -281,21 +281,37 @@ function botoes(event) {
 
 async function atualizarBarraDeProgresso() {
     const barraProgresso = document.getElementById('barra-progresso');
-    const totalConteudos = 14;
-    const progresso = (idConteudo / totalConteudos) * 100;
+    const totalConteudosFase1 = 14; // Primeira fase vai de 1 a 14
+    const totalConteudosFase2 = 8;  // Segunda fase vai de 15 a 22
+    const totalConteudosFase3 = 6;  // Terceira fase vai de 23 a 28
+    const totalConteudos = totalConteudosFase1 + totalConteudosFase2 + totalConteudosFase3;
 
-    // Atualiza a largura da barra de progresso
+    // Determina o progresso com base na fase atual
+    let progresso = 0;
+    if (idConteudo <= totalConteudosFase1) {
+        // Fase 1 (conteúdos de 1 a 14)
+        progresso = (idConteudo / totalConteudosFase1) * 100;
+    } else if (idConteudo > totalConteudosFase1 && idConteudo <= totalConteudosFase1 + totalConteudosFase2) {
+        // Fase 2 (conteúdos de 15 a 22)
+        progresso = ((idConteudo - totalConteudosFase1) / totalConteudosFase2) * 100;
+    } else if (idConteudo > totalConteudosFase1 + totalConteudosFase2) {
+        // Fase 3 (conteúdos de 23 a 28)
+        progresso = ((idConteudo - totalConteudosFase1 - totalConteudosFase2) / totalConteudosFase3) * 100;
+    }
+
+    // Atualiza a barra de progresso
     barraProgresso.style.width = `${progresso}%`;
 
-    if (idConteudo === totalConteudos) {
-        const userDataString = localStorage.getItem('userData')
+    // Lógica para completar as fases e desbloquear a próxima
+    const userDataString = localStorage.getItem('userData');
+    if (userDataString) {
+        const userData = JSON.parse(userDataString);
+        const id_cadastro = userData.id_cadastro;
 
-        if (userDataString) {
-            const userData = JSON.parse(userDataString);
-            const id_cadastro = userData.id_cadastro;
-
+        // Fase 1: Completa quando o conteúdo 14 é atingido
+        if (idConteudo === totalConteudosFase1) {
             try {
-                // Chamada para completar a fase
+                // Chamada para completar a fase 1
                 const response = await fetch('http://localhost:3000/fase/completar_fase', {
                     method: 'POST',
                     headers: {
@@ -304,13 +320,52 @@ async function atualizarBarraDeProgresso() {
                     body: JSON.stringify({ id_fase: 1, id_cadastro: id_cadastro })
                 });
 
-                const data = await response.json();
-                console.log('Fase completada:', data);
+                if (response.ok) {
+                    console.log('Fase 1 concluída!');
+                }
             } catch (error) {
-                console.error('Erro ao completar a fase:', error);
+                console.error('Erro ao completar fase 1:', error);
             }
-        } else {
-            console.error('Dados do usuário não encontrados no localStorage');
+        }
+
+        // Fase 2: Completa quando o conteúdo 22 é atingido
+        if (idConteudo === totalConteudosFase1 + totalConteudosFase2) {
+            try {
+                // Chamada para completar a fase 2
+                const response = await fetch('http://localhost:3000/fase/completar_fase', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ id_fase: 2, id_cadastro: id_cadastro })
+                });
+
+                if (response.ok) {
+                    console.log('Fase 2 concluída!');
+                }
+            } catch (error) {
+                console.error('Erro ao completar fase 2:', error);
+            }
+        }
+
+        // Fase 3: Completa quando o conteúdo 28 é atingido
+        if (idConteudo === totalConteudosFase1 + totalConteudosFase2 + totalConteudosFase3) {
+            try {
+                // Chamada para completar a fase 3
+                const response = await fetch('http://localhost:3000/fase/completar_fase', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ id_fase: 3, id_cadastro: id_cadastro })
+                });
+
+                if (response.ok) {
+                    console.log('Fase 3 concluída!');
+                }
+            } catch (error) {
+                console.error('Erro ao completar fase 3:', error);
+            }
         }
     }
 }
