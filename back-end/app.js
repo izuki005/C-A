@@ -57,12 +57,36 @@ app.get('/conteudos-atividades', async (req, res) => {
       res.status(500).json({ mensagem: 'Erro ao buscar o conteúdo', details: err.message });
   }
 });
-// app.get('/conteudos-atividades', (req, res) => {
-//   const conteudo = {
-//     titulo: 'Título da Atividade'
-//   };
-//   res.render('layout-atividade', { conteudo });
-// });
+app.get('/conteudos-check', async (req, res) => {
+  // O id_conteudo pode vir da query string ou um valor padrão (aqui estou usando 8 como exemplo)
+  const id_conteudo = parseInt(req.query.id_conteudo) || 21; // Padrão: 8
+
+  try {
+      // Consulta ao banco de dados (adaptada ao seu modelo)
+      const query = `SELECT titulo, descricao FROM conteudos WHERE id_conteudo = @IdConteudo`;
+
+      const result = await global.conn.request()
+          .input('IdConteudo', id_conteudo)
+          .query(query);
+
+      // Verifica se encontrou o conteúdo
+      if (result.recordset.length > 0) {
+          const conteudo = result.recordset[0];
+
+          // Substitui as quebras de linha por <br> para exibir no Pug
+          conteudo.descricao = conteudo.descricao.replace(/\n/g, '<br>');
+
+          // Renderiza o template Pug e passa os dados do conteúdo
+          res.render('layout-check.pug', { conteudo, id_conteudo });
+      } else {
+          // Caso não encontre o conteúdo
+          res.status(404).json({ mensagem: 'Conteúdo não encontrado.' });
+      }
+  } catch (err) {
+      // Se houver algum erro na consulta ao banco de dados
+      res.status(500).json({ mensagem: 'Erro ao buscar o conteúdo', details: err.message });
+  }
+});
 
 
 
