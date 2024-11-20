@@ -91,7 +91,15 @@ document.addEventListener("DOMContentLoaded", () => {
         <p class="paragrafo">resultado_soma = valor1 + valor2</p>
         <p class="paragrafo">print(resultado_soma)</p>
         `;
-    }   
+    } else if (idConteudo == 22) {
+        conteudo(".button2_div2")
+        let insert_button = document.querySelector('.div2');
+        insert_button.innerHTML += `<button id="botaoEspecial">Próximo Conteúdo</button>`;
+        // Modifica o onclick do botão para redirecionar para /oasis
+        document.getElementById("botaoEspecial").onclick = function() {
+            window.location.href = "/oasis";
+        };
+    }
     
 });
 
@@ -120,13 +128,15 @@ function navegarConteudo(idConteudo) {
         window.location.href = `/conteudos?id_conteudo=${idConteudo}`;
     } else if (idConteudo >= 18 && idConteudo <= 20) {
         window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`;
-    } else {
+    } else if (idConteudo == 21) {
+        window.location.href = `/conteudos-check?id_conteudo=${idConteudo}`
+    }else {
         console.warn("Conteúdo fora do limite permitido.");
     }
 }
 
 function carregarProximoConteudo() {
-    if (idConteudo < 20) {  // Define um limite máximo
+    if (idConteudo < 22) {  // Define um limite máximo
         idConteudo += 1;
         navegarConteudo(idConteudo);
     } else {
@@ -198,7 +208,7 @@ function teste_campo() {
             fundo_abas.style.margin = '0 0 0 48px'
             resposta_console.innerHTML = `<p>Hello, World!</p>`
             tit.innerText = "Muito bem! Sua mensagem foi exibida na tela/console com sucesso!"
-        } else if (campo.value != "print") {
+        } else if (campo.value != "print" && idConteudo == 8 || campo.value != "print" && idConteudo == 13) {
             tit.innerText = "Observe sua lógica e tente novamente!";
         } else if (campo.value == "if") {
             tit.innerText = "Pense sobre o que aprendeu. Qual dos comandos vai exibir a frase 'Hello, World!' no console?";
@@ -217,7 +227,8 @@ function teste_campo() {
                 resposta_console.innerHTML = `<p class="resultado_conta">${resultado}</p>`;
                 let resultado_conta = document.querySelector(".resultado_conta")
                 if (resultado_conta.innerHTML == resultado) {
-                    tit.innerText = "Aqui o resultado depende dos números que você digitou. Você pode voltar e decidir outros números a qualquer momento."
+                    tit.innerText = "Meus parabéns!\nSomamos os valores armazenados em valor1 e valor2"
+                    tit.style.textAlign = "center"
                     // não deu de chamar a função de remover, então eu fiz manualmente cada uma
                     let botao_reset = document.querySelector(".img_botao_reset")
                     let linha_esquerda_vertical_botao_reset = document.querySelector(".linha_vertical_abas_terminal_resposta")
