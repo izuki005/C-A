@@ -61,15 +61,15 @@ async function carregarOasis() {
             }
         });
 
-        // Conectar pontos apenas até o último oásis desbloqueado
-        conectarPontos(pontos, ultimoDesbloqueadoIndex);
+        // Conectar os pontos para todos os oásis desbloqueados
+        await conectarPontos(pontos, ultimoDesbloqueadoIndex); // Agora é uma função assíncrona
 
     } catch (error) {
         console.error('Erro ao carregar dados dos oásis:', error);
     }
 }
 
-function conectarPontos(pontos, ultimoIndex) {
+async function conectarPontos(pontos, ultimoIndex) {
     const svgContainer = document.querySelector('section');
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('class', 'lines');
@@ -83,27 +83,33 @@ function conectarPontos(pontos, ultimoIndex) {
 
     // Função para criar e animar uma linha SVG
     function createLine(x1, y1, x2, y2) {
-        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        line.setAttribute('x1', x1);
-        line.setAttribute('y1', y1);
-        line.setAttribute('x2', x2);
-        line.setAttribute('y2', y2);
-        line.setAttribute('stroke', 'white');
-        line.setAttribute('stroke-width', '2');
+        return new Promise((resolve) => {
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.setAttribute('x1', x1);
+            line.setAttribute('y1', y1);
+            line.setAttribute('x2', x2);
+            line.setAttribute('y2', y2);
+            line.setAttribute('stroke', 'white');
+            line.setAttribute('stroke-width', '2');
 
-        const length = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
-        line.setAttribute('stroke-dasharray', length);
-        line.setAttribute('stroke-dashoffset', length);
+            const length = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+            line.setAttribute('stroke-dasharray', length);
+            line.setAttribute('stroke-dashoffset', length);
 
-        svg.appendChild(line);
+            svg.appendChild(line);
 
-        setTimeout(() => {
-            line.style.transition = 'stroke-dashoffset 1s linear';
-            line.setAttribute('stroke-dashoffset', '0');
-        }, 100);
+            // Quando a animação de desenhar a linha terminar, resolvemos a promise
+            setTimeout(() => {
+                line.style.transition = 'stroke-dashoffset 1s linear';
+                line.setAttribute('stroke-dashoffset', '0');
+            }, 100);
+
+            // Aguarda o término da animação antes de continuar
+            setTimeout(resolve, 1100); // Espera a animação de 1 segundo para a linha
+        });
     }
 
-    // Conecta os pontos até o último desbloqueado
+    // Conecta os pontos de todos os oásis desbloqueados de forma sequencial
     for (let i = 0; i < ultimoIndex; i++) {
         const pontoAtual = pontos[i].getBoundingClientRect();
         const pontoProximo = pontos[i + 1].getBoundingClientRect();
@@ -113,7 +119,8 @@ function conectarPontos(pontos, ultimoIndex) {
         const x2 = pontoProximo.left + pontoProximo.width / 2 - svgContainer.offsetLeft;
         const y2 = pontoProximo.top + pontoProximo.height / 2 - svgContainer.offsetTop;
 
-        setTimeout(() => createLine(x1, y1, x2, y2), i * 500);
+        // Espera a animação da linha anterior antes de desenhar a próxima
+        await createLine(x1, y1, x2, y2); // Agora, a animação será aguardada antes de passar para a próxima linha
     }
 }
 
@@ -121,5 +128,5 @@ function conectarPontos(pontos, ultimoIndex) {
 document.addEventListener('DOMContentLoaded', carregarOasis);
 
 window.addEventListener('resize', function() {
-    location.reload();  // Recarrega a página
+    location.reload();  // Recarrega a página para garantir o ajuste correto da tela
 });
