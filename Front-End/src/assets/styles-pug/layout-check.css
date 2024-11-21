@@ -49,9 +49,6 @@ section{
     /* border: 1px solid rgb(251, 255, 2); */
 }
 
-.next {
-    margin-left: 885px;
-}
 
 
 .img_botao_reset {
@@ -157,8 +154,9 @@ section{
 }
 
 footer{
+    /* border: 5px solid rgb(0, 60, 255); */
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 .button_verific {
     width: 126px;
@@ -167,4 +165,17 @@ footer{
     /* background: #E19A2F; */
     color: #fff;
     cursor: pointer;
+}
+
+.button_back_next {
+    width: 126px;
+    height: 60px;
+    border-radius: 6px;
+    border: none;
+    background: #514D4D;
+    color: #fff;
+    cursor: pointer;
+}
+.next {
+    margin-left: 480px;
 }

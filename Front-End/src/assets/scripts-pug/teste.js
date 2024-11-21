@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Modifica o onclick do botão para redirecionar para /oasis
         document.getElementById("botaoEspecial").onclick = function() {
-            window.location.href = "/conteudos-atividades?id_conteudo=8";
+            window.location.href = "/conteudos-imgs?id_conteudo=7";
         };
     }
      else if (idConteudo == 13) {
@@ -40,12 +40,18 @@ document.addEventListener("DOMContentLoaded", () => {
         espaco_resposta.style.flexDirection = "row"
         espaco_resposta.style.alignItems = "center"
     } else if (idConteudo == 14) {
+        conteudo(".button1_div2");
         conteudo(".button2_div2")
         let insert_button = document.querySelector('.div2');
-        insert_button.innerHTML += `<button id="botaoEspecial">Próximo Conteúdo</button>`;
+
+        insert_button.insertAdjacentHTML('afterbegin', `<button id="botaoEspecial1">Conteúdo Anterior</button>`);
+        insert_button.innerHTML += `<button id="botaoEspecial2">Próximo Conteúdo</button>`;
         // Modifica o onclick do botão para redirecionar para /oasis
-        document.getElementById("botaoEspecial").onclick = function() {
+        document.getElementById("botaoEspecial2").onclick = function() {
             window.location.href = "/oasis";
+        };
+        document.getElementById("botaoEspecial1").onclick = function() {
+            window.location.href = "/conteudos?id_conteudo=12";
         };
     } else if (idConteudo == 15) {
         conteudo(".button1_div2");
@@ -61,7 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (idConteudo == 18) {
         conteudo(".conteudo") // limpa o console
         conteudo(".paragrafo")
-        
+        let insert_button = document.querySelector('.div2');
+        // Insere o botão no início da div (antes de qualquer outro conteúdo)
+        insert_button.insertAdjacentHTML('afterbegin', `<button onclick="carregarConteudoAnterior()">Conteúdo Anterior</button>`);
         let resposta_console = document.querySelector('.espaco-resposta');
         resposta_console.innerHTML = `<p class="paragrafo">valor1 = <input class="conteudo" type="number" value="10" disabled></p>
         <p class="paragrafo">valor2 = <input class="conteudo" type="number" value="10" disabled></p>
@@ -85,12 +93,24 @@ document.addEventListener("DOMContentLoaded", () => {
         conteudo(".conteudo") // limpa o console
         conteudo(".paragrafo")
         
+        let insert_button = document.querySelector('.div2');
+        // Insere o botão no início da div (antes de qualquer outro conteúdo)
+        insert_button.insertAdjacentHTML('afterbegin', `<button id="botaoEspecial1">Conteúdo Anterior</button>`);
         let resposta_console = document.querySelector('.espaco-resposta');
         resposta_console.innerHTML = `<p class="paragrafo">valor1 = <input class="conteudo" type="number" value=""></p>
         <p class="paragrafo">valor2 = <input class="conteudo2" type="number" value=""></p>
         <p class="paragrafo">resultado_soma = valor1 + valor2</p>
         <p class="paragrafo">print(resultado_soma)</p>
         `;
+        document.getElementById("botaoEspecial1").onclick = function() {
+            window.location.href = "/conteudos-atividades?id_conteudo=18";
+        };
+    } else if (idConteudo == 21) {
+        let insert_button = document.querySelector("footer")
+        insert_button.insertAdjacentHTML('afterbegin', `<button class="button_back_next" id="botaoEspecial1">Conteúdo Anterior</button>`)
+        document.getElementById("botaoEspecial1").onclick = function() {
+            window.location.href = "/conteudos-atividades?id_conteudo=20";
+        };
     } else if (idConteudo == 22) {
         conteudo(".button2_div2")
         let insert_button = document.querySelector('.div2');
