@@ -45,8 +45,8 @@ section{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 370px;
-    /* border: 1px solid rgb(251, 255, 2); */
+    height: 311px;
+    border: 1px solid rgb(2, 40, 255);
 }
 
 
@@ -177,5 +177,5 @@ footer{
     cursor: pointer;
 }
 .next {
-    margin-left: 480px;
+    margin-left: 418px;
 }

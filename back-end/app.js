@@ -80,7 +80,7 @@ app.get('/conteudos-check', async (req, res) => {
           res.render('layout-check.pug', { conteudo, id_conteudo });
       } else {
           // Caso não encontre o conteúdo
-          res.status(404).json({ mensagem: 'Conteúdo não encontrado.' });
+          res.status(404).json({ mensagem: 'Conteúdo não encontrado.' } );
       }
   } catch (err) {
       // Se houver algum erro na consulta ao banco de dados

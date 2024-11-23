@@ -37,9 +37,7 @@ imagemBotao.addEventListener('click', () => {
         let label_entrada_saida = document.querySelector('label[for="entrada_saida"')
         let input_entrada_saida = document.querySelector("#entrada_saida")
         let borda_normal = document.querySelector(".terminal-centro")
-        tit.innerText = `valor1 = 10 Qual dos valores guardados será exibido no print( )?\n
-        valor2 = 20\n
-        print(valor2)`
+        tit.innerText = `Qual dos valores será exibido ? valor1 = 10 valor2 = 20\n print(valor2)`
         label_entrada.innerText = "10"
         input_entrada.value = "10"
         label_saida.innerText = "20"

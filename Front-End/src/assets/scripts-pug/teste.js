@@ -94,9 +94,8 @@ document.addEventListener("DOMContentLoaded", () => {
         conteudo(".paragrafo")
         
         let insert_button = document.querySelector('.div2');
-        // Insere o botão no início da div (antes de qualquer outro conteúdo)
-        insert_button.insertAdjacentHTML('afterbegin', `<button id="botaoEspecial1">Conteúdo Anterior</button>`);
         let resposta_console = document.querySelector('.espaco-resposta');
+        insert_button.insertAdjacentHTML('afterbegin', `<button id="botaoEspecial1">Conteúdo Anterior</button>`);
         resposta_console.innerHTML = `<p class="paragrafo">valor1 = <input class="conteudo" type="number" value=""></p>
         <p class="paragrafo">valor2 = <input class="conteudo2" type="number" value=""></p>
         <p class="paragrafo">resultado_soma = valor1 + valor2</p>
@@ -119,6 +118,16 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("botaoEspecial").onclick = function() {
             window.location.href = "/oasis";
         };
+    } else if (idConteudo == 23) {
+        conteudo(".button1_div2");
+        let insert_button = document.querySelector('.div2');
+        insert_button.insertAdjacentHTML('afterbegin', `<button id="botaoEspecial1">Conteúdo Anterior</button>`);
+        document.getElementById("botaoEspecial1").onclick = function() {
+            window.location.href = "/oasis";
+        };
+    } else if (idConteudo == 24) {
+        conteudo(".conteudo")
+        conteudo(".paragrafo")
     }
     
 });
@@ -150,13 +159,17 @@ function navegarConteudo(idConteudo) {
         window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`;
     } else if (idConteudo == 21) {
         window.location.href = `/conteudos-check?id_conteudo=${idConteudo}`
-    }else {
+    } else if (idConteudo >= 22 && idConteudo <= 23){
+        window.location.href = `/conteudos?id_conteudo=${idConteudo}`;
+    } else if (idConteudo == 24) {
+        window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`;
+    } else {
         console.warn("Conteúdo fora do limite permitido.");
     }
 }
 
 function carregarProximoConteudo() {
-    if (idConteudo < 22) {  // Define um limite máximo
+    if (idConteudo < 24) {  // Define um limite máximo
         idConteudo += 1;
         navegarConteudo(idConteudo);
     } else {
