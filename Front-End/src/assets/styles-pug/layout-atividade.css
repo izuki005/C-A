@@ -153,6 +153,24 @@ section .div2 button {
     align-items: start;
     padding: 0 0 0 30px;
 }
+.pai_p {
+    /* border: 1px solid blue; */
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+.filho_input {
+    /* border: 1px solid purple; */
+    width: 160px;
+    height: 20px;
+    outline: none;
+    border: 1px solid #E19A2F;
+    border-radius: 4px;
+    background: transparent;
+    color: #fff;
+    margin: 6px 0 0 0;
+}
+
 .resposta-usuario{
     border-radius: 4px;
     width: 60px;
