@@ -6,7 +6,7 @@ async function atualizarBarraDeProgresso() {
     // Define o número total de conteúdos por fase
     const totalConteudosFase1 = 14;
     const totalConteudosFase2 = 8;
-    const totalConteudosFase3 = 6;
+    const totalConteudosFase3 = 7;
     const totalConteudos = totalConteudosFase1 + totalConteudosFase2 + totalConteudosFase3;
 
     // Calcula o progresso com base na fase atual

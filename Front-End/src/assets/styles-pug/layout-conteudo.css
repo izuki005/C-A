@@ -4,13 +4,24 @@ body{
 }
 
 header{ 
-    display: flex;
+    /* display: flex;
     align-items: center;
     justify-content: space-between;
-    /* border: 1px solid black; */
-    height: 188.33px;
+    border: 1px solid blue;
+    height: 188.33px; */
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
 }
-
+.barra_header{
+    position: static;
+    border: 1px solid blue;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 header h2{
     color: #fff;
     font-size: 20pt;
@@ -19,19 +30,18 @@ header h2{
 .img-header-left{
     width: 140px;
 }
-
-.div-img-header{
+/* .div-img-header{
     display: flex;
     justify-content: center;
     align-items: start;
-    /* border: 1px solid black; */
+    border: 1px solid black;
     width: 100px;
     height: 100px;
-
-}
+} */
 .img-header-right{
     width: 50px;
     height: auto;
+    margin: 0 26px 0 0;
     /* border: 1px solid red; */
 }
 
@@ -46,7 +56,7 @@ section{
     display: flex;
     justify-content: center;
     height: 388px;
-    /* border: 1px solid rgb(255, 2, 213); */
+    border: 1px solid rgb(255, 2, 213);
     position: relative;
 }
 section .div-p{
@@ -63,7 +73,7 @@ section .div2{
     justify-content: space-between;
     /* border: 1px solid black; */
     width: 1010px;
-    margin-top: 370px;
+    margin-top: 300px;
 }
 
 section .div2 button{

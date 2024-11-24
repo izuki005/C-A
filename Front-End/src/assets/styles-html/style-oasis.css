@@ -27,11 +27,12 @@ body {
 header{
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: center;
     height: 187px;
+    /* border: 1px solid blue; */
 }
 .config{
-    margin: 52px 33px 0 0;   
+    margin: 0 33px 0 0;   
 }
 .config img{
     width: 50px;

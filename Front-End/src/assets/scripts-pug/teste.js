@@ -94,11 +94,10 @@ document.addEventListener("DOMContentLoaded", () => {
         conteudo(".paragrafo")
         
         let insert_button = document.querySelector('.div2');
-        // Insere o botão no início da div (antes de qualquer outro conteúdo)
-        insert_button.insertAdjacentHTML('afterbegin', `<button id="botaoEspecial1">Conteúdo Anterior</button>`);
         let resposta_console = document.querySelector('.espaco-resposta');
-        resposta_console.innerHTML = `<p class="paragrafo">valor1 = <input class="conteudo" type="number" value=""></p>
-        <p class="paragrafo">valor2 = <input class="conteudo2" type="number" value=""></p>
+        insert_button.insertAdjacentHTML('afterbegin', `<button id="botaoEspecial1">Conteúdo Anterior</button>`);
+        resposta_console.innerHTML = `<p class="paragrafo">valor1 = <input class="conteudo" type="text" value=""></p>
+        <p class="paragrafo">valor2 = <input class="conteudo2" type="text" value=""></p>
         <p class="paragrafo">resultado_soma = valor1 + valor2</p>
         <p class="paragrafo">print(resultado_soma)</p>
         `;
@@ -112,6 +111,57 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = "/conteudos-atividades?id_conteudo=20";
         };
     } else if (idConteudo == 22) {
+        conteudo(".button2_div2")
+        let insert_button = document.querySelector('.div2');
+        insert_button.innerHTML += `<button id="botaoEspecial">Próximo Conteúdo</button>`;
+        // Modifica o onclick do botão para redirecionar para /oasis
+        document.getElementById("botaoEspecial").onclick = function() {
+            window.location.href = "/oasis";
+        };
+    } else if (idConteudo == 23) {
+        conteudo(".button1_div2");
+        let insert_button = document.querySelector('.div2');
+        insert_button.insertAdjacentHTML('afterbegin', `<button id="botaoEspecial1">Conteúdo Anterior</button>`);
+        document.getElementById("botaoEspecial1").onclick = function() {
+            window.location.href = "/oasis";
+        };
+    } else if (idConteudo == 24) {
+        conteudo(".conteudo")
+        conteudo(".paragrafo")
+        conteudo(".resposta-usuario")
+        let espaco_resposta = document.querySelector(".espaco-resposta")
+        espaco_resposta.innerHTML += ` 
+        <p class="pai_p"><input style="color: #8A8888; border: none; width: 320px; background: transparent;" type="text" value='# Exemplo: nome = "João"' disabled></p>
+        <p class="pai_p"><input class="filho_input" type="text"></p>
+        <p class="pai_p"><input class="filho_input" type="text"></p>
+        <p class="pai_p"><input style="color: #fff;border: none; width: 330px; background: transparent;" type="text" value='print(f"Olá, meu nome é {nome} e tenho {idade} anos!")' disabled></p>`
+    } else if (idConteudo == 25) {
+        conteudo(".button1_div2");
+        let insert_button = document.querySelector('.div2');
+        insert_button.insertAdjacentHTML('afterbegin', `<button id="botaoEspecial1">Conteúdo Anterior</button>`);
+        document.getElementById("botaoEspecial1").onclick = function() {
+            window.location.href = "/conteudos?id_conteudo=23";
+        };
+    } else if (idConteudo == 26) {
+        conteudo(".conteudo")
+        conteudo(".paragrafo")
+        conteudo(".resposta-usuario")
+        let espaco_resposta = document.querySelector(".espaco-resposta")
+        espaco_resposta.innerHTML += ` 
+        <p class="pai_p"><input style="color: #fff;border: none; width: 330px; background: transparent;" type="text" value='nome = "Maria"' disabled>
+        <input style="color: #fff;border: none; width: 330px; background: transparent; margin-top: 20px;" type="text" value='idade = "18"' disabled>
+        <input style="color: #fff;border: none; width: 330px; background: transparent; margin-top: 20px;" type="text" value='print(f"Olá, meu nome é {nome} e tenho {idade} anos!")' disabled>
+        <input class="filho_input" style="margin-top: 20px;" type="text">
+        <input style="color: #fff;border: none; width: 330px; background: transparent; margin-top: 20px;" type="text" value='print(f"Olá, meu nome é {nome} e tenho {idade} anos!")' disabled>
+        </p>`
+    } else if (idConteudo == 27) {
+        conteudo(".button1_div2");
+        let insert_button = document.querySelector('.div2');
+        insert_button.insertAdjacentHTML('afterbegin', `<button id="botaoEspecial1">Conteúdo Anterior</button>`);
+        document.getElementById("botaoEspecial1").onclick = function() {
+            window.location.href = "/conteudos?id_conteudo=25";
+        }
+    } else if (idConteudo == 29) {
         conteudo(".button2_div2")
         let insert_button = document.querySelector('.div2');
         insert_button.innerHTML += `<button id="botaoEspecial">Próximo Conteúdo</button>`;
@@ -150,13 +200,22 @@ function navegarConteudo(idConteudo) {
         window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`;
     } else if (idConteudo == 21) {
         window.location.href = `/conteudos-check?id_conteudo=${idConteudo}`
-    }else {
+    } else if (idConteudo >= 22 && idConteudo <= 23){
+        window.location.href = `/conteudos?id_conteudo=${idConteudo}`;
+    } else if (idConteudo == 24) {
+        window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`;
+    } else if (idConteudo == 25 ) {
+        window.location.href = `/conteudos?id_conteudo=${idConteudo}`;
         console.warn("Conteúdo fora do limite permitido.");
-    }
+    } else if (idConteudo == 26) {
+        window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`
+    } else if (idConteudo >= 27) [
+        window.location.href = `/conteudos?id_conteudo=${idConteudo}`
+    ]
 }
 
 function carregarProximoConteudo() {
-    if (idConteudo < 22) {  // Define um limite máximo
+    if (idConteudo < 29) {  // Define um limite máximo
         idConteudo += 1;
         navegarConteudo(idConteudo);
     } else {
@@ -193,8 +252,10 @@ function atualizarImagem() {
         } else {
             console.error("Elemento de imagem não encontrado!");
         }
-    } else if (idConteudo >= 15) {
+    } else if (idConteudo >= 15 && idConteudo <= 22) {
         oasis.src = "../assets/imgs-pug/oasis-02.png"
+    } else if (idConteudo >= 23) {
+        oasis.src = "../assets/imgs-pug/oasis-03.png"
     }
 }
 
@@ -266,6 +327,116 @@ function teste_campo() {
             }
         }
     }
+    if (idConteudo == 24) {
+        // Seleciona todos os campos com a classe filho_input
+        let campos = document.querySelectorAll(".filho_input");
+    
+        // Valor do primeiro e segundo input
+        const valorNome = campos[0].value.trim(); // Valor do primeiro campo (nome)
+        const valorIdade = campos[1].value.trim(); // Valor do segundo campo (idade)
+    
+        // Expressões regulares
+        const regexNome_dupla = /^nome\s*=\s*".+"$/; // Para 'nome = "algum texto"'
+        const regexNome_simples = /^nome\s*=\s*'.+'$/; // Para 'nome = 'algum texto''
+        const regexIdade = /^idade\s*=\s*\d+$/; // Para 'idade = número'
+    
+        console.log("Valor do primeiro input (nome):", valorNome);
+        console.log("Valor do segundo input (idade):", valorIdade);
+    
+        // Verificando se o primeiro input corresponde ao nome (com aspas simples ou duplas)
+        const isNomeValido = regexNome_dupla.test(valorNome) || regexNome_simples.test(valorNome);
+        console.log("Nome válido?", isNomeValido);
+    
+        // Verificando se o segundo input corresponde à idade
+        const isIdadeValida = regexIdade.test(valorIdade);
+        console.log("Idade válida?", isIdadeValida);
+    
+        // Verificando as condições e exibindo o alerta correspondente
+        if (isNomeValido && isIdadeValida) {
+            // Pegando o nome entre aspas e a idade
+            const nome = valorNome.match(/['"](.*)['"]/)[1];  // Captura o nome entre aspas
+            const idade = valorIdade.match(/\d+/)[0];  // Captura o número da idade
+            console.log(nome)
+            console.log(idade)
+            
+            function conteudo2(tag) {
+                const elementos = document.querySelectorAll(tag);
+                // Remove apenas os últimos 3 inputs
+                for (let i = elementos.length - 3; i < elementos.length; i++) {
+                    elementos[i].remove();
+                }
+            }
+            // Remover os últimos 3 inputs  
+            conteudo2("input");
+            let resposta = document.querySelector("input")
+            let fundo_abas = document.querySelector('.fundo_abas')
+            let botao_reset = document.querySelector(".img_botao_reset")
+            let linha_esquerda_vertical_botao_reset = document.querySelector(".linha_vertical_abas_terminal_resposta")
+            let botao_testar = document.querySelector(".terminal-button2")
+            let insert_button = document.querySelector('.div2')
+            fundo_abas.style.width = '64px'
+            fundo_abas.style.margin = '0 0 0 48px'
+            resposta.style.color = "#fff"
+            resposta.value = `Olá, meu nome é ${nome} e tenho ${idade} anos!`
+            botao_reset.remove()
+            linha_esquerda_vertical_botao_reset.remove()
+            botao_testar.remove()
+            insert_button.innerHTML = `<button onclick ="carregarProximoConteudo()" class="next">Próximo Conteúdo</button>`
+            tit.innerText = "Muito Bem! Você declarou suas primeiras variáveis."
+        } else {
+            tit.innerText = "Formato inválido. Certifique-se de usar:\nnome = \"algum texto\"\nidade = algum número"
+        }
+    } else if (idConteudo == 26) {
+        let campo = document.querySelector(".filho_input");
+        
+        const valorNome = campo.value.trim();
+        // Expressões regulares
+        const regexNome_dupla = /^nome\s*=\s*".+"$/; // Para 'nome = "algum texto"'
+        const regexNome_simples = /^nome\s*=\s*'.+'$/; // Para 'nome = 'algum texto''
+
+        console.log("Valor do primeiro input (nome):", valorNome);
+
+        // Verificando se o primeiro input corresponde ao nome (com aspas simples ou duplas)
+        const isNomeValido = regexNome_dupla.test(valorNome) || regexNome_simples.test(valorNome);
+        console.log("Nome válido?", isNomeValido);
+
+                // Verificando as condições e exibindo o alerta correspondente
+        if (isNomeValido) {
+            // Pegando o nome entre aspas e a idade
+            const nome = valorNome.match(/['"](.*)['"]/)[1];  // Captura o nome entre aspas
+            console.log(nome)
+            function conteudo2(tag) {
+                const elementos = document.querySelectorAll(tag);
+                // Remove apenas os últimos 3 inputs
+                for (let i = elementos.length - 3; i < elementos.length; i++) {
+                    elementos[i].remove();
+                }
+            }
+            conteudo2("input"); // Remover os últimos 3 inputs
+            let resposta = document.querySelectorAll("input")
+            let fundo_abas = document.querySelector('.fundo_abas')
+            let botao_reset = document.querySelector(".img_botao_reset")
+            let linha_esquerda_vertical_botao_reset = document.querySelector(".linha_vertical_abas_terminal_resposta")
+            let botao_testar = document.querySelector(".terminal-button2")
+            let insert_button = document.querySelector('.div2')
+            fundo_abas.style.width = '64px'
+            fundo_abas.style.margin = '0 0 0 48px'
+            resposta[0].value = `Olá, meu nome é Maria e tenho 18 anos!`
+            resposta[1].value = `Olá, meu nome é ${nome} e tenho 18 anos!`
+            botao_reset.remove()
+            linha_esquerda_vertical_botao_reset.remove()
+            botao_testar.remove()
+            insert_button.innerHTML = `<button onclick ="carregarProximoConteudo()" class="next">Próximo Conteúdo</button>`
+            tit.innerText = "Muito bem! Como você comprovou, variáveis recebem novos valores"
+        } else {
+            tit.innerText = "Formato inválido. Certifique-se de usar:\nnome = \"algum texto\""
+        }
+    }
+    
+    
+    
+    
+    
 }
 
 // Adiciona evento de clique a todos os botões com a classe "botoes-resposta"
