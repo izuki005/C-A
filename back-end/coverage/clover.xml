@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1732458923721" clover="3.2.0">
-  <project timestamp="1732458923721" name="All files">
-    <metrics statements="126" coveredstatements="126" conditionals="20" coveredconditionals="20" methods="12" coveredmethods="12" elements="158" coveredelements="158" complexity="0" loc="126" ncloc="126" packages="5" files="8" classes="8"/>
+<coverage generated="1732475669326" clover="3.2.0">
+  <project timestamp="1732475669326" name="All files">
+    <metrics statements="145" coveredstatements="145" conditionals="30" coveredconditionals="30" methods="13" coveredmethods="13" elements="188" coveredelements="188" complexity="0" loc="145" ncloc="145" packages="5" files="9" classes="9"/>
     <package name="config">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="nodemailer_config.js" path="C:\Users\falca\OneDrive\Área de Trabalho\Git\C-A\back-end\config\nodemailer_config.js">
@@ -12,7 +12,7 @@
       </file>
     </package>
     <package name="controllers">
-      <metrics statements="95" coveredstatements="95" conditionals="20" coveredconditionals="20" methods="10" coveredmethods="10"/>
+      <metrics statements="114" coveredstatements="114" conditionals="30" coveredconditionals="30" methods="11" coveredmethods="11"/>
       <file name="autenticacao_controle.js" path="C:\Users\falca\OneDrive\Área de Trabalho\Git\C-A\back-end\controllers\autenticacao_controle.js">
         <metrics statements="35" coveredstatements="35" conditionals="10" coveredconditionals="10" methods="3" coveredmethods="3"/>
         <line num="1" count="2" type="stmt"/>
@@ -50,6 +50,28 @@
         <line num="102" count="1" type="stmt"/>
         <line num="103" count="1" type="stmt"/>
         <line num="107" count="2" type="stmt"/>
+      </file>
+      <file name="completar_fase.js" path="C:\Users\falca\OneDrive\Área de Trabalho\Git\C-A\back-end\controllers\completar_fase.js">
+        <metrics statements="19" coveredstatements="19" conditionals="10" coveredconditionals="10" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="9" count="5" type="cond" truecount="4" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
+        <line num="24" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="30" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
       </file>
       <file name="email_controle.js" path="C:\Users\falca\OneDrive\Área de Trabalho\Git\C-A\back-end\controllers\email_controle.js">
         <metrics statements="20" coveredstatements="20" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
@@ -122,14 +144,14 @@
       <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="database.js" path="C:\Users\falca\OneDrive\Área de Trabalho\Git\C-A\back-end\db\database.js">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
         <line num="19" count="2" type="stmt"/>
         <line num="20" count="2" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
       </file>
     </package>
     <package name="routes">

@@ -1,113 +1,115 @@
+// Função para verificar campos ao pressionar Enter
+function verificarCamposCad(event) {
+    const nomeInput = document.getElementById('cadNome');
+    const emailInput = document.getElementById('cadEmail');
+    const senhaInput = document.getElementById('cadSenha');
+
+    if (event.key === "Enter") {
+        event.preventDefault(); // Evita o envio padrão do formulário
+        
+        // Recupera valores e verifica campos vazios
+        const nome = nomeInput.value.trim();
+        const email = emailInput.value.trim();
+        const senha = senhaInput.value.trim();
+
+        if (!nome || !email || !senha) {
+            alert('Por favor, preencha todos os campos.');
+            return;
+        }
+
+        // Se todos os campos forem preenchidos, envia o e-mail
+        enviarEmail();
+    }
+}
+
+// Função para enviar o e-mail com validação
 async function enviarEmail() {
     const email = document.getElementById('cadEmail').value;
-    
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     if (!emailRegex.test(email)) {
-      alert('Por favor, insira um email válido.');
-      return;
+        alert('Por favor, insira um email válido.');
+        return;
     }
-  
-    try {
-      // Enviar a requisição para verificar e enviar o email
-      const response = await fetch('http://localhost:3000/email/enviar', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email })
-      });
-  
-      if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(`Erro ao enviar email: ${errorMessage}`);
-      }
-  
-      const result = await response.text();
-      console.log(result);
-  
-      // Chama a função inserirCodigo após o envio bem-sucedido do email
-      inserirCodigo();
-  
-    } catch (error) {
-      console.error('Erro ao enviar email:', error);
-      // Exibir mensagem de erro específica para o usuário
-      if (error.message.includes('Erro: Este email já está cadastrado')) {
-        alert('Este email já está cadastrado. Por favor, use outro email.');
-      } else {
-        alert('Erro ao enviar email. Por favor, tente novamente mais tarde.');
-      }
-    }
-}  
-//=======================================================================================================
 
-function modal(){
-    const div = document.getElementById("modal");
-        if (div.classList.contains('fade')){
-            div.classList.remove('fade')
-            div.classList.add('hidden')
+    try {
+        const response = await fetch('http://localhost:3000/email/enviar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email }),
+        });
+
+        if (!response.ok) {
+            const errorMessage = await response.text();
+            throw new Error(`Erro ao enviar email: ${errorMessage}`);
+        }
+
+        const result = await response.text();
+        console.log(result);
+
+        // Abre o modal para inserção do código
+        modal();
+    } catch (error) {
+        console.error('Erro ao enviar email:', error);
+        if (error.message.includes('Este email já está cadastrado')) {
+            alert('Este email já está cadastrado. Por favor, use outro email.');
         } else {
-            div.classList.add('fade')
-            div.classList.remove('hidden')
+            alert('Erro ao enviar email. Por favor, tente novamente mais tarde.');
         }
-        setTimeout(() => {
-            if (div.classList.contains('fade')){
-            div.classList.add('in')
-            } else {
-            div.classList.remove('in')
-            }
-        }, 100);
-}
-//=======================================================================================================
-
-async function inserirCodigo() {
-    const inCodigo = document.getElementById('cod').value
-    try {
-        if (inCodigo.length > 0){
-            
-            const response = await fetch('http://localhost:3000/email/verificar', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ inCodigo })
-            });
-            
-            if (!response.ok) {
-                const errorMessage = await response.text();
-                throw new Error(`Erro ao verificar código: ${errorMessage}`);
-            }
-            
-            const result = await response.text();
-            console.log(result);
-            
-            // Lógica para tratar a resposta da rota
-            if (result === 'Código verificado com sucesso!') {
-                // Aqui você pode realizar ações adicionais após a validação do código
-                cadastrarUsuario()
-            } else {
-                console.log('Código inválido. Por favor, tente novamente.');
-                // Aqui você pode lidar com o caso em que o código inserido não corresponde ao esperado
-            }
-        }
-        
-    } catch (error) {
-        console.error('Erro ao enviar código:', error);
     }
-    modal()
 }
-//================================================================================================
 
+// Função para abrir e fechar o modal
+function modal() {
+    const div = document.getElementById("modal");
+    div.classList.toggle('hidden');
+    div.classList.toggle('fade');
+}
+
+// Função para inserir e validar o código
+async function inserirCodigo() {
+    const inCodigo = document.getElementById('cod').value.trim();
+
+    if (!inCodigo) {
+        alert('Por favor, insira o código.');
+        return;
+    }
+
+    try {
+        const response = await fetch('http://localhost:3000/email/verificar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ inCodigo }),
+        });
+
+        if (!response.ok) {
+            const errorMessage = await response.text();
+            throw new Error(`Erro ao verificar código: ${errorMessage}`);
+        }
+
+        const result = await response.text();
+        console.log(result);
+
+        if (result === 'Código verificado com sucesso!') {
+            cadastrarUsuario();
+        } else {
+            alert('Código inválido. Por favor, tente novamente.');
+        }
+    } catch (error) {
+        console.error('Erro ao verificar código:', error);
+    }
+    modal();
+}
+
+// Função para cadastrar usuário
 async function cadastrarUsuario() {
-    const nome = document.getElementById('cadNome').value;
-    const email = document.getElementById('cadEmail').value;
-    const senha = document.getElementById('cadSenha').value;
-
-    const data = {
-        nome: nome,
-        email: email,
-        senha: senha
-    };
+    const nome = document.getElementById('cadNome').value.trim();
+    const email = document.getElementById('cadEmail').value.trim();
+    const senha = document.getElementById('cadSenha').value.trim();
 
     try {
         const response = await fetch('http://localhost:3000/user/cadastrar', {
@@ -115,50 +117,27 @@ async function cadastrarUsuario() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify({ nome, email, senha }),
         });
 
         if (response.ok) {
-            document.getElementById('cadNome').value = ''; // Limpa o campo nome
-            document.getElementById('cadEmail').value = ''; // Limpa o campo email
-            document.getElementById('cadSenha').value = ''; // Limpa o campo senha
-            window.alert('Cadastro Realizado');
-            window.location.href = "login"; // Redireciona para login.html
-            console.log('Usuário cadastrado com sucesso!');
+            alert('Cadastro Realizado com Sucesso!');
+            document.getElementById('cadNome').value = '';
+            document.getElementById('cadEmail').value = '';
+            document.getElementById('cadSenha').value = '';
+            window.location.href = "login"; // Redireciona para a página de login
         } else {
-            console.error('Erro ao cadastrar usuário:', response.status);
+            alert('Erro ao cadastrar usuário.');
+            console.error('Erro ao cadastrar usuário:', await response.text());
         }
     } catch (error) {
-        console.error('Erro na chamada de API:', error);
+        console.error('Erro ao cadastrar usuário:', error);
+        alert('Erro ao cadastrar usuário. Por favor, tente novamente.');
     }
 }
-//==================================================================================
 
-function verificarCamposCad(event) {
-    const nomeInput = document.getElementById('cadNome')
-    const emailInput = document.getElementById('cadEmail')
-    const senhaInput = document.getElementById('cadSenha')
-
-    if (event.key === "Enter") {
-        const nome = nomeInput.value.trim();
-        const email = emailInput.value.trim();
-        const senha = senhaInput.value.trim();
-
-        if (nome.length === 0 || email.length === 0 || senha.length === 0) {
-            alert('Por favor, preencha todos os campos.');
-        }else{
-        }
-    }
-}
-//======================================================================================
-
+// Função para mostrar/ocultar senha
 function mostrarsenha() {
-    var passwordField = document.getElementById("cadSenha");
-    if (passwordField.type === "password") {
-        passwordField.type = "text";
-    } else {
-        passwordField.type = "password";
-    }
+    const passwordField = document.getElementById("cadSenha");
+    passwordField.type = passwordField.type === "password" ? "text" : "password";
 }
-//========================================================================
-

@@ -96,10 +96,11 @@ document.addEventListener("DOMContentLoaded", () => {
         let insert_button = document.querySelector('.div2');
         let resposta_console = document.querySelector('.espaco-resposta');
         insert_button.insertAdjacentHTML('afterbegin', `<button id="botaoEspecial1">Conteúdo Anterior</button>`);
-        resposta_console.innerHTML = `<p class="paragrafo">valor1 = <input class="conteudo" type="text" value=""></p>
-        <p class="paragrafo">valor2 = <input class="conteudo2" type="text" value=""></p>
+        resposta_console.innerHTML = `<p class="paragrafo">valor1 = <input class="conteudo" type="text" value="" id="valor1"></p>
+        <p class="paragrafo">valor2 = <input class="conteudo2" type="text" value="" id="valor2"></p>
         <p class="paragrafo">resultado_soma = valor1 + valor2</p>
         <p class="paragrafo">print(resultado_soma)</p>
+        <p id="erroMensagem" style="color: red;"></p>
         `;
         document.getElementById("botaoEspecial1").onclick = function() {
             window.location.href = "/conteudos-atividades?id_conteudo=18";
@@ -298,35 +299,59 @@ function teste_campo() {
             carregarProximoConteudo()
         }
         if (idConteudo == 20) {
-            let conteudo = document.querySelector(".conteudo")
-            let conteudo2 = document.querySelector(".conteudo2")
-            if (conteudo.value == 0 || conteudo2.value == 0){
-                tit.innerText = "Estamos sem números para somar :("
+            let conteudo = document.querySelector(".conteudo");
+            let conteudo2 = document.querySelector(".conteudo2");
+            
+            // Verificação para campos vazios
+            if (conteudo.value === "" || conteudo2.value === "") {
+                tit.innerText = "Por favor, insira valores em ambos os campos.";
+            } else if (conteudo.value == 0 || conteudo2.value == 0) {
+                // Verificação para valores iguais a zero
+                tit.innerText = "Estamos sem números para somar :(";
             } else {
-                let resultado = Number(conteudo.value) + Number(conteudo2.value)
-                let resposta_console = document.querySelector('.espaco-resposta');
-                resposta_console.innerHTML = `<p class="resultado_conta">${resultado}</p>`;
-                let resultado_conta = document.querySelector(".resultado_conta")
-                if (resultado_conta.innerHTML == resultado) {
-                    tit.innerText = "Meus parabéns!\nSomamos os valores armazenados em valor1 e valor2"
-                    tit.style.textAlign = "center"
-                    // não deu de chamar a função de remover, então eu fiz manualmente cada uma
-                    let botao_reset = document.querySelector(".img_botao_reset")
-                    let linha_esquerda_vertical_botao_reset = document.querySelector(".linha_vertical_abas_terminal_resposta")
-                    let botao_testar = document.querySelector(".terminal-button2")
-                    let fundo_abas = document.querySelector('.fundo_abas')
-                    let insert_button = document.querySelector('.div2')
-                    botao_reset.remove()
-                    linha_esquerda_vertical_botao_reset.remove()
-                    botao_testar.remove()
-                    fundo_abas.style.width = '64px'
-                    fundo_abas.style.margin = '0 0 0 48px'
-                    insert_button.innerHTML = `<button onclick ="carregarProximoConteudo()" class="next">Próximo Conteúdo</button>`
-
+                // Expressão regular para verificar se é um número válido
+                let regexNumero = /^\d+(\.\d+)?$/;
+        
+                // Verificar se os valores inseridos são numéricos válidos
+                if (!regexNumero.test(conteudo.value) || !regexNumero.test(conteudo2.value)) {
+                    tit.innerText = "Por favor, insira apenas números válidos. Use ponto (.) para decimais.";
+                } else {
+                    // Se os valores forem válidos, realizar a soma
+                    let resultado = Number(conteudo.value) + Number(conteudo2.value);
+                    let resposta_console = document.querySelector('.espaco-resposta');
+                    
+                    // Exibir o resultado da soma no console de resposta
+                    resposta_console.innerHTML = `<p class="resultado_conta">${resultado}</p>`;
+                    let resultado_conta = document.querySelector(".resultado_conta");
+        
+                    // Verificar se o resultado foi exibido corretamente
+                    if (resultado_conta.innerHTML == resultado) {
+                        tit.innerText = "Meus parabéns!\nSomamos os valores armazenados em valor1 e valor2";
+                        tit.style.textAlign = "center";
+                        
+                        // Limpar os elementos conforme a lógica
+                        let botao_reset = document.querySelector(".img_botao_reset");
+                        let linha_esquerda_vertical_botao_reset = document.querySelector(".linha_vertical_abas_terminal_resposta");
+                        let botao_testar = document.querySelector(".terminal-button2");
+                        let fundo_abas = document.querySelector('.fundo_abas');
+                        let insert_button = document.querySelector('.div2');
+        
+                        // Remover os elementos não necessários
+                        botao_reset.remove();
+                        linha_esquerda_vertical_botao_reset.remove();
+                        botao_testar.remove();
+        
+                        // Ajustar o estilo do fundo
+                        fundo_abas.style.width = '64px';
+                        fundo_abas.style.margin = '0 0 0 48px';
+        
+                        // Inserir o botão para carregar o próximo conteúdo
+                        insert_button.innerHTML = `<button onclick="carregarProximoConteudo()" class="next">Próximo Conteúdo</button>`;
+                    }
                 }
             }
         }
-    }
+    }        
     if (idConteudo == 24) {
         // Seleciona todos os campos com a classe filho_input
         let campos = document.querySelectorAll(".filho_input");
