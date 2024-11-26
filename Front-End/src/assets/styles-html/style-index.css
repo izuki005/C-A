@@ -70,7 +70,14 @@ section{
 }
 .container__textM p{
     padding: 69px 50px 0px 50px;
+    opacity: 1;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
+.container__textM p.teste{
+    opacity: 0;
+}
+
+
 
 /* .container__textM .container__button{
     background-color: #645E5E;
@@ -85,7 +92,20 @@ section{
     margin-top: 100px;
 } */
 
-#Mundo{
-    /* margin-left: 50%; */
+/* #Mundo{
+
     width: 80%;
+    
+} */
+
+#Mundo {
+    width: 80%;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+#Mundo.animando {
+    transform: translateY(50px);
+    opacity: 0;
 }

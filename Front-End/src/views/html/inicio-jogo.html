@@ -9,33 +9,37 @@
 </head>
 <body>
     <header>
-        <div class="icon-perfil">
-            <img src="../../assets/imgs-html/icon-perfil.png" alt="icone-perfil">
+        <div class="mini">
+            <img class="mini-mundos" src="../../assets/imgs-html/M-deserto-mini.png" alt="">
+            <img class="mini-mundos" src="../../assets/imgs-html/M-gelo-mini.png" alt="">
+            <img class="mini-mundos" src="../../assets/imgs-html/M-floresta-mini.png" alt="">
+            <img class="mini-mundos" src="../../assets/imgs-html/M-vulcao-mini.png" alt="">
         </div>
-        <h1>Clique no mundo</h1>
+        <a href="/config">
+            <img class="config" src="../../assets/imgs-html/config.png" alt="configurações">
+        </a>
     </header>
     <section>
-        <div>
-            <span class="fa fa-chevron-left fa-3x" id="seta-esquerda"></span>
+        <div class="section_horizontal">
+            <div>
+                <span class="fa fa-chevron-left fa-3x" id="seta-esquerda"></span>
+            </div>
+            <div class="troca-mundos">
+                <a href="#" id="link-planeta">
+                    <div class="fundo_brilhante"></div>
+                    <img src="../../assets/imgs-html/M-deserto.png" alt="Deserto" id="imagem-planeta">
+                </a>
+            </div>
+            <div>
+                <span class="fa fa-chevron-right fa-3x" id="seta-direita"></span>
+            </div>
         </div>
-        <div class="troca-mundos">
-            <a href="#" id="link-planeta">
-                <img src="../../assets/imgs-html/M-deserto.png" alt="Deserto" id="imagem-planeta">
-            </a>
-        </div>
-        <div>
-            <span class="fa fa-chevron-right fa-3x" id="seta-direita"></span>
-        </div>
+        <img id="base_mundos" src="../../assets/imgs-html/Base.png" alt="">
     </section>
     <footer>
         <a href="login">
             <button class="saida-inicio">
                 <span class="fa fa-arrow-right-from-bracket fa-3x"></span>
-            </button>
-        </a>
-        <a href="config">
-            <button class="config">
-                <span class="fa fa-gear fa-3x"></span>
             </button>
         </a>
     </footer>

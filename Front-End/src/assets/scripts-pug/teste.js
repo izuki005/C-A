@@ -216,7 +216,7 @@ function navegarConteudo(idConteudo) {
 }
 
 function carregarProximoConteudo() {
-    if (idConteudo < 29) {  // Define um limite máximo
+    if (idConteudo < 30) {  // Define um limite máximo
         idConteudo += 1;
         navegarConteudo(idConteudo);
     } else {

@@ -2,7 +2,7 @@ const planetas = [
     { nome: 'Deserto', imagem: '../../assets/imgs-html/M-deserto.png', desbloqueado: true, link: 'oasis' },
     { nome: 'Gelo', imagem: '../../assets/imgs-html/M-gelo.png', desbloqueado: false },
     { nome: 'Floresta', imagem: '../../assets/imgs-html/M-floresta.png', desbloqueado: false },
-    { nome: 'Vulcão', imagem: '../../assets/imgs-html/M-vulcão.png', desbloqueado: false }
+    { nome: 'Vulcão', imagem: '../../assets/imgs-html/M-vulcao.png', desbloqueado: false }
 ];
 
 let indiceAtual = 0;

@@ -25,20 +25,25 @@ body {
 
 /*estilos dentro do header*/
 header{
+    /* margin: 0px 1px 0 0; */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 187px;
+    /* height: 187px; */
     /* border: 1px solid blue; */
-}
-.config{
-    margin: 0 33px 0 0;   
-}
-.config img{
-    width: 50px;
-    height: auto;    
+    /* padding-top: 30px; */
 }
 
+.config {
+    width: 50px;
+    height: auto;   
+    margin: 4px 33px 0 0;  
+    /* border: 1px solid blue; */
+}
+.voltar {
+    margin: 4px 0 0 0;  
+    /* border: 1px solid blue; */
+}
 h1{
     margin-right: 38%;
     color: #FFBF65;
