@@ -210,13 +210,15 @@ function navegarConteudo(idConteudo) {
         console.warn("Conteúdo fora do limite permitido.");
     } else if (idConteudo == 26) {
         window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`
-    } else if (idConteudo >= 27) [
+    } else if (idConteudo >= 27 && idConteudo <= 30) {
         window.location.href = `/conteudos?id_conteudo=${idConteudo}`
-    ]
+    } else if (idConteudo >= 31) {
+        window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`
+    }
 }
 
 function carregarProximoConteudo() {
-    if (idConteudo < 30) {  // Define um limite máximo
+    if (idConteudo < 31) {  // Define um limite máximo
         idConteudo += 1;
         navegarConteudo(idConteudo);
     } else {
