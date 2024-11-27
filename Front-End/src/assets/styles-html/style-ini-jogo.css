@@ -11,13 +11,30 @@ body{
     font-family: var(--font-roboto);
 }
 /*estilos dentro do header*/
-header{
-    /* border: blue 1px solid; */
-    font-size: 16pt;
-    font-weight: bold;
+header {
+    /* font-size: 16pt;
+    font-weight: bold; */
+    /* margin: 0px 1px 0 0; */
     display: flex;
     justify-content: space-between;
-    padding-top: 30px;
+    align-items: center;
+    /* height: 187px; */
+    /* border: 1px solid blue; */
+    /* padding-top: 30px; */
+}
+
+.config {
+    width: 50px;
+    height: auto;   
+    margin: 4px 33px 0 0;  
+    /* border: 1px solid blue; */
+}
+.mini {
+    margin: 4px 0 0 33px;  
+    /* border: 1px solid blue; */
+}
+.mini-mundos {
+    /* border: 1px solid blue; */
 }
 
 h1{
@@ -26,9 +43,9 @@ h1{
     opacity: 0.1;
 }
 
-div img{
+/* div img{
     margin-left: 60px;
-}
+} */
 
 /*estilos dentro da section*/
 section{
@@ -36,16 +53,50 @@ section{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .fa-chevron-left, .fa-chevron-right{
     color: #FFBF65;
 }
 
-section img{
+.section_horizontal {
+    /* border: 1px solid blue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#imagem-planeta {
     padding: 10px;
     margin: 0;
     width: 320px;
+    border-radius: 50%; 
+    /* box-shadow: 0 0 30px 20px rgba(255, 165, 0, 0.7); 
+    transition: box-shadow 0.3s ease-in-out;  */
+    position: relative;
+    /* border: 1px solid blue; */
+}
+#base_mundos {
+    width: 200px;
+    /* border: 1px solid blue; */
+}
+
+/* section img:hover {
+    box-shadow: 0 0 60px 30px rgba(255, 165, 0, 1); 
+} */
+.fundo_brilhante{
+    background: rgba(9, 255, 239, 0);
+    width: 254px;
+    height: 250px;
+    border-radius: 50%; /* Torna a imagem redonda, caso necessário */
+    /* box-shadow: 0 0 30px 20px rgba(9, 255, 239, 0.1);  */
+    transition: box-shadow 0.3s ease-in-out; /* Adiciona transição suave */
+    position: absolute;
+    margin: 46px 0 0 50px;
+    z-index: 3;
+}
+.fundo_brilhante:hover{
+    box-shadow: 0 0 40px 10px rgba(9, 255, 239, 0.6); /* Aumenta o brilho ao passar o mouse */
 }
 
 /*estilos dentro do footer*/
@@ -64,11 +115,11 @@ button{
     cursor: pointer;
 }
 
-footer .config{
+/* footer .config{
     margin-left: 42px ;
-}
+} */
 
-.saida-inicio, .config{
+.saida-inicio{
     color: #FFBF65;
     box-shadow: -6.56px 8.53px 10px rgba(0, 0, 0, 0.25);
 }
@@ -89,4 +140,8 @@ footer .config{
     font-size: 1.5em;
     font-weight: bold;
     text-shadow: 1px 1px 2px #000;
+}
+
+#seta-direita, #seta-esquerda{
+    cursor: pointer;
 }
