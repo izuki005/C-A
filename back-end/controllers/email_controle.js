@@ -19,8 +19,8 @@ async function enviarEmail(req, res) {
     }
 
     await transporter.sendMail({
-      from: 'ADM_Codigo_Agora <falcaomatheus08@gmail.com>',
-      replyTo: 'matheus.falcao@faculdadecesusc.edu.br',
+      from: 'ADM_Codigo_Agora <codigoagora01@gmail.com>',
+      replyTo: 'codigoagora01@gmail.com',
       to: email,
       subject: 'Código de Verificação',
       text: `Seu código de verificação é: ${codigo}`,
