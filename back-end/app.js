@@ -75,6 +75,7 @@ app.get('/conteudos-check', async (req, res) => {
 
           // Substitui as quebras de linha por <br> para exibir no Pug
           conteudo.descricao = conteudo.descricao.replace(/\n/g, '<br>');
+          conteudo.titulo = conteudo.titulo.replace(/\n/g, '<br>');
 
           // Renderiza o template Pug e passa os dados do conteúdo
           res.render('layout-check.pug', { conteudo, id_conteudo });

@@ -1,9 +1,86 @@
-let cont = 1
+let respostaCorreta = ""; // Altere conforme necessário
+document.addEventListener("DOMContentLoaded", () => {
+    if (idConteudo == 21) {
+        respostaCorreta = "Comando de Saída"
+    } else if (idConteudo == 35) {
+        respostaCorreta = "if"
+        console.log("A resposta certa é: "+respostaCorreta)
+        console.log("O valor selecionado é: "+ valorSelecionado)
+        let label_entrada = document.querySelector('label[for="entrada"')
+        let input_entrada = document.querySelector('#entrada')
+        let label_saida = document.querySelector('label[for="saida"]')
+        let input_saida = document.querySelector("#saida")
+        let label_entrada_saida = document.querySelector('label[for="entrada_saida"')
+        let input_entrada_saida = document.querySelector("#entrada_saida")
+        let borda_normal = document.querySelector(".terminal-centro")
+        label_entrada.innerText = "print"
+        input_entrada.value = "print"
+        label_saida.innerText = "while"
+        input_saida.value = "while"
+        label_entrada_saida.innerText = "if"
+        input_entrada_saida.value = "if"
+        borda_normal.style.border = "2px solid #E19A2F"
+    } else if (idConteudo == 36) {
+        respostaCorreta = "Vou ser impresso"
+        console.log("A resposta certa é: "+respostaCorreta)
+        console.log("O valor selecionado é: "+ valorSelecionado)
+        let label_entrada = document.querySelector('label[for="entrada"')
+        let input_entrada = document.querySelector('#entrada')
+        let label_saida = document.querySelector('label[for="saida"]')
+        let input_saida = document.querySelector("#saida")
+        let label_entrada_saida = document.querySelector('label[for="entrada_saida"')
+        let input_entrada_saida = document.querySelector("#entrada_saida")
+        let borda_normal = document.querySelector(".terminal-centro")
+        label_entrada.innerText = "Vou ser impresso"
+        input_entrada.value = "Vou ser impresso"
+        label_saida.innerText = "Nada porque o bloco é ignorado"
+        input_saida.value = "Nada porque o bloco é ignorado"
+        label_entrada_saida.innerText = "print"
+        input_entrada_saida.value = "print"
+        borda_normal.style.border = "2px solid #E19A2F"
+    } else if (idConteudo == 37) {
+        respostaCorreta = "Nada porque o bloco é ignorado"
+        console.log("A resposta certa é: "+respostaCorreta)
+        console.log("O valor selecionado é: "+ valorSelecionado)
+        let label_entrada = document.querySelector('label[for="entrada"')
+        let input_entrada = document.querySelector('#entrada')
+        let label_saida = document.querySelector('label[for="saida"]')
+        let input_saida = document.querySelector("#saida")
+        let label_entrada_saida = document.querySelector('label[for="entrada_saida"')
+        let input_entrada_saida = document.querySelector("#entrada_saida")
+        let borda_normal = document.querySelector(".terminal-centro")
+        label_entrada.innerText = "Vou ser impresso"
+        input_entrada.value = "Vou ser impresso"
+        label_saida.innerText = "Nada porque o bloco é ignorado"
+        input_saida.value = "Nada porque o bloco é ignorado"
+        label_entrada_saida.innerText = "print"
+        input_entrada_saida.value = "print"
+        borda_normal.style.border = "2px solid #E19A2F"
+    } else if (idConteudo == 38) {
+        respostaCorreta = "Condições"
+        console.log("A resposta certa é: "+respostaCorreta)
+        console.log("O valor selecionado é: "+ valorSelecionado)
+        let label_entrada = document.querySelector('label[for="entrada"')
+        let input_entrada = document.querySelector('#entrada')
+        let label_saida = document.querySelector('label[for="saida"]')
+        let input_saida = document.querySelector("#saida")
+        let label_entrada_saida = document.querySelector('label[for="entrada_saida"')
+        let input_entrada_saida = document.querySelector("#entrada_saida")
+        let borda_normal = document.querySelector(".terminal-centro")
+        label_entrada.innerText = "Condições"
+        input_entrada.value = "Condições"
+        label_saida.innerText = "Números inteiros"
+        input_saida.value = "Números inteiros"
+        label_entrada_saida.innerText = "O bloco de código"
+        input_entrada_saida.value = "O bloco de código"
+        borda_normal.style.border = "2px solid #E19A2F"
+    }
+})
+
 // Seleciona todos os checkboxes
 const checkboxes = document.querySelectorAll('.input_centro')
 
 // Resposta correta configurada
-let respostaCorreta = "Comando de Saída"; // Altere conforme necessário
 
 // Seleciona a imagem
 const imagemBotao = document.getElementById('botaoVerificar')
@@ -51,6 +128,7 @@ imagemBotao.addEventListener('click', () => {
         input_entrada_saida.checked = false;
         valorSelecionado = null;
         respostaCorreta = "20"
+        console.log("A resposta certa é: " + respostaCorreta)
         imagemBotao.src = "../assets/imgs-pug/botao_verific_amarelo.png"
     }
     if (valorSelecionado !== null) {
@@ -61,33 +139,59 @@ imagemBotao.addEventListener('click', () => {
 });
 
 function verificarResposta(valorSelecionado) {
-    // Verifica se a resposta está correta ou incorreta e altera a imagem
     if (valorSelecionado === respostaCorreta) {
-        cont += 1
-        console.log(cont)
         console.log("Resposta correta! 🎉");
         let borda_verde = document.querySelector(".terminal-centro")
         borda_verde.style.border = "2px solid rgba(38, 181, 2, 0.8)"
-        imagemBotao.src = "../assets/imgs-pug/botao_verific_verde.png"; // Altera a imagem para verde
-        if (respostaCorreta == "Comando de Saída") {
-            setTimeout(() => {
-                imagemBotao.src = "../assets/imgs-pug/passar-direito.png"; // Atualiza a imagem
-                // Verifica se o caminho final corresponde
-            }, 5000); // 5000 milissegundos = 5 segundos
-        } else if (respostaCorreta == "20") {
-            setTimeout(() => {
-                // Verifica se o caminho final corresponde
-                idConteudo = 22;
-                window.location.href = `/conteudos?id_conteudo=${idConteudo}`
-            }, 5000); // 5000 milissegundos = 5 segundos
-        }
+        imagemBotao.src = "../assets/imgs-pug/botao_verific_verde.png";
+        // essa parte é uma excessão
         
-    } else {
-        cont += 1    
-        console.log(cont)    
+    } else { 
         console.log(`Resposta incorreta. Você selecionou: ${valorSelecionado}`);
         let borda_vermelha = document.querySelector(".terminal-centro")
+        let tit = document.querySelector(".h2-header")
+        let valorInicial = tit ? tit.innerHTML : ""; // Salva o estado inicial
+        let borda_normal = document.querySelector(".terminal-centro")
         borda_vermelha.style.border = "2px solid rgba(181, 2, 2, 0.8)"
-        imagemBotao.src = "../assets/imgs-pug/botao_verific_vermelho.png"; // Altera a imagem para vermelha
+        imagemBotao.src = "../assets/imgs-pug/botao_verific_vermelho.png";
+        tit.innerText = "Tente outra opção!" // Altera a imagem para vermelha
+        setTimeout(() => {
+            imagemBotao.src = "../assets/imgs-pug/botao_verific_amarelo.png";
+            borda_normal.style.border = "2px solid #E19A2F"
+            tit.innerHTML = valorInicial
+        }, 3000);
+    }
+    
+    // verifica a resposta correta e direciona para a próxima etapa
+    if (respostaCorreta == "20" && imagemBotao.src.endsWith("botao_verific_verde.png")) {
+        setTimeout(() => {
+            idConteudo = 22;
+            window.location.href = `/conteudos?id_conteudo=${idConteudo}`
+        }, 4000);
+    }
+    if (respostaCorreta == "Comando de Saída" && imagemBotao.src.endsWith("botao_verific_verde.png")) {
+        setTimeout(() => {
+            imagemBotao.src = "../assets/imgs-pug/passar-direito.png"
+        }, 4000);
+    }
+    if (respostaCorreta == "if" && imagemBotao.src.endsWith("botao_verific_verde.png")) {
+        setTimeout (() => {
+            window.location.href = `/conteudos-check?id_conteudo=36`
+        },4000)
+    }
+    if (respostaCorreta == "Vou ser impresso" && imagemBotao.src.endsWith("botao_verific_verde.png")) {
+        setTimeout (() => {
+            window.location.href = `/conteudos-check?id_conteudo=37`
+        },4000) 
+    }
+    if (respostaCorreta == "Nada porque o bloco é ignorado" && imagemBotao.src.endsWith("botao_verific_verde.png")) {
+        setTimeout (() => {
+            window.location.href = `/conteudos-check?id_conteudo=38`
+        },4000) 
+    }
+    if (respostaCorreta == "Condições" && imagemBotao.src.endsWith("botao_verific_verde.png")) {
+        setTimeout (() => {
+            window.location.href = `/conteudos?id_conteudo=39`
+        },4000) 
     }
 }
