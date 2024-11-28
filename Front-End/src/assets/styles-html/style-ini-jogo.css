@@ -9,6 +9,7 @@ body{
     background-image: url(../imgs-html/Stars-black.png);
     background-color: #283134;
     font-family: var(--font-roboto);
+    filter: saturate(1.2);
 }
 /*estilos dentro do header*/
 header {
@@ -32,9 +33,11 @@ header {
 .mini {
     margin: 4px 0 0 33px;  
     /* border: 1px solid blue; */
+
 }
 .mini-mundos {
     /* border: 1px solid blue; */
+    /* filter: saturate(1.5); */
 }
 
 h1{
@@ -71,14 +74,56 @@ section{
     margin: 0;
     width: 320px;
     border-radius: 50%; 
+    /* filter: saturate(1.5); */
     /* box-shadow: 0 0 30px 20px rgba(255, 165, 0, 0.7); 
     transition: box-shadow 0.3s ease-in-out;  */
     position: relative;
+    animation: flutuar 3s ease-in-out infinite; /* Define a animação */
     /* border: 1px solid blue; */
 }
+@keyframes flutuar {
+    0% {
+        transform: translateY(0); /* Posição inicial */
+    }
+    50% {
+        transform: translateY(-20px); /* Sobe 10px */
+    }
+    100% {
+        transform: translateY(0); /* Volta para a posição inicial */
+    }
+}
+
+
+
 #base_mundos {
     width: 200px;
-    /* border: 1px solid blue; */
+    position: relative;
+}
+
+#espelho {
+    position: absolute;
+    margin: 310px 0 0 0;
+    width: 80px;
+    height: 20px;
+    z-index: 1;
+    animation: crescerEspelho 3s ease-in-out infinite;
+    filter: saturate(0) contrast(0) brightness(0);
+    
+}
+
+@keyframes crescerEspelho {
+    0% {
+        transform: scale(1.2); 
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1); 
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0.6;
+    }
 }
 
 /* section img:hover {
@@ -94,6 +139,7 @@ section{
     position: absolute;
     margin: 46px 0 0 50px;
     z-index: 3;
+    animation: flutuar 3s ease-in-out infinite; /* Define a animação */
 }
 .fundo_brilhante:hover{
     box-shadow: 0 0 40px 10px rgba(9, 255, 239, 0.6); /* Aumenta o brilho ao passar o mouse */

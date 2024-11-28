@@ -9,6 +9,7 @@ body{
     background-image: url(../imgs-html/Stars-black.png);
     background-color: #283134;
     font-family: var(--font-roboto);
+    filter: saturate(1.2);
 }
 html, body {
     height: 100%; /* Garantir que o body e o html ocupem toda a altura da tela */

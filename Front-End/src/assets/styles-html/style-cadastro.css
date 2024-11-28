@@ -9,6 +9,7 @@ body{
     font-size: 18pt;
     font-family: var(--font-roboto);
     position: relative;
+    filter: saturate(1.2);
 }
 header{
     background-color: rgba(61, 58, 55, 0.7);

@@ -12,6 +12,11 @@ body {
     background-image: url(../imgs-html/Stars-black.png);
     background-color: #283134;
     font-family: var(--font-roboto); /* Utiliza a fonte Roboto */
+    filter: saturate(1.2);
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
 }
 
 /* Estilo para botões genéricos */
@@ -19,7 +24,8 @@ button {
     width: 158px;
     height: 76px;
     border-radius: 17.76px;
-    border-color: var(--cor-laranja);
+    /* border-color: var(--cor-laranja); */
+    border: none;
     background: none;
     cursor: pointer;
     margin: 0 10px 0 10px;
@@ -29,10 +35,11 @@ button {
 }
 
 /* Estilos específicos para os botões 'saida-inicio' e 'play' */
-.saida-inicio,
 .play {
     color: var(--cor-laranja);
+    height: 60px;
     box-shadow: -6.56px 8.53px 10px rgba(0, 0, 0, 0.25);
+    margin: 0;
 }
 
 /* Estilos para a seção principal */
@@ -40,6 +47,10 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: auto;
+    /* border: 1px solid blue; */
 }
 
 /* Estilos para a seção principal, onde estão as principais divs */
@@ -57,19 +68,37 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10px;
-    width: 495px;
-    /* height: 440px; */
+    justify-content: center;
+    /* margin-top: 10px; */
+    width: 400dvw;
+    /* height: 500px; */
     padding: 0 0 20px 0;
+    color: #fff;
 }
-
+.container2 {
+    border: 1px solid var(--cor-laranja);
+    background-color: rgba(0, 193, 255, 0.05);
+    border-radius: 21.79px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    /* margin-top: 10px; */
+    width: 400dvw;
+    /* height: 500px; */
+    padding: 0 0 20px 0;
+    color: #fff;
+}
+/* .container__dados {
+    border: 1px solid blue; 
+} */
 /* Estilos para linhas de dados */
 .dados-row {
     display: flex;
     padding: 16px;
     align-items: center;
     color: #fff;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 /* Estilos para as caixas de dados */
@@ -108,31 +137,65 @@ section {
     margin-right: 10px;
 }
 
-/* Estilos para o contêiner do perfil */
-.container__perfil {
-    margin: 20px 0 10px 0;
-}
-
 /* Estilos para o contêiner dos botões */
 .buttons {
     display: flex;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
-/* Estilos para a caixa de música */
-.musica {
-    /* border: 1px solid blue; */
-    border-radius: 20px;
-    height: 41.4px;
-    width: 274.56px;
-    justify-content: center;
+/* Estilo do container switch*/
+.switch-container {
     display: flex;
-    padding: 0 10px 0 10px;
+    align-items: center;
+    gap: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
 }
+/* Estilo do texto do label */
+.switch-label {
+    color: #f0f0f0;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+/* Estilo do switch (toggle) */
+.switch {
+    width: 50px;
+    height: 24px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #ccc;
+    border-radius: 50px;
+    position: relative;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.switch:checked {
+    background-color: var(--cor-laranja); /* Cor roxa quando ativado */
+}
+
+.switch:before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.switch:checked:before {
+    transform: translateX(26px); /* Desloca o botão para a direita */
+}
+
 
 /* Estilos para a caixa de seleção de música */
 .checkbox__input {
     transform: scale(2);
+    cursor: pointer;
 }
 
 /* Estilos gerais para inputs */
@@ -150,6 +213,35 @@ input {
 }
 
 /* Estilo das imagens*/
-.img-right, .img-lefth{
+.img-lefth{
     margin-top: 50px;
+    animation: flutuar 3s ease-in-out infinite; /* Define a animação */
+}
+/* Estilo das imagens*/
+.img-right {
+    margin-top: 50px;
+    animation: flutuar2 3s ease-in-out infinite; /* Define a animação */
+}
+
+@keyframes flutuar {
+    0% {
+        transform: translateY(0); /* Posição inicial */
+    }
+    50% {
+        transform: translateY(-20px); /* Sobe 10px */
+    }
+    100% {
+        transform: translateY(0); /* Volta para a posição inicial */
+    }
+}
+@keyframes flutuar2 {
+    0% {
+        transform: translateY(0); /* Posição inicial */
+    }
+    50% {
+        transform: translateY(20px); /* Sobe 10px */
+    }
+    100% {
+        transform: translateY(0); /* Volta para a posição inicial */
+    }
 }

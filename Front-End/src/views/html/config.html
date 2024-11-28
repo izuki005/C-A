@@ -10,16 +10,20 @@
     <script src="../../assets/scripts-html/config.js"></script>
 </head>
 <body onload="carregarDados()">
+    <header>
+        <a href="#" onclick="voltarPaginaAnterior()">
+            <img class="voltar" src="../../assets/imgs-html/Voltar.png" alt="botao_voltar">
+        </a>
+    </header>
     <section>
         <div class="main">
             <div class="img-lefth">
                 <img src="../../assets/imgs-html/img-left-config.png" alt="imagem-ilha-esquerda">
             </div>
             <div class="container">
-                <div class="container__perfil">
-                    <img src="../../assets/imgs-html/icon-perfil.png" alt="icone-perfil">
+                <div class="dados-row">
+                    <h2>Meus dados</h2>
                 </div>
-    
                 <div class="container__dados">
                     <div class="dados-row">
                         <p class="nome_inpt">Nome:</p>
@@ -33,9 +37,18 @@
                         <p class="nome_inpt">Senha:</p>
                         <p class="dados"><input id="confSenha" class="input-tranparent" type="password" disabled><span onclick="habilitarSenha()" class="fa-regular fa-pen-to-square"></span></p>
                     </div>
+                </div>
+            </div>
+            <div class="container2" style="margin-left: 10px;">
+                <div class="dados-row">
+                    <h2>Dados do jogo</h2>
+                </div>
+                <div class="container__dados">
                     <div class="dados-row">
-                        <p class="nome_inpt">Música:</p>
-                        <p class="musica"><input class="checkbox__input" type="checkbox" checked="true"></p>
+                        <div class="switch-container">
+                            <label for="sound-effects" class="switch-label">Sound effects</label>
+                            <input type="checkbox" id="sound-effects" class="switch" checked>
+                        </div>
                     </div>
                     <div class="dados-row">
                         <p id="fasesCompletadas">Fases completadas: 0</p>
@@ -44,23 +57,10 @@
                         <input onclick="teste()" id="DeleteConta" type="button" value="Excluir minha conta">
                     </div>
                 </div>
-    
             </div>
             <div class="img-right">
                 <img src="../../assets/imgs-html/img-right-config.png" alt="imagem-ilha-direita">
             </div>
-        </div>
-        <div class="buttons">
-            <a onclick="voltarPaginaAnterior()">
-                <button class="saida-inicio">
-                    <span class="fa fa-backward fa-3x"></span>
-                </button>
-            </a>            
-            <a onclick="voltarPaginaAnterior()"><!--botão direito para dar play-->
-                <button class="play">
-                    <span class="fa fa-play fa-3x"></span>
-                </button>
-            </a>
         </div>
     </section>
 </body>
