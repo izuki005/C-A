@@ -60,3 +60,11 @@ setaDireita.addEventListener('click', () => {
 
 // Chamada inicial para exibir o primeiro planeta e sombra
 atualizarPlaneta();
+
+//redirecionar para login
+let botao = document.querySelector(".saida-inicio")
+botao.addEventListener("click", () => {
+    if(confirm("Você deseja realmente sair?\nSe sim, pressione 'ok'")) {
+        window.location.href = "/login"
+    }
+})

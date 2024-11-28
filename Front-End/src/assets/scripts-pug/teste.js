@@ -31,8 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("botaoEspecial").onclick = function() {
             window.location.href = "/conteudos-imgs?id_conteudo=7";
         };
-    }
-     else if (idConteudo == 13) {
+    } else if (idConteudo == 13) {
         let botao = document.querySelector(".resposta");
         let espaco_resposta = document.querySelector('.espaco-resposta')
         botao.innerHTML += `<button class="botoes-resposta" onclick="botoes(event)">print</button>`;

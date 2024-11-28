@@ -101,7 +101,9 @@ section .div2 button{
 /* section div #img-marcada{
     width: 100px;
 } */
-
+/* #passar-esquerdo, #passar-direito{
+    filter: saturate(0.7);
+} */
 #barra-progresso-container {
     width: 80%; /* Ajusta a largura do container da barra */
     max-width: 800px; /* Limite máximo de largura para telas grandes */
