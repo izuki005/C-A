@@ -112,7 +112,7 @@ section .div2 button{
 
 #barra-progresso-container {
     width: 80%; /* Ajusta a largura do container da barra */
-    max-width: 600px; /* Limite máximo de largura para telas grandes */
+    max-width: 800px; /* Limite máximo de largura para telas grandes */
     background-color: #333333; /* Cor de fundo mais escura */
     border-radius: 10px; /* Arredondamento das bordas */
     overflow: hidden;

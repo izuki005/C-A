@@ -9,13 +9,13 @@ header{
     justify-content: space-between;
     border: 1px solid blue;
     height: 188.33px; */
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
 }
 .barra_header{
     position: static;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 .header{
     display: flex;
@@ -57,7 +57,7 @@ header h2{
     /*align-items: center; */
     /* bottom: 0; */
     /* position: absolute; */
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
     /* z-index: 2; */
     /* padding: 0px; */
     position: relative;
@@ -76,7 +76,7 @@ section{
     display: flex;
     justify-content: center;
     /* height: 388px; */
-    border: 1px solid rgb(255, 2, 213);
+    /* border: 1px solid rgb(255, 2, 213); */
     position: relative;
     margin: 0 0 0 0;
 }
@@ -103,7 +103,7 @@ section .div2 button{
 
 #barra-progresso-container {
     width: 80%; /* Ajusta a largura do container da barra */
-    max-width: 600px; /* Limite máximo de largura para telas grandes */
+    max-width: 800px; /* Limite máximo de largura para telas grandes */
     background-color: #333333; /* Cor de fundo mais escura */
     border-radius: 10px; /* Arredondamento das bordas */
     overflow: hidden;
