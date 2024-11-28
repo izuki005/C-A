@@ -189,7 +189,9 @@ h2{
 /* estilos do modal */
 
 #modal {
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 400px;
     height: 240px;
     background-color: #d77718;
@@ -203,13 +205,13 @@ h2{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     text-align: center;
-    /* background: url('../imgs/fundo-estrelad-azul-escuro.png'); */
-
+    /* border: 1px solid blue; */
+    height: 200px;
 }
 #modal #base input{
-    width: 200px;
+    width: 140px;
     height: 30px;
     padding-left: 10px;
     border: none;
@@ -219,9 +221,9 @@ h2{
     font-weight: 300;
     margin-top: 10px;
 }
-#modal #base h3{
+/* #modal #base h3{
     margin: 20px 0;
-}
+} */
 #modal #base div{
     display: flex;
     justify-content: end;

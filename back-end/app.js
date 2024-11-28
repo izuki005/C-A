@@ -48,6 +48,7 @@ app.get('/conteudos-atividades', async (req, res) => {
 
           // Substitui as quebras de linha na descrição por <br>
           conteudo.descricao = conteudo.descricao.replace(/\n/g, '<br>')
+          conteudo.titulo = conteudo.titulo.replace(/\n/g, '<br>');
 
           res.render('layout-atividade.pug', { conteudo, id_conteudo});
       } else {
@@ -106,6 +107,7 @@ app.get('/conteudos-imgs', async (req, res) => {
 
           // Substitui as quebras de linha na descrição por <br>
           conteudo.descricao = conteudo.descricao.replace(/\n/g, '<br>')
+          conteudo.titulo = conteudo.titulo.replace(/\n/g, '<br>');
 
           res.render('layout-imgs.pug', { conteudo, id_conteudo });
       } else {
@@ -133,6 +135,7 @@ app.get('/conteudos', async (req, res) => {
 
       // Substitui as quebras de linha na descrição por <br>
       conteudo.descricao = conteudo.descricao.replace(/\n/g, '<br>');
+      conteudo.titulo = conteudo.titulo.replace(/\n/g, '<br>');
 
       res.render('layout-conteudo.pug', { conteudo, id_conteudo });
     } else {
