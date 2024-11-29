@@ -2,6 +2,7 @@ body{
     background-color: #283134;
     background-image: url('../imgs-pug/Stars-black.png');
     filter: saturate(1.2);
+    font-family: var(--font-roboto);
 }
 
 header{ 

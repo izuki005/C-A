@@ -2,6 +2,7 @@ body{
     background-color: #283134;
     background-image: url('../imgs-pug/Stars-black.png');
     filter: saturate(1.2);
+    font-family: var(--font-roboto);
 }
 
 header{ 
@@ -66,9 +67,9 @@ header h2{
 
 .header-div-p p{
     padding: 0;
-    margin: 90px 0 0 40px;
+    margin: 80px 0 0 40px;
     position: absolute;
-    width: 800px;
+    width: 900px;
 }
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++ */

@@ -131,15 +131,13 @@ section {
     position: relative;
     width: 100%;
     height: 400px; /* Ajuste conforme necessário */
-  }
-  
-  
-  .linha {
+}
+.linha {
     position: absolute;
     top: 0;
     left: 0;
     pointer-events: none; /* Evita interferência no clique */
-  }
+}
 .pai-sec__filho-div{
     display: flex;
     flex-direction: column;
@@ -163,8 +161,8 @@ section {
     justify-content: center;
     align-items: center;
     border: 2px solid #47C3D0;
-    width: 150px;
-    height: 40px;
+    width: 160px;
+    height: 50px;
     border-radius: 16px 16px 0 16px;
 }
 
@@ -174,6 +172,7 @@ section {
     display: flex;
     text-align: center;
     font-size: 12pt;
+    font-family: var(--font-roboto);
 }
 
 section img{
@@ -192,15 +191,14 @@ footer {
     overflow: hidden; /* Impede que a imagem "vaze" para fora visualmente */
     height: 200px; /* Defina a altura desejada do footer */
     /* border: 1px solid #47C3D0; */
-  }
-  
+}
+
 footer img {
     width: 500px;
     position: absolute; /* Ajuste para fazer a imagem "vazar" para fora */
     left: -17%; /* Centraliza horizontalmente */
     top: -50px;
-  }
-  
+}
 /* Estilos para quando um oásis estiver bloqueado */
 .bloqueado {
     opacity: 0.5; /* Torna o oásis mais claro para indicar que está bloqueado */
