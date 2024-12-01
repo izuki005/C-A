@@ -84,31 +84,26 @@ document.addEventListener("DOMContentLoaded", () => {
         let resposta_console = document.querySelector('.espaco-resposta');
         let fundo_abas = document.querySelector('.fundo_abas');
         let insert_button = document.querySelector('.div2');
-        insert_button.innerHTML += `<button onclick="carregarProximoConteudo()" class="next">Próximo Conteúdo</button>`;
+        insert_button.innerHTML += `<button onclick="carregarConteudoAnterior()" >Conteúdo Anterior</button>`;
+        insert_button.innerHTML += `<button onclick="carregarProximoConteudo()" >Próximo Conteúdo</button>`;
         fundo_abas.style.width = '72px';
         fundo_abas.style.margin = '0 0 0 48px';
         resposta_console.innerHTML = `<p>20</p>`;
     } else if (idConteudo == 20) {
         conteudo(".conteudo") // limpa o console
         conteudo(".paragrafo")
-        
-        let insert_button = document.querySelector('.div2');
         let resposta_console = document.querySelector('.espaco-resposta');
-        insert_button.insertAdjacentHTML('afterbegin', `<button id="botaoEspecial1">Conteúdo Anterior</button>`);
         resposta_console.innerHTML = `<p class="paragrafo">valor1 = <input class="conteudo" type="text" value="" id="valor1"></p>
         <p class="paragrafo">valor2 = <input class="conteudo2" type="text" value="" id="valor2"></p>
         <p class="paragrafo">resultado_soma = valor1 + valor2</p>
         <p class="paragrafo">print(resultado_soma)</p>
         <p id="erroMensagem" style="color: red;"></p>
         `;
-        document.getElementById("botaoEspecial1").onclick = function() {
-            window.location.href = "/conteudos-atividades?id_conteudo=18";
-        };
     } else if (idConteudo == 21) {
         let insert_button = document.querySelector("footer")
         insert_button.insertAdjacentHTML('afterbegin', `<button class="button_back_next" id="botaoEspecial1">Conteúdo Anterior</button>`)
         document.getElementById("botaoEspecial1").onclick = function() {
-            window.location.href = "/conteudos-atividades?id_conteudo=20";
+            window.location.href = `/conteudos-atividades?id_conteudo=19`;
         };
     } else if (idConteudo == 22) {
         conteudo(".button2_div2")
@@ -322,7 +317,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <p style="margin: 20px 0 0 0;">for numero in range(1, 6):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"Este é o número {numero}")</p>`
         let insert_button = document.querySelector('.div2');
         insert_button.innerHTML += `<button onclick="carregarConteudoAnterior()">Conteúdo Anterior</button>`;
-    } else if (idConteudo == 50) {
+    } else if (idConteudo == 49) {
         conteudo(".conteudo")
         conteudo(".paragrafo")
         conteudo(".resposta-usuario")
@@ -392,12 +387,10 @@ function navegarConteudo(idConteudo) {
         window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`
     } else if (idConteudo >= 46 && idConteudo <= 47) {
         window.location.href = `/conteudos?id_conteudo=${idConteudo}`
-    } else if (idConteudo == 48) {
+    } else if (idConteudo >= 48 && idConteudo <= 49) {
         window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`
-    } else if (idConteudo == 49) {
-        window.location.href = `/conteudos?id_conteudo=${idConteudo}`
     } else if (idConteudo == 50) {
-        window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`
+        window.location.href = `/conteudos?id_conteudo=${idConteudo}`
     }
 }
 
