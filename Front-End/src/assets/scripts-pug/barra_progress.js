@@ -77,7 +77,7 @@ async function completarFase(userData) {
     } else if (idConteudo === 39) {
         await completarFaseAPI(4, userData.id_cadastro);
     } else if (idConteudo === 50) {
-        window.alert('PARABENS VOCÊ CHEGOU AO ULTIMO OÁSIS, AGORA NO FUTURO IRÁ VER O MUNDO DO GELO')
+        console.log('PARABENS VOCÊ CHEGOU AO ULTIMO OÁSIS, AGORA NO FUTURO IRÁ VER O MUNDO DO GELO')
         await completarFaseAPI(5, userData.id_cadastro);
     }
     
