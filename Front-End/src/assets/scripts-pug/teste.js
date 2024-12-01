@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let fundo_abas = document.querySelector('.fundo_abas');
         let insert_button = document.querySelector('.div2');
         insert_button.innerHTML += `<button onclick="carregarProximoConteudo()" class="next">Próximo Conteúdo</button>`;
-        fundo_abas.style.width = '64px';
+        fundo_abas.style.width = '72px';
         fundo_abas.style.margin = '0 0 0 48px';
         resposta_console.innerHTML = `<p>Hello, World!</p>`;
     } else if (idConteudo == 10) {
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let fundo_abas = document.querySelector('.fundo_abas');
         let insert_button = document.querySelector('.div2');
         insert_button.innerHTML += `<button onclick="carregarProximoConteudo()" class="next">Próximo Conteúdo</button>`;
-        fundo_abas.style.width = '64px';
+        fundo_abas.style.width = '72px';
         fundo_abas.style.margin = '0 0 0 48px';
         resposta_console.innerHTML = `<p>20</p>`;
     } else if (idConteudo == 20) {
@@ -254,6 +254,90 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("botaoEspecial").onclick = function() {
             window.location.href = "/oasis";
         };
+    } else if (idConteudo == 40) {
+        conteudo(".button1_div2");
+        let insert_button = document.querySelector('.div2');
+        insert_button.insertAdjacentHTML('afterbegin', `<button id="botaoEspecial1">Conteúdo Anterior</button>`);
+        document.getElementById("botaoEspecial1").onclick = function() {
+            window.location.href = "/oasis";
+        };
+    } else if (idConteudo == 42) {
+        conteudo(".conteudo")
+        conteudo(".paragrafo")
+        conteudo(".resposta-usuario")
+        let espaco_resposta = document.querySelector(".espaco-resposta")
+        espaco_resposta.innerHTML += ` 
+        <p style="margin: 20px 0 0 0;">print("Carregando..")<br>print("Carregando..")<br>print("Carregando..")<br>print("Carregando..")<br>print("Carregando..")</p>`
+        let insert_button = document.querySelector('.div2');
+        insert_button.innerHTML += `<button onclick="carregarConteudoAnterior()">Conteúdo Anterior</button>`;
+    } else if (idConteudo == 43) {
+        let h2_header = document.querySelector(".h2-header")
+        let fundo_abas = document.querySelector('.fundo_abas')
+        h2_header.style.width = "900px"
+        conteudo(".conteudo")
+        conteudo(".paragrafo")
+        conteudo(".resposta-usuario")
+        conteudo(".img_botao_reset")
+        conteudo(".linha_vertical_abas_terminal_resposta")
+        conteudo(".terminal-button2")
+        let espaco_resposta = document.querySelector(".espaco-resposta")
+        espaco_resposta.innerHTML += ` 
+        <p style="margin: 20px 0 0 0;">Carregando..<br>Carregando..<br>Carregando..<br>Carregando..<br>Carregando..</p>`
+        fundo_abas.style.width = '72px'
+        fundo_abas.style.margin = '0 0 0 48px'
+        let insert_button = document.querySelector('.div2');
+        insert_button.innerHTML += `<button onclick="carregarConteudoAnterior()">Conteúdo Anterior</button>`;
+        insert_button.innerHTML += `<button onclick="carregarProximoConteudo()">Próximo Conteúdo</button>`;
+    }  else if (idConteudo == 44) {
+        conteudo(".conteudo")
+        conteudo(".paragrafo")
+        conteudo(".resposta-usuario")
+        let espaco_resposta = document.querySelector(".espaco-resposta")
+        espaco_resposta.innerHTML += ` 
+        <p style="margin: 20px 0 0 0;">for i in range(1000):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Olá, mundo!")</p>`
+        let insert_button = document.querySelector('.div2');
+        insert_button.innerHTML += `<button onclick="carregarConteudoAnterior()">Conteúdo Anterior</button>`;
+    } else if (idConteudo == 45) {
+        conteudo(".conteudo")
+        conteudo(".paragrafo")
+        conteudo(".resposta-usuario")
+        conteudo(".img_botao_reset")
+        conteudo(".linha_vertical_abas_terminal_resposta")
+        conteudo(".terminal-button2")
+        let espaco_resposta = document.querySelector(".espaco-resposta")
+        espaco_resposta.innerHTML += ` 
+        <p style="margin: 20px 0 0 0;">Olá, mundo!<br>Olá, mundo!<br>Olá, mundo!<br>Olá, mundo!<br>Olá, mundo!<br>Olá, mundo!<br>Olá, mundo!<br>Olá, mundo!<br>...</p>`
+        let fundo_abas = document.querySelector('.fundo_abas')
+        fundo_abas.style.width = '72px'
+        fundo_abas.style.margin = '0 0 0 48px'
+        let insert_button = document.querySelector('.div2');
+        insert_button.innerHTML += `<button onclick="carregarConteudoAnterior()">Conteúdo Anterior</button>`;
+        insert_button.innerHTML += `<button onclick="carregarProximoConteudo()">Próximo Conteúdo</button>`;
+    } else if (idConteudo == 48) {
+        conteudo(".conteudo")
+        conteudo(".paragrafo")
+        conteudo(".resposta-usuario")
+        let espaco_resposta = document.querySelector(".espaco-resposta")
+        espaco_resposta.innerHTML += ` 
+        <p style="margin: 20px 0 0 0;">for numero in range(1, 6):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"Este é o número {numero}")</p>`
+        let insert_button = document.querySelector('.div2');
+        insert_button.innerHTML += `<button onclick="carregarConteudoAnterior()">Conteúdo Anterior</button>`;
+    } else if (idConteudo == 50) {
+        conteudo(".conteudo")
+        conteudo(".paragrafo")
+        conteudo(".resposta-usuario")
+        conteudo(".img_botao_reset")
+        conteudo(".linha_vertical_abas_terminal_resposta")
+        conteudo(".terminal-button2")
+        let espaco_resposta = document.querySelector(".espaco-resposta")
+        espaco_resposta.innerHTML += ` 
+        <p style="margin: 20px 0 0 0;">Este é o número 1<br>Este é o número 2<br>Este é o número 3<br>Este é o número 4<br>Este é o número 5</p>`
+        let fundo_abas = document.querySelector('.fundo_abas')
+        fundo_abas.style.width = '72px'
+        fundo_abas.style.margin = '0 0 0 48px'
+        let insert_button = document.querySelector('.div2');
+        insert_button.innerHTML += `<button onclick="carregarConteudoAnterior()">Conteúdo Anterior</button>`;
+        insert_button.innerHTML += `<button onclick="carregarProximoConteudo()">Próximo Conteúdo</button>`;
     }
     
 });
@@ -302,11 +386,23 @@ function navegarConteudo(idConteudo) {
         window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`
     } else if (idConteudo >= 35 && idConteudo <= 38) {
         window.location.href = `/conteudos-check?id_conteudo=${idConteudo}`
+    } else if (idConteudo >= 39 && idConteudo <= 41) {
+        window.location.href = `/conteudos?id_conteudo=${idConteudo}`
+    } else if (idConteudo >= 42 && idConteudo <= 45) {
+        window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`
+    } else if (idConteudo >= 46 && idConteudo <= 47) {
+        window.location.href = `/conteudos?id_conteudo=${idConteudo}`
+    } else if (idConteudo == 48) {
+        window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`
+    } else if (idConteudo == 49) {
+        window.location.href = `/conteudos?id_conteudo=${idConteudo}`
+    } else if (idConteudo == 50) {
+        window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`
     }
 }
 
 function carregarProximoConteudo() {
-    if (idConteudo < 38) {  // Define um limite máximo
+    if (idConteudo < 50) {  // Define um limite máximo
         idConteudo += 1;
         navegarConteudo(idConteudo);
     } else {
@@ -378,7 +474,7 @@ function teste_campo() {
             let insert_button = document.querySelector('.div2')
             // insert_button.innerHTML += `<button onclick ="carregarConteudoAnterior()">Conteúdo Anterior</button>`
             insert_button.innerHTML = `<button onclick ="carregarProximoConteudo()" class="next">Próximo Conteúdo</button>`
-            fundo_abas.style.width = '64px'
+            fundo_abas.style.width = '72px'
             fundo_abas.style.margin = '0 0 0 48px'
             resposta_console.innerHTML = `<p>Hello, World!</p>`
             tit.innerText = "Muito bem! Sua mensagem foi exibida na tela/console com sucesso!"
@@ -434,7 +530,7 @@ function teste_campo() {
                         botao_testar.remove();
         
                         // Ajustar o estilo do fundo
-                        fundo_abas.style.width = '64px';
+                        fundo_abas.style.width = '72px';
                         fundo_abas.style.margin = '0 0 0 48px';
         
                         // Inserir o botão para carregar o próximo conteúdo
@@ -491,7 +587,7 @@ function teste_campo() {
             let linha_esquerda_vertical_botao_reset = document.querySelector(".linha_vertical_abas_terminal_resposta")
             let botao_testar = document.querySelector(".terminal-button2")
             let insert_button = document.querySelector('.div2')
-            fundo_abas.style.width = '64px'
+            fundo_abas.style.width = '72px'
             fundo_abas.style.margin = '0 0 0 48px'
             resposta.style.color = "#fff"
             resposta.value = `Olá, meu nome é ${nome} e tenho ${idade} anos!`
@@ -510,13 +606,10 @@ function teste_campo() {
         // Expressões regulares
         const regexNome_dupla = /^nome\s*=\s*".+"$/; // Para 'nome = "algum texto"'
         const regexNome_simples = /^nome\s*=\s*'.+'$/; // Para 'nome = 'algum texto''
-
         console.log("Valor do primeiro input (nome):", valorNome);
-
         // Verificando se o primeiro input corresponde ao nome (com aspas simples ou duplas)
         const isNomeValido = regexNome_dupla.test(valorNome) || regexNome_simples.test(valorNome);
         console.log("Nome válido?", isNomeValido);
-
                 // Verificando as condições e exibindo o alerta correspondente
         if (isNomeValido) {
             // Pegando o nome entre aspas e a idade
@@ -536,7 +629,7 @@ function teste_campo() {
             let linha_esquerda_vertical_botao_reset = document.querySelector(".linha_vertical_abas_terminal_resposta")
             let botao_testar = document.querySelector(".terminal-button2")
             let insert_button = document.querySelector('.div2')
-            fundo_abas.style.width = '64px'
+            fundo_abas.style.width = '72px'
             fundo_abas.style.margin = '0 0 0 48px'
             resposta[0].value = `Olá, meu nome é Maria e tenho 18 anos!`
             resposta[1].value = `Olá, meu nome é ${nome} e tenho 18 anos!`
@@ -556,7 +649,7 @@ function teste_campo() {
         if (filho_input.value == "if") {
             espaco_resposta.innerHTML = `
             <input style="color: #fff;border: none; width: 330px; background: transparent; margin-top: 20px;" type="text" value='Hello World' disabled></input>`
-            fundo_abas.style.width = '64px'
+            fundo_abas.style.width = '72px'
             fundo_abas.style.margin = '0 0 0 48px'
             tit.innerText = "Bom trabalho! Você criou uma condição verdadeira."
             insert_button.innerHTML += `<button id="botaoEspecial" class="next">Próximo Conteúdo</button>`;
@@ -581,7 +674,7 @@ function teste_campo() {
         if (filho_input.value == "True") {
             espaco_resposta.innerHTML = `
             <input style="color: #fff;border: none; width: 330px; background: transparent; margin-top: 20px;" type="text" value='Hello World' disabled></input>`
-            fundo_abas.style.width = '64px'
+            fundo_abas.style.width = '72px'
             fundo_abas.style.margin = '0 0 0 48px'
             tit.innerText = "Bom trabalho! Você criou uma condição verdadeira."
             insert_button.innerHTML += `<button id="botaoEspecial" class="next">Próximo Conteúdo</button>`;
@@ -605,7 +698,7 @@ function teste_campo() {
         if(filho_input.value == "False") {
             espaco_resposta.innerHTML = `
             <input style="color: #fff;border: none; width: 330px; background: transparent; margin-top: 20px;" type="text" value='' disabled></input>`
-            fundo_abas.style.width = '64px'
+            fundo_abas.style.width = '72px'
             fundo_abas.style.margin = '0 0 0 48px'
             tit.innerText = "Bom trabalho! Você criou uma condição que será ignorada.\nAssim, nada será exibido no console."
             insert_button.innerHTML += `<button onclick="carregarProximoConteudo()" class="next">Próximo Conteúdo</button>`;
@@ -617,6 +710,12 @@ function teste_campo() {
         } else {
             tit.innerText = "Você pode tentar de novo!"
         }
+    } else if (idConteudo == 42) {
+        carregarProximoConteudo()
+    } else if (idConteudo == 44) {
+        carregarProximoConteudo()
+    } else if (idConteudo == 48) {
+        carregarProximoConteudo()
     }
     
     

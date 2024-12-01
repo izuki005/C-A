@@ -28,6 +28,7 @@ header h2{
     color: #fff;
     font-size: 20pt;
     margin-bottom: 50px;
+    text-align: center;
 }
 
 .img-header-left{
@@ -52,7 +53,7 @@ header h2{
 .h2-header{
     color: #fff;
     font-size: 20pt;
-    width: 850px;
+    width: 900px;
 }
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++ */
