@@ -8,10 +8,11 @@ async function atualizarBarraDeProgresso() {
     const totalConteudosFase2 = 8;
     const totalConteudosFase3 = 7;
     const totalConteudosFase4 = 10
-    const totalConteudos = totalConteudosFase1 + totalConteudosFase2 + totalConteudosFase3 + totalConteudosFase4;
+    const totalConteudosFase5 = 10
+    const totalConteudos = totalConteudosFase1 + totalConteudosFase2 + totalConteudosFase3 + totalConteudosFase4 + totalConteudosFase5;
 
     // Calcula o progresso com base na fase atual
-    let progresso = calcularProgresso(totalConteudosFase1, totalConteudosFase2, totalConteudosFase3,totalConteudosFase4);
+    let progresso = calcularProgresso(totalConteudosFase1, totalConteudosFase2, totalConteudosFase3,totalConteudosFase4, totalConteudosFase5);
 
     // Atualiza a largura da barra de progresso para refletir o progresso calculado
     barraProgresso.style.width = `${progresso}%`;
@@ -24,11 +25,9 @@ async function atualizarBarraDeProgresso() {
     }
 }
 
-// Função para calcular o progresso com base no conteúdo atual e nas fases
-function calcularProgresso(totalConteudosFase1, totalConteudosFase2, totalConteudosFase3, totalConteudosFase4) {
+function calcularProgresso(totalConteudosFase1, totalConteudosFase2, totalConteudosFase3, totalConteudosFase4, totalConteudosFase5) {
     let progresso = 0;
-    
-    // Verifica em qual fase o conteúdo atual se encontra e calcula o progresso
+
     if (idConteudo <= totalConteudosFase1) {
         // Progresso na Fase 1
         progresso = (idConteudo / totalConteudosFase1) * 100;
@@ -41,12 +40,14 @@ function calcularProgresso(totalConteudosFase1, totalConteudosFase2, totalConteu
     } else if (idConteudo <= totalConteudosFase1 + totalConteudosFase2 + totalConteudosFase3 + totalConteudosFase4) {
         // Progresso na Fase 4
         progresso = ((idConteudo - totalConteudosFase1 - totalConteudosFase2 - totalConteudosFase3) / totalConteudosFase4) * 100;
+    } else if (idConteudo <= totalConteudosFase1 + totalConteudosFase2 + totalConteudosFase3 + totalConteudosFase4 + totalConteudosFase5) {
+        // Progresso na Fase 5
+        progresso = ((idConteudo - totalConteudosFase1 - totalConteudosFase2 - totalConteudosFase3 - totalConteudosFase4) / totalConteudosFase5) * 100;
     } else {
         // Caso o `idConteudo` ultrapasse todas as fases, progresso completo
         progresso = 100;
     }
 
-    // Retorna o valor de progresso calculado
     return progresso;
 }
 
@@ -75,7 +76,11 @@ async function completarFase(userData) {
         await completarFaseAPI(3, userData.id_cadastro);
     } else if (idConteudo === 39) {
         await completarFaseAPI(4, userData.id_cadastro);
+    } else if (idConteudo === 50) {
+        window.alert('PARABENS VOCÊ CHEGOU AO ULTIMO OÁSIS, AGORA NO FUTURO IRÁ VER O MUNDO DO GELO')
+        await completarFaseAPI(5, userData.id_cadastro);
     }
+    
 }
 
 // Função para enviar a requisição para a API e completar a fase
