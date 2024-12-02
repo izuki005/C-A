@@ -333,6 +333,19 @@ document.addEventListener("DOMContentLoaded", () => {
         let insert_button = document.querySelector('.div2');
         insert_button.innerHTML += `<button onclick="carregarConteudoAnterior()">Conteúdo Anterior</button>`;
         insert_button.innerHTML += `<button onclick="carregarProximoConteudo()">Próximo Conteúdo</button>`;
+    } else if (idConteudo == 51) {
+        conteudo(".conteudo")
+        conteudo(".paragrafo")
+        conteudo(".resposta-usuario")
+        let espaco_resposta = document.querySelector(".espaco-resposta")
+        let botao = document.querySelector(".resposta");
+        botao.innerHTML += `<button class="botoes-resposta" onclick="botoes(event)">range():</button>`;
+        botao.innerHTML += `<button class="botoes-resposta" onclick="botoes(event)">in</button>`;
+        botao.innerHTML += `<button class="botoes-resposta" onclick="botoes(event)">i</button>`;
+        botao.innerHTML += `<button class="botoes-resposta" onclick="botoes(event)">for</button>`;
+        // espaco_resposta.style.fontSize = "16pt"
+        espaco_resposta.innerHTML += ` 
+        <p style="margin: 20px 0 0 0;"><input class="filho_input" style="text-align: center; width: 50px;" type="text" disabled>&nbsp;&nbsp;<input class="filho_input" style="text-align: center; width: 50px;" type="text" disabled>&nbsp;&nbsp;<input class="filho_input" style="text-align: center; width: 50px;" type="text" disabled>&nbsp;&nbsp;<input class="filho_input" style="text-align: center; width: 50px;" type="text" disabled></p>`
     }
     
 });
@@ -391,11 +404,13 @@ function navegarConteudo(idConteudo) {
         window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`
     } else if (idConteudo == 50) {
         window.location.href = `/conteudos?id_conteudo=${idConteudo}`
+    } else if (idConteudo >= 51) {
+        window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`
     }
 }
 
 function carregarProximoConteudo() {
-    if (idConteudo < 50) {  // Define um limite máximo
+    if (idConteudo < 53) {  // Define um limite máximo
         idConteudo += 1;
         navegarConteudo(idConteudo);
     } else {
@@ -436,8 +451,10 @@ function atualizarImagem() {
         oasis.src = "../assets/imgs-pug/oasis-02.png"
     } else if (idConteudo >= 23 && idConteudo <= 29) {
         oasis.src = "../assets/imgs-pug/oasis-03.png"
-    } else if (idConteudo >= 30) {
+    } else if (idConteudo >= 30 && idConteudo <= 39) {
         oasis.src = "../assets/imgs-pug/oasis-04.png"
+    } else if (idConteudo >= 40) {
+        oasis.src = "../assets/imgs-pug/oasis-05.png"
     }
 }
 
@@ -709,6 +726,27 @@ function teste_campo() {
         carregarProximoConteudo()
     } else if (idConteudo == 48) {
         carregarProximoConteudo()
+    } else if (idConteudo == 51) {
+        // Seleciona todos os inputs com a classe .filho_input
+        let inputs = document.querySelectorAll('.filho_input');
+        // Verifica se os valores dos inputs atendem às condições
+        if (
+            inputs[0].value.trim() === "for" &&
+            inputs[1].value.trim() === "i" &&
+            inputs[2].value.trim() === "in" &&
+            inputs[3].value.trim() === "range():"
+        ) {
+            console.log("Deu certo!");
+            setTimeout(() => {
+                carregarProximoConteudo()
+            }, 4000)
+        } else {
+            console.log("Algo está errado!");
+            tit.innerText = "Você pode tentar de novo!"
+            setTimeout(() => {
+                recarregar_pagina()
+            }, 4000)
+        }
     }
     
     
