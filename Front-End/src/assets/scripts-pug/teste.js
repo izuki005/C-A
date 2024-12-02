@@ -343,9 +343,16 @@ document.addEventListener("DOMContentLoaded", () => {
         botao.innerHTML += `<button class="botoes-resposta" onclick="botoes(event)">in</button>`;
         botao.innerHTML += `<button class="botoes-resposta" onclick="botoes(event)">i</button>`;
         botao.innerHTML += `<button class="botoes-resposta" onclick="botoes(event)">for</button>`;
-        // espaco_resposta.style.fontSize = "16pt"
         espaco_resposta.innerHTML += ` 
         <p style="margin: 20px 0 0 0;"><input class="filho_input" style="text-align: center; width: 50px;" type="text" disabled>&nbsp;&nbsp;<input class="filho_input" style="text-align: center; width: 50px;" type="text" disabled>&nbsp;&nbsp;<input class="filho_input" style="text-align: center; width: 50px;" type="text" disabled>&nbsp;&nbsp;<input class="filho_input" style="text-align: center; width: 50px;" type="text" disabled></p>`
+    } else if (idConteudo == 52) {
+        conteudo(".conteudo")
+        conteudo(".paragrafo")
+        conteudo(".resposta-usuario")
+        let espaco_resposta = document.querySelector(".espaco-resposta")
+        espaco_resposta.innerHTML += ` 
+        <p style="margin: 20px 0 0 0;">for&nbsp;&nbsp;numero&nbsp;&nbsp;in&nbsp;&nbsp;range(&nbsp;<input maxlength="3" class="filho_input" style="text-align: center; width: 50px;" type="text">&nbsp;):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"Este é o número {numero}")</p>`
     }
     
 });
@@ -747,7 +754,42 @@ function teste_campo() {
                 recarregar_pagina()
             }, 4000)
         }
-    }
+    } else if (idConteudo == 52) {
+        let input = document.querySelector('.filho_input');
+        let espaco_resposta = document.querySelector(".espaco-resposta");
+        let frases = ["Este é o número 1", "Este é o número 2", "Este é o número 3", "Este é o número 4", "Este é o número 5", "Este é o número 6"];
+        let valor = input.value.trim();
+
+        espaco_resposta.style.padding = "14px 0 0 30px"
+    
+        if (!isNaN(valor) && valor !== "") {
+            valor = Number(valor); // Converte para número
+            espaco_resposta.innerHTML = ""; // Limpa o conteúdo anterior
+    
+            // Loop baseado no valor
+            for (let i = 0; i < valor; i++) {
+                // Verifica se há frase correspondente no array
+                if (i < frases.length) {
+                    espaco_resposta.innerHTML += `${frases[i]}<br>`;
+                } else {
+                    if ( i >= 10)
+                    espaco_resposta.innerHTML += `Este é o número ${i + 1}<br>`;
+                    
+                }
+            }
+            tit.innerHTML = `Muito bem! Você determinou quantas vezes o loop irá se repetir `
+            conteudo(".img_botao_reset")
+            conteudo(".linha_vertical_abas_terminal_resposta")
+            conteudo(".terminal-button2")
+            let insert_button = document.querySelector('.div2');
+            insert_button.innerHTML += `<button class="next" onclick="carregarProximoConteudo()">Próximo Conteúdo</button>`;
+        } else {
+            tit.innerHTML = "Por favor, insira um número válido!"
+            setTimeout(() => {
+                recarregar_pagina()
+            }, 3500)
+        }
+    }          
     
     
 }
