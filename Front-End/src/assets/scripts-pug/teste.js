@@ -353,6 +353,14 @@ document.addEventListener("DOMContentLoaded", () => {
         espaco_resposta.innerHTML += ` 
         <p style="margin: 20px 0 0 0;">for&nbsp;&nbsp;numero&nbsp;&nbsp;in&nbsp;&nbsp;range(&nbsp;<input maxlength="3" class="filho_input" style="text-align: center; width: 50px;" type="text">&nbsp;):<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"Este é o número {numero}")</p>`
+    } else if (idConteudo == 53) {
+        conteudo(".button2_div2")
+        let insert_button = document.querySelector('.div2');
+        insert_button.innerHTML += `<button id="botaoEspecial">Próximo Conteúdo</button>`;
+        // Modifica o onclick do botão para redirecionar para /oasis
+        document.getElementById("botaoEspecial").onclick = function() {
+            window.location.href = "/inicio-jogo";
+        };
     }
     
 });
@@ -411,8 +419,10 @@ function navegarConteudo(idConteudo) {
         window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`
     } else if (idConteudo == 50) {
         window.location.href = `/conteudos?id_conteudo=${idConteudo}`
-    } else if (idConteudo >= 51) {
+    } else if (idConteudo >= 51 && idConteudo <= 52) {
         window.location.href = `/conteudos-atividades?id_conteudo=${idConteudo}`
+    } else if (idConteudo == 53) {
+        window.location.href = `/conteudos?id_conteudo=${idConteudo}`
     }
 }
 
@@ -743,10 +753,19 @@ function teste_campo() {
             inputs[2].value.trim() === "in" &&
             inputs[3].value.trim() === "range():"
         ) {
-            console.log("Deu certo!");
-            setTimeout(() => {
-                carregarProximoConteudo()
-            }, 4000)
+            tit.innerHTML = "Muito bem! Você conseguiu criar a estrutura do for."
+            conteudo(".img_botao_reset")
+            conteudo(".linha_vertical_abas_terminal_resposta")
+            conteudo(".terminal-button2")
+            conteudo(".botoes-resposta")
+            conteudo(".botoes-resposta")
+            conteudo(".botoes-resposta")
+            conteudo(".botoes-resposta")
+            let insert_button = document.querySelector('.div2');
+            insert_button.innerHTML += `<button class="next" onclick="carregarProximoConteudo()">Próximo Conteúdo</button>`;
+            // setTimeout(() => {
+            //     carregarProximoConteudo()
+            // }, 4000)
         } else {
             console.log("Algo está errado!");
             tit.innerText = "Você pode tentar de novo!"
@@ -757,7 +776,7 @@ function teste_campo() {
     } else if (idConteudo == 52) {
         let input = document.querySelector('.filho_input');
         let espaco_resposta = document.querySelector(".espaco-resposta");
-        let frases = ["Este é o número 1", "Este é o número 2", "Este é o número 3", "Este é o número 4", "Este é o número 5", "Este é o número 6"];
+        let frases = ["Este é o número 1", "Este é o número 2", "Este é o número 3", "Este é o número 4", "Este é o número 5", "Este é o número 6", "Este é o número 7", "Este é o número 8", "Este é o número 9", "Este é o número 10"];
         let valor = input.value.trim();
 
         espaco_resposta.style.padding = "14px 0 0 30px"

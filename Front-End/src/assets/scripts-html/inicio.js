@@ -46,6 +46,22 @@ function atualizarPlaneta() {
     }
 }
 
+// Verifica se o localStorage contém a informação de "Fases completadas: 5"
+const fasesCompletadas = localStorage.getItem("fasesCompletadas");
+
+if (fasesCompletadas === "5") {
+    console.log("Fases completadas: 5. Atualizando o status do planeta Gelo...");
+
+    // Atualiza o planeta "Gelo" para desbloqueado
+    const planetaGelo = planetas.find(planeta => planeta.nome === "Gelo");
+    if (planetaGelo) {
+        planetaGelo.desbloqueado = true; // Marca como desbloqueado
+        console.log("Planeta Gelo desbloqueado!");
+    } else {
+        console.error("Planeta Gelo não encontrado no array de planetas.");
+    }
+}
+
 // Evento para mudar para o planeta anterior
 setaEsquerda.addEventListener('click', () => {
     indiceAtual = (indiceAtual - 1 + planetas.length) % planetas.length;

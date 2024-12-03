@@ -8,7 +8,7 @@ async function atualizarBarraDeProgresso() {
     const totalConteudosFase2 = 8;
     const totalConteudosFase3 = 7;
     const totalConteudosFase4 = 10
-    const totalConteudosFase5 = 10
+    const totalConteudosFase5 = 14
     const totalConteudos = totalConteudosFase1 + totalConteudosFase2 + totalConteudosFase3 + totalConteudosFase4 + totalConteudosFase5;
 
     // Calcula o progresso com base na fase atual
@@ -76,7 +76,7 @@ async function completarFase(userData) {
         await completarFaseAPI(3, userData.id_cadastro);
     } else if (idConteudo === 39) {
         await completarFaseAPI(4, userData.id_cadastro);
-    } else if (idConteudo === 50) {
+    } else if (idConteudo === 53) {
         console.log('PARABENS VOCÊ CHEGOU AO ULTIMO OÁSIS, AGORA NO FUTURO IRÁ VER O MUNDO DO GELO')
         await completarFaseAPI(5, userData.id_cadastro);
     }
