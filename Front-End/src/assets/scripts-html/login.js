@@ -45,12 +45,21 @@ async function verificarUsuario() {
                 nome: responseData.nome,
                 email: responseData.email,
                 senha: responseData.senha, 
-                fases: responseData.fases
+                fases: responseData.fases // Supondo que isso contém a fase atual do banco
             };
 
-            // Armazenar os dados do usuário no localStorage
-            localStorage.setItem('userData', JSON.stringify(userData));
+            // Limpar a fase atual do Local Storage
+            localStorage.removeItem('faseAtual');
+            console.log("Fase atual removida do Local Storage.");
 
+            // Atualizar a fase atual com base no banco de dados
+            if (userData.fases) {
+                localStorage.setItem('faseAtual', userData.fases);
+                console.log(`Fase atual atualizada para: ${userData.fases}`);
+            }
+
+            // Armazenar os dados do usuário no Local Storage
+            localStorage.setItem('userData', JSON.stringify(userData));
             console.log('Usuário encontrado com sucesso!', userData);
             window.alert('USUÁRIO EXISTENTE');
 
@@ -65,6 +74,7 @@ async function verificarUsuario() {
         window.alert('Erro na chamada de API');
     }
 }
+
 //==========================================================
 function mostrarsenha() {
     var passwordField = document.getElementById("logSenha");
