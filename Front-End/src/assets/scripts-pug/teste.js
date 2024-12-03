@@ -576,8 +576,8 @@ function teste_campo() {
         const valorIdade = campos[1].value.trim(); // Valor do segundo campo (idade)
     
         // Expressões regulares
-        const regexNome_dupla = /^nome\s*=\s*".+"$/; // Para 'nome = "algum texto"'
-        const regexNome_simples = /^nome\s*=\s*'.+'$/; // Para 'nome = 'algum texto''
+        const regexNome_dupla = /^nome\s*=\s*"[a-zA-Z]+"$/; // Para 'nome = "texto"' apenas com letras
+        const regexNome_simples = /^nome\s*=\s*'[a-zA-Z]+'$/; // Para 'nome = 'texto'' apenas com letras
         const regexIdade = /^idade\s*=\s*\d+$/; // Para 'idade = número'
     
         console.log("Valor do primeiro input (nome):", valorNome);
@@ -624,15 +624,15 @@ function teste_campo() {
             insert_button.innerHTML = `<button onclick ="carregarProximoConteudo()" class="next">Próximo Conteúdo</button>`
             tit.innerText = "Muito Bem! Você declarou suas primeiras variáveis."
         } else {
-            tit.innerText = "Formato inválido. Certifique-se de usar:\nnome = \"algum texto\"\nidade = algum número"
+            tit.innerText = "Formato inválido. Certifique-se de usar:\nnome = \"algum texto que tenha apenas letras\"\nidade = algum número"
         }
     } else if (idConteudo == 26) {
         let campo = document.querySelector(".filho_input");
         
         const valorNome = campo.value.trim();
         // Expressões regulares
-        const regexNome_dupla = /^nome\s*=\s*".+"$/; // Para 'nome = "algum texto"'
-        const regexNome_simples = /^nome\s*=\s*'.+'$/; // Para 'nome = 'algum texto''
+        const regexNome_dupla = /^nome\s*=\s*"[a-zA-Z]+"$/; // Para 'nome = "texto"' apenas com letras
+        const regexNome_simples = /^nome\s*=\s*'[a-zA-Z]+'$/; // Para 'nome = 'texto'' apenas com letras
         console.log("Valor do primeiro input (nome):", valorNome);
         // Verificando se o primeiro input corresponde ao nome (com aspas simples ou duplas)
         const isNomeValido = regexNome_dupla.test(valorNome) || regexNome_simples.test(valorNome);
@@ -666,7 +666,7 @@ function teste_campo() {
             insert_button.innerHTML = `<button onclick ="carregarProximoConteudo()" class="next">Próximo Conteúdo</button>`
             tit.innerText = "Muito bem! Como você comprovou, variáveis recebem novos valores"
         } else {
-            tit.innerText = "Formato inválido. Certifique-se de usar:\nnome = \"algum texto\""
+            tit.innerText = "Formato inválido. Certifique-se de usar:\nnome = \"algum texto e que seja apenas letras\""
         }
     } else if (idConteudo == 31) {
         let filho_input = document.querySelector(".filho_input")
