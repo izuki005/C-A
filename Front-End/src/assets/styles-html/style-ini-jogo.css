@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-image: url(../imgs-html/Stars-black.png);
+    background-color: #283134;
+    font-family: var(--font-roboto);
+    filter: saturate(1.2);
+}
+/*estilos dentro do header*/
+header {
+    /* font-size: 16pt;
+    font-weight: bold; */
+    /* margin: 0px 1px 0 0; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* height: 187px; */
+    /* border: 1px solid blue; */
+    /* padding-top: 30px; */
+}
+
+.config {
+    width: 50px;
+    height: auto;   
+    margin: 4px 33px 0 0;  
+    /* border: 1px solid blue; */
+}
+.mini {
+    margin: 4px 0 0 33px;  
+    /* border: 1px solid blue; */
+
+}
+.mini-mundos {
+    /* border: 1px solid blue; */
+    /* filter: saturate(1.5); */
+}
+
+h1{
+    margin-right: 38%;
+    color: #FFBF65;
+    opacity: 0.1;
+}
+
+/* div img{
+    margin-left: 60px;
+} */
+
+/*estilos dentro da section*/
+section{
+    /* border: 1px solid blue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.fa-chevron-left, .fa-chevron-right{
+    color: #FFBF65;
+}
+
+.section_horizontal {
+    /* border: 1px solid blue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#imagem-planeta {
+    padding: 10px;
+    margin: 0;
+    width: 320px;
+    border-radius: 50%; 
+    /* filter: saturate(1.5); */
+    /* box-shadow: 0 0 30px 20px rgba(255, 165, 0, 0.7); 
+    transition: box-shadow 0.3s ease-in-out;  */
+    position: relative;
+    animation: flutuar 3s ease-in-out infinite; /* Define a animação */
+    /* border: 1px solid blue; */
+}
+@keyframes flutuar {
+    0% {
+        transform: translateY(0); /* Posição inicial */
+    }
+    50% {
+        transform: translateY(-20px); /* Sobe 10px */
+    }
+    100% {
+        transform: translateY(0); /* Volta para a posição inicial */
+    }
+}
+
+
+
+#base_mundos {
+    width: 200px;
+    position: relative;
+}
+
+#espelho {
+    position: absolute;
+    margin: 310px 0 0 0;
+    width: 80px;
+    height: 20px;
+    z-index: 1;
+    animation: crescerEspelho 3s ease-in-out infinite;
+    filter: saturate(0) contrast(0) brightness(0);
+    
+}
+
+@keyframes crescerEspelho {
+    0% {
+        transform: scale(1.2); 
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1); 
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0.6;
+    }
+}
+
+/* section img:hover {
+    box-shadow: 0 0 60px 30px rgba(255, 165, 0, 1); 
+} */
+.fundo_brilhante{
+    background: rgba(9, 255, 239, 0);
+    width: 254px;
+    height: 250px;
+    border-radius: 50%; /* Torna a imagem redonda, caso necessário */
+    /* box-shadow: 0 0 30px 20px rgba(9, 255, 239, 0.1);  */
+    transition: box-shadow 0.3s ease-in-out; /* Adiciona transição suave */
+    position: absolute;
+    margin: 46px 0 0 50px;
+    z-index: 3;
+    animation: flutuar 3s ease-in-out infinite; /* Define a animação */
+}
+.fundo_brilhante:hover{
+    box-shadow: 0 0 40px 10px rgba(9, 255, 239, 0.6); /* Aumenta o brilho ao passar o mouse */
+}
+
+/*estilos dentro do footer*/
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    width: 158px;
+    height: 76px;
+    border-radius: 17.76px;
+    border-color: #FFBF65;
+    background: none;
+    cursor: pointer;
+}
+
+/* footer .config{
+    margin-left: 42px ;
+} */
+
+.saida-inicio{
+    color: #FFBF65;
+    box-shadow: -6.56px 8.53px 10px rgba(0, 0, 0, 0.25);
+}
+
+.bloqueado {
+    opacity: 0.5;  /* Torna o planeta mais transparente */
+    cursor: not-allowed;  /* Altera o cursor para indicar que não pode clicar */
+}
+
+
+.bloqueado::after {
+    content: "Bloqueado";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000;
+}
+
+#seta-direita, #seta-esquerda{
+    cursor: pointer;
+}

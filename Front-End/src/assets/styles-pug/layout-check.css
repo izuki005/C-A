@@ -1,0 +1,184 @@
+body{
+    background-color: #283134;
+    background-image: url('../imgs-pug/Stars-black.png');
+    filter: saturate(1.2);
+    font-family: var(--font-roboto);
+}
+
+header{ 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 1px solid black; */
+}
+
+span{
+    color:rgb(181, 109, 2)
+}
+
+.img-header-left{
+    width: 140px;
+}
+
+.div-img-header{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    /* border: 1px solid black; */
+    width: 100px;
+    height: 100px;
+
+}
+.img-header-right{
+    width: 50px;
+    height: auto;
+    /* border: 1px solid red; */
+}
+
+.h2-header{
+    color: #fff;
+    font-size: 20pt;
+    width: 800px;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 311px;
+    /* border: 1px solid rgb(2, 40, 255); */
+}
+
+
+
+.img_botao_reset {
+    width: auto;
+    height: 30px;
+    cursor: pointer;
+}
+
+.terminal-centro {
+    position: relative; /* Para manipulação do conteúdo interno */
+    border: 2px solid rgba(181, 109, 2, 0.8); /* Borda laranja semi-transparente */
+    background: rgba(255, 255, 255, 0.01); /* Fundo levemente opaco */
+    backdrop-filter: blur(10px); /* Aplicação do efeito de vidro */
+    /* -webkit-backdrop-filter: blur(10px); Suporte para Safari */
+    width: 750px;   
+    height: 230px;
+    color: #fff; /* Texto branco */
+    display: flex;
+    justify-content: start;
+    /* align-items: center; */
+    overflow: hidden;
+    border-radius: 8px; /* Cantos arredondados para suavizar */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Efeito de sombra para destaque */
+}
+
+.centro {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly ;
+    align-items: start;
+    color: #fff; 
+    z-index: 1;
+    font-size: 20pt;
+    width: 400px;
+    /* font-weight: bold; */
+}
+.divInput {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+    /* border: 2px solid blue; */
+    width: 500px;
+}
+
+.input_centro {
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #E19A2F;
+    border-radius: 4px;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    margin: 0 20px 0 30px;
+}
+.input_centro:checked {
+    background-color: #E19A2F; /* Fundo preenchido ao ser marcado */
+    /* border-color: #FFD700; Cor da borda quando marcado */
+}
+
+.input_centro:checked::before {
+    content: "✔"; /* Adiciona um checkmark */
+    color: white;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+
+/* Para o botão que foi clicado (meio apagado) */
+.apagado {
+    opacity: 0.5;
+    pointer-events: none; 
+}
+
+/* Esconde o botão */
+.escondido {
+    display: none;
+}
+
+#barra-progresso-container {
+    width: 80%; /* Ajusta a largura do container da barra */
+    max-width: 800px; /* Limite máximo de largura para telas grandes */
+    background-color: #333333; /* Cor de fundo mais escura */
+    border-radius: 10px; /* Arredondamento das bordas */
+    overflow: hidden;
+    height: 10px; /* Altura reduzida */
+    margin: 20px auto; /* Centraliza a barra e dá espaço acima e abaixo */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+}
+
+#barra-progresso {
+    height: 100%;
+    background-color: #4caf50; /* Cor da barra de progresso */
+    width: 0%; /* Inicia vazio */
+    transition: width 0.6s ease-in-out; /* Animação de preenchimento */
+}
+
+footer{
+    /* border: 5px solid rgb(0, 60, 255); */
+    display: flex;
+    justify-content: space-around;
+}
+.button_verific {
+    width: 126px;
+    height: 60px;
+    border: none;
+    /* background: #E19A2F; */
+    color: #fff;
+    cursor: pointer;
+}
+
+.button_back_next {
+    width: 126px;
+    height: 60px;
+    border-radius: 6px;
+    border: none;
+    background: #514D4D;
+    color: #fff;
+    cursor: pointer;
+}
+.next {
+    margin-left: 418px;
+}

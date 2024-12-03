@@ -1,0 +1,320 @@
+body{
+    background-color: #283134;
+    background-image: url('../imgs-pug/Stars-black.png');
+    filter: saturate(1.2);
+    font-family: var(--font-roboto);
+}
+
+header{ 
+    /* display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid blue;
+    height: 188.33px; */
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+}
+.barra_header{
+    position: static;
+    /* border: 1px solid blue; */
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h2{
+    color: #fff;
+    font-size: 20pt;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.img-header-left{
+    width: 140px;
+}
+/* .div-img-header{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+
+} */
+.img-header-right{
+    width: 50px;
+    height: auto;
+    margin: 0 26px 0 0;
+    /* border: 1px solid red; */
+}
+
+.h2-header{
+    color: #fff;
+    font-size: 20pt;
+    width: 900px;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 400px;
+    /* border: 1px solid rgb(2, 91, 255); */
+}
+section .div2{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid black; */
+    width: 1010px;
+    margin-top: 300px;
+}
+section .div2 button {
+    width: 126px;
+    height: 60px;
+    border-radius: 6px;
+    border: none;
+    background: #514D4D;
+    color: #fff;
+    cursor: pointer;
+}
+.next {
+    margin-left: 884px;
+}
+.terminal{
+    border: 2px solid rgb(181, 109, 2, 0.8);
+    border-radius: 8px;
+    width: 700px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+}
+.terminal-header{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    /* border: 2px solid #7e7870; */
+    width: 700px;
+    height: 38px;
+    position: relative;
+}
+.terminal-header img{
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    /* border: 2px solid #B56D02; */
+}
+.terminal-header .linha_vertical_abas{
+    height: 38px;
+    width: 2px;
+    background: #B56D02;
+    margin: 0 6px 0 6px;
+}
+.linha_vertical_abas_terminal_resposta{
+    height: 30px;
+    width: 2px;
+    background: rgb(181, 109, 2, 0.8);
+    margin: 0 6px 0 6px;
+}
+.img_botao_reset {
+    width: auto;
+    height: 30px;
+    cursor: pointer;
+}
+.terminal-header .fundo_abas{
+    height: 38px;
+    width: 46px;
+    background: rgba(181, 109, 2, 0.098);
+    margin-left: 0; /* vai mudar quando a seleção for para o console*/
+    position: absolute;
+}
+
+.terminal-header p{
+    color: #fff;
+    /* border: 2px solid #B56D02; */
+}
+
+.terminal-centro{
+    border: 2px solid rgb(181, 109, 2, 0.8);
+    width: 700px;
+    height: 230px;
+    color: #fff;
+}
+.espaco-resposta {
+    width: 700px; /* Define a largura do elemento */
+    height: auto; 
+    /* border: 1px solid blue;  */
+    display: flex; /* Torna o elemento um contêiner flexível */
+    flex-direction: column; /* Alinha os itens flex em uma coluna (verticalmente) */
+    align-items: start; 
+    padding: 0 0 0 30px; /* Adiciona um padding de 30px no lado esquerdo */
+    overflow-y: auto;
+    /* Estilos para Firefox */
+    scrollbar-width: thin; /* Faz a barra de rolagem ser fina no Firefox */
+    scrollbar-color: #E19A2F rgba(136, 136, 136, 0.205); /* Define as cores da barra de rolagem no Firefox */
+}
+/* Estilos para navegadores baseados em WebKit (Chrome, Safari, Edge) */
+.espaco-resposta::-webkit-scrollbar {
+    width: 8px; /* Largura da barra de rolagem */
+}
+.espaco-resposta::-webkit-scrollbar-track {
+    background: rgb(0, 0, 0); /* Fundo preto para a barra */
+}
+.espaco-resposta::-webkit-scrollbar-thumb {
+    background: #E19A2F; /* Polegar laranja */
+    border-radius: 4px; /* Deixa o polegar com cantos arredondados */
+}
+.espaco-resposta::-webkit-scrollbar-thumb:hover {
+    background: #D8891C; /* Polegar laranja mais escuro ao passar o mouse */
+}
+.pai_p {
+    /* border: 1px solid blue; */
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+.filho_input {
+    /* border: 1px solid purple; */
+    width: 160px;
+    height: 20px;
+    outline: none;
+    border: 1px solid #E19A2F;
+    border-radius: 4px;
+    background: transparent;
+    color: #fff;
+    margin: 6px 0 0 0;
+}
+
+.resposta-usuario{
+    border-radius: 4px;
+    width: 60px;
+    height: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.conteudo{
+    background-color: #283134;
+    width: 50px;
+    height: 20px;
+    color: #fff;
+    text-align: center;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+}
+.conteudo2{
+    background-color: #283134;
+    width: 50px;
+    height: 20px;
+    color: #fff;
+    text-align: center;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+}
+
+.terminal-resposta{
+    width: 700px;
+    height: 30px;
+    /* border: 1px solid palevioletred; */
+}
+div .terminal-resposta{
+    display: flex;
+    justify-content: end;
+}
+.terminal-button1{
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    background: transparent;
+    /* background-color: rgb(181, 109, 2, 0.8); */
+    /* border-left: 1px solid rgb(181, 109, 2, 0.8);
+    border-right: 1px solid rgb(181, 109, 2, 0.8); */
+    border: none;
+    outline: none;
+    /* border-radius: 0 0 6px 0; */
+    cursor: pointer;
+}
+.terminal-button2{
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    background-color: rgb(181, 109, 2, 0.8);
+    border: none;
+    outline: none;
+    border-radius: 0 0 6px 0;
+    cursor: pointer;
+}
+.terminal-button2:hover{
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    background-color: rgb(181, 109, 2);
+    border: none;
+    outline: none;
+    border-radius: 0 0 6px 0;
+    cursor: pointer;
+}
+
+.resposta{
+    display: flex;
+    width: 700px;
+}
+.botoes-resposta{
+    margin: 10px 0 0 10px;
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    background-color: rgb(181, 109, 2, 0.6);
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.botoes-resposta:hover{
+    margin: 10px 0 0 10px;
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    background-color: rgb(181, 109, 2, 0.8);
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Para o botão que foi clicado (meio apagado) */
+.apagado {
+    opacity: 0.5;
+    pointer-events: none; 
+}
+
+/* Esconde o botão */
+.escondido {
+    display: none;
+}
+
+#barra-progresso-container {
+    width: 80%; /* Ajusta a largura do container da barra */
+    max-width: 800px; /* Limite máximo de largura para telas grandes */
+    background-color: #333333; /* Cor de fundo mais escura */
+    border-radius: 10px; /* Arredondamento das bordas */
+    overflow: hidden;
+    height: 10px; /* Altura reduzida */
+    margin: 20px auto; /* Centraliza a barra e dá espaço acima e abaixo */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+}
+
+#barra-progresso {
+    height: 100%;
+    background-color: #4caf50; /* Cor da barra de progresso */
+    width: 0%; /* Inicia vazio */
+    transition: width 0.6s ease-in-out; /* Animação de preenchimento */
+}

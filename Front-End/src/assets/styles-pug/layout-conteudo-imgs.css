@@ -1,0 +1,124 @@
+body{
+    background-color: #283134;
+    background-image: url('../imgs-pug/Stars-black.png');
+    filter: saturate(1.2);
+    font-family: var(--font-roboto);
+}
+
+header{ 
+    /* display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid blue;
+    height: 188.33px; */
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+}
+.barra_header{
+    position: static;
+    /* border: 1px solid blue; */
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h2{
+    color: #fff;
+    font-size: 20pt;
+    margin-bottom: 50px;
+}
+
+.img-header-left{
+    width: 140px;
+}
+/* .div-img-header{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+
+} */
+.img-header-right{
+    width: 50px;
+    height: auto;
+    margin: 0 26px 0 0;
+    /* border: 1px solid red; */
+}
+
+.header-div-p{
+    color: #fff;
+    font-size: 16pt;
+    /* width: 950px; */
+/*    margin: auto 10%; */
+    display: flex; 
+    justify-content: center;
+    /*align-items: center; */
+    /* bottom: 0; */
+    /* position: absolute; */
+    /* border: 1px solid pink; */
+    /* z-index: 2; */
+    /* padding: 0px; */
+    position: relative;
+}
+
+.header-div-p p{
+    padding: 0;
+    margin: 80px 0 0 40px;
+    position: absolute;
+    width: 900px;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+section{
+    display: flex;
+    justify-content: center;
+    /* height: 388px; */
+    /* border: 1px solid rgb(255, 2, 213); */
+    position: relative;
+    margin: 0 0 0 0;
+}
+section .div2{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid black; */
+    width: 1010px;
+    margin-top: 298px;
+}
+section .div2 button{
+    width: 126px;
+    height: 60px;
+    border-radius: 6px;
+    border: none;
+    background: #514D4D;
+    color: #fff;
+    cursor: pointer;
+}
+/* section div #img-marcada{
+    width: 100px;
+} */
+/* #passar-esquerdo, #passar-direito{
+    filter: saturate(0.7);
+} */
+#barra-progresso-container {
+    width: 80%; /* Ajusta a largura do container da barra */
+    max-width: 800px; /* Limite máximo de largura para telas grandes */
+    background-color: #333333; /* Cor de fundo mais escura */
+    border-radius: 10px; /* Arredondamento das bordas */
+    overflow: hidden;
+    height: 10px; /* Altura reduzida */
+    margin: 20px auto; /* Centraliza a barra e dá espaço acima e abaixo */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+}
+
+#barra-progresso {
+    height: 100%;
+    background-color: #4caf50; /* Cor da barra de progresso */
+    width: 0%; /* Inicia vazio */
+    transition: width 0.6s ease-in-out; /* Animação de preenchimento */
+}

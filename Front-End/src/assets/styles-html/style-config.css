@@ -1,0 +1,247 @@
+/* Importa a fonte Roboto do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap');
+
+/* Zera margens e preenchimentos padrão para todos os elementos */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilo do corpo da página */
+body {
+    background-image: url(../imgs-html/Stars-black.png);
+    background-color: #283134;
+    font-family: var(--font-roboto); /* Utiliza a fonte Roboto */
+    filter: saturate(1.2);
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+}
+
+/* Estilo para botões genéricos */
+button {
+    width: 158px;
+    height: 76px;
+    border-radius: 17.76px;
+    /* border-color: var(--cor-laranja); */
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0 10px 0 10px;
+}
+.fa-regular {
+    cursor: pointer;
+}
+
+/* Estilos específicos para os botões 'saida-inicio' e 'play' */
+.play {
+    color: var(--cor-laranja);
+    height: 60px;
+    box-shadow: -6.56px 8.53px 10px rgba(0, 0, 0, 0.25);
+    margin: 0;
+}
+
+/* Estilos para a seção principal */
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: auto;
+    /* border: 1px solid blue; */
+}
+
+/* Estilos para a seção principal, onde estão as principais divs */
+.main {
+    display: flex;
+    justify-content: space-around;
+    width: 99%;
+}
+
+/* Estilos para o contêiner central */
+.container {
+    border: 1px solid var(--cor-laranja);
+    background-color: rgba(0, 193, 255, 0.05);
+    border-radius: 21.79px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* margin-top: 10px; */
+    width: 400dvw;
+    /* height: 500px; */
+    padding: 0 0 20px 0;
+    color: #fff;
+}
+.container2 {
+    border: 1px solid var(--cor-laranja);
+    background-color: rgba(0, 193, 255, 0.05);
+    border-radius: 21.79px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    /* margin-top: 10px; */
+    width: 400dvw;
+    /* height: 500px; */
+    padding: 0 0 20px 0;
+    color: #fff;
+}
+/* .container__dados {
+    border: 1px solid blue; 
+} */
+/* Estilos para linhas de dados */
+.dados-row {
+    display: flex;
+    padding: 16px;
+    align-items: center;
+    color: #fff;
+    justify-content: space-between;
+}
+
+/* Estilos para as caixas de dados */
+.dados {
+    border: 0.9px solid #fff;
+    border-radius:10px;
+    height: 41.4px;
+    width: 274.56px;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    padding: 0 10px 0 10px;
+}
+
+#DeleteConta{
+    color: rgba(255, 255, 255, 0.041);
+    background-color: #ffdb6507;
+    border: none;
+    font-size: 20pt;
+    padding: 2px 6px 2px 6px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+#DeleteConta:hover{
+    color: white;
+    background-color: rgb(216, 33, 33);
+    border: none;
+    font-size: 20pt;
+    padding: 2px 6px 2px 6px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Estilos para o nome de entrada */
+.nome_inpt {
+    margin-right: 10px;
+}
+
+/* Estilos para o contêiner dos botões */
+.buttons {
+    display: flex;
+    /* margin-top: 10px; */
+}
+
+/* Estilo do container switch*/
+.switch-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-roboto);
+    font-size: 16px;
+}
+/* Estilo do texto do label */
+.switch-label {
+    color: #f0f0f0;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+/* Estilo do switch (toggle) */
+.switch {
+    width: 50px;
+    height: 24px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #ccc;
+    border-radius: 50px;
+    position: relative;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.switch:checked {
+    background-color: var(--cor-laranja); /* Cor roxa quando ativado */
+}
+
+.switch:before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.switch:checked:before {
+    transform: translateX(26px); /* Desloca o botão para a direita */
+}
+
+
+/* Estilos para a caixa de seleção de música */
+.checkbox__input {
+    transform: scale(2);
+    cursor: pointer;
+}
+
+/* Estilos gerais para inputs */
+input {
+    color: gray;
+}
+
+/* Estilos específicos para inputs transparentes */
+.input-tranparent {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    height: 41.4px;
+    width: 258px;
+}
+
+/* Estilo das imagens*/
+.img-lefth{
+    margin-top: 50px;
+    animation: flutuar 3s ease-in-out infinite; /* Define a animação */
+}
+/* Estilo das imagens*/
+.img-right {
+    margin-top: 50px;
+    animation: flutuar2 3s ease-in-out infinite; /* Define a animação */
+}
+
+@keyframes flutuar {
+    0% {
+        transform: translateY(0); /* Posição inicial */
+    }
+    50% {
+        transform: translateY(-20px); /* Sobe 10px */
+    }
+    100% {
+        transform: translateY(0); /* Volta para a posição inicial */
+    }
+}
+@keyframes flutuar2 {
+    0% {
+        transform: translateY(0); /* Posição inicial */
+    }
+    50% {
+        transform: translateY(20px); /* Sobe 10px */
+    }
+    100% {
+        transform: translateY(0); /* Volta para a posição inicial */
+    }
+}

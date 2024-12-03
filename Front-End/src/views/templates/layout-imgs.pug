@@ -1,0 +1,40 @@
+doctype html
+html(lang="pt-BR")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title conteudos-imgs
+        link(rel="stylesheet", href="../assets/styles-pug/vars.css")
+        link(rel="stylesheet", href="../assets/styles-pug/layout-conteudo-imgs.css")
+    body  
+        header
+            div.barra_header
+                div#barra-progresso-container
+                    div#barra-progresso
+            div.header-div-p
+                p !{conteudo.descricao}             
+            div.header
+                a(href="/oasis")
+                    img(src="../assets/imgs-pug/oasis-01.png", alt="", srcset="").img-header-left
+                h2= conteudo.titulo
+                a(href="/config")
+                    img(src="../assets/imgs-pug/config.png", alt="Configurações", srcset="").img-header-right
+        section 
+            div
+                img(src="../assets/imgs-pug/imagem_marcada.png", alt="")#img-marcada
+            div.div2
+                // Botão para ir para o conteúdo anterior
+                button(onclick="carregarConteudoAnterior()") Conteúdo Anterior
+                // Botão para ir para o próximo conteúdo
+                button(onclick="carregarProximoConteudo()") Próximo Conteúdo
+        footer 
+
+        // Inicializa a variável id_conteudo
+        script.
+            let idConteudo = !{id_conteudo}; // Passa o valor do ID do backend para o JavaScript
+            console.log(idConteudo)
+            let teste = document.querySelector("#img-marcada")
+            
+        // Incluindo o script
+        script(src="/assets/scripts-pug/teste.js")
+        script(src="/assets/scripts-pug/barra_progress.js")

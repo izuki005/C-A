@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capa do Jogo</title>
+<link rel="stylesheet" href="../../assets/styles-html/vars.css">
+<link rel="stylesheet" href="../../assets/styles-html/style-capa_jogo.css">
+</head>
+<body>
+  <div class="cover">
+    <div id="logo-container">
+      <img id="logo" src="../../assets/imgs-html/fundo-login.png" alt="logo">
+      <div class="planet deserto">
+        <img src="../../assets/imgs-html/M-deserto.png" alt="Planeta Deserto">
+      </div>
+      <div class="planet gelo">
+        <img src="../../assets/imgs-html/M-gelo.png" alt="Planeta Gelo">
+      </div>
+      <div class="planet floresta">
+        <img src="../../assets/imgs-html/M-floresta.png" alt="Planeta Floresta">
+      </div>
+      <div class="planet vulcao">
+        <img src="../../assets/imgs-html/M-vulcao.png" alt="Planeta Vulcão">
+      </div>
+    </div>
+    <h1>CÓDIGO AGORA</h1>
+    <p>Explore a programação nos confins do universo!</p>
+    <button class="start-button" onclick="iniciarJogo()">Começar</button>
+  </div>
+
+  <script>
+    function iniciarJogo() {
+      window.location.href = 'inicio-jogo';
+    }
+  </script>
+</body>
+</html>

@@ -6,6 +6,7 @@
     "mssql": "^10.0.2",
     "node.js": "^0.0.1-security",
     "path": "^0.12.7",
+    "pug": "^3.0.3",
     "src": "^1.1.2",
     "tedious": "^17.0.0"
   },
@@ -13,10 +14,19 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "nodemon": "server.js",
+    "test": "jest --coverage"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-mock-console": "^2.0.0",
+    "node-mocks-http": "^1.16.1",
+    "nodemailer-mock": "^2.0.6",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.0.0"
+  }
 }

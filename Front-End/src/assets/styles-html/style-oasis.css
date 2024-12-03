@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-image: url(../imgs-html/Stars-black.png);
+    background-color: #283134;
+    font-family: var(--font-roboto);
+    filter: saturate(1.2);
+}
+html, body {
+    height: 100%; /* Garantir que o body e o html ocupem toda a altura da tela */
+    margin: 0; /* Remover margens padrão */
+}
+
+/* Usando Flexbox no body para empurrar o footer para o fundo */
+body {
+    display: flex;
+    flex-direction: column; /* Alinha os elementos na coluna */
+    justify-content: space-between; /* Garante que o conteúdo e o footer se distribuam bem */
+    min-height: 100vh; /* Faz o conteúdo ocupar pelo menos 100% da altura da tela */
+}
+
+/*estilos dentro do header*/
+header{
+    /* margin: 0px 1px 0 0; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* height: 187px; */
+    /* border: 1px solid blue; */
+    /* padding-top: 30px; */
+}
+
+.config {
+    width: 50px;
+    height: auto;   
+    margin: 4px 33px 0 0;  
+    /* border: 1px solid blue; */
+}
+.voltar {
+    margin: 4px 0 0 0;  
+    /* border: 1px solid blue; */
+}
+h1{
+    margin-right: 38%;
+    color: #FFBF65;
+    opacity: 0.1;
+}
+
+/*estilos dentro da section*/
+section{
+    /* border: 1px solid blue; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 250px;
+    position: relative;
+}
+/* .lines {
+    z-index: 1;
+    position: absolute;
+}
+section .filho-div__ponto {
+    z-index: 2;
+}
+section {
+    overflow: visible;
+} */
+
+
+
+.divisao1{
+    /* border: 1px solid red; */
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+.divisao2{
+    /* border: 1px solid rgb(255, 242, 0); */
+    height: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+
+}
+#oasis-02{
+    width: 80px;
+    transition: width 0.3s ease;
+
+}
+#oasis-02:hover{
+    width: 100px;
+}
+.divisao3{
+    /* border: 1px solid rgb(77, 255, 0); */
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+.divisao4{
+    /* border: 1px solid rgb(0, 255, 225); */
+    height: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+#oasis-04{
+    width: 80px;
+    transition: width 0.3s ease;
+}
+#oasis-04:hover{
+    width: 100px;
+}
+.divisao5{
+    /* border: 1px solid rgb(153, 0, 255); */
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Ajuste conforme necessário */
+}
+.linha {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Evita interferência no clique */
+}
+.pai-sec__filho-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin: 90px 20px 0 20px;
+    /* border: 1px solid yellow; */
+}
+.filho-div__ponto{
+    background-color: aliceblue;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -10px;
+    margin-bottom: 10px;
+}
+
+.balao_info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #47C3D0;
+    width: 160px;
+    height: 50px;
+    border-radius: 16px 16px 0 16px;
+}
+
+.balao_info p {
+    color: #47C3D0;
+    font-weight: bold;
+    display: flex;
+    text-align: center;
+    font-size: 12pt;
+    font-family: var(--font-roboto);
+}
+
+section img{
+    width: 100px;
+    transition: width 0.3s ease;
+    position: relative;
+    z-index: 1;  /* Imagem ficará na frente */
+}
+section img:hover{
+    width: 120px;
+}
+
+/*estilos dentro do footer*/
+footer {
+    position: relative;
+    overflow: hidden; /* Impede que a imagem "vaze" para fora visualmente */
+    height: 200px; /* Defina a altura desejada do footer */
+    /* border: 1px solid #47C3D0; */
+}
+
+footer img {
+    width: 500px;
+    position: absolute; /* Ajuste para fazer a imagem "vazar" para fora */
+    left: -17%; /* Centraliza horizontalmente */
+    top: -50px;
+}
+/* Estilos para quando um oásis estiver bloqueado */
+.bloqueado {
+    opacity: 0.5; /* Torna o oásis mais claro para indicar que está bloqueado */
+    pointer-events: none; /* Desabilita cliques no oásis bloqueado */
+}

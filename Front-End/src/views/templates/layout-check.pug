@@ -1,0 +1,46 @@
+doctype html
+html(lang="pt-BR")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        
+        // Aqui entra a barra de progresso
+        div#barra-progresso-container
+            div#barra-progresso
+
+        title conteudos-check
+        link(rel="stylesheet", href="../assets/styles-pug/vars.css")
+        link(rel="stylesheet", href="../assets/styles-pug/layout-check.css")
+    body
+        header 
+            a(href="/oasis")
+                img(src="../assets/imgs-pug/oasis-02.png", alt="", srcset="").img-header-left
+            h2.h2-header !{conteudo.titulo}
+            //- h2.h2-header Pensando na nossa jornada até aqui, o comando print( )é um comando de Entrada ou Saída de dados?
+
+            div.div-img-header
+                a(href="/config")
+                    img(src="../assets/imgs-pug/config.png", alt="Configurações", srcset="").img-header-right
+        section
+            div.terminal-centro
+                div.centro
+                    div.divInput
+                        input(type="checkbox", class="input_centro", name="opcao", id="entrada", value="Comando de Entrada")
+                        label(for="entrada") Comando de Entrada
+                    div.divInput
+                        input(type="checkbox", class="input_centro", name="opcao", id="saida", value="Comando de Saída")
+                        label(for="saida") Comando de Saída
+                    div.divInput
+                        input(type="checkbox", class="input_centro", name="opcao", id="entrada_saida", value="Comando de Entrada e Saída")
+                        label(for="entrada_saida") Comando de Entrada e Saída
+        footer 
+            img(id="botaoVerificar" src="../assets/imgs-pug/botao_verific_amarelo.png" class="button_verific next")
+
+        script(src="/assets/scripts-pug/layout-check.js")
+        script(src="/assets/scripts-pug/barra_progress.js") 
+        script(src="/assets/scripts-pug/teste.js") 
+        //- script(src="/assets/scripts-pug/teste.js") 
+        
+        script.
+            let idConteudo = !{id_conteudo}; // Passa o valor do ID do backend para o JavaScript
+            console.log(idConteudo)

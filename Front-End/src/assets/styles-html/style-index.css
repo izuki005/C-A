@@ -1,0 +1,112 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: #283134;
+    background-image: url(../imgs-html/Stars-black.png);
+    color: #fff;
+    font-size: 18pt;
+    font-family: var(--font-roboto);
+    filter: saturate(1.2);
+}
+header{
+    background-color: rgba(61, 58, 55, 0.7);
+    width: 100%;
+    height: 96px;
+    display: flex;
+    border-radius: 0 0 10px 10px;
+    border-bottom: var(--cor-laranja) 1px solid;
+}
+li, a{
+    list-style: none;
+    text-decoration: none;
+    color: #fff;
+}
+li{
+    padding-left: 50px;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid blue; */
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+ul{
+    display: flex;
+    padding: 10px;
+}
+#logo{
+    width: 90px;
+    height: 90px;
+    margin-left: 60px;
+    border-radius: 50px;
+}
+section{
+    margin-top: 50px ;
+    display: flex;
+}
+.container{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.container__textM{
+    background-color: rgba(0, 193, 255, 0.05);
+    border: 1px solid var(--cor-laranja);
+    width: 420px;
+    max-width: 80vw ;
+    height: 380px;
+    max-height: 80vh ;
+    border-radius: 10px;
+    /* margin-left: 90px; */
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    /* align-items: center; */
+}
+.container__textM p{
+    padding: 69px 50px 0px 50px;
+    opacity: 1;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+.container__textM p.teste{
+    opacity: 0;
+}
+
+
+
+/* .container__textM .container__button{
+    background-color: #645E5E;
+    width: 201px;
+    height: 46px;
+    border-radius: 20px;
+    border: none;
+    font-family: Regular;
+    font-size: 16pt;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 100px;
+} */
+
+/* #Mundo{
+
+    width: 80%;
+    
+} */
+
+#Mundo {
+    width: 80%;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+#Mundo.animando {
+    transform: translateY(50px);
+    opacity: 0;
+}

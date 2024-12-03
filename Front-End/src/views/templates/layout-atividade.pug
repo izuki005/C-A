@@ -1,0 +1,50 @@
+doctype html
+html(lang="pt-BR")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title conteudos-atividades
+        link(rel="stylesheet", href="../assets/styles-pug/vars.css")
+        link(rel="stylesheet", href="../assets/styles-pug/layout-atividade.css")
+    body
+        header 
+            div.barra_header
+                div#barra-progresso-container
+                    div#barra-progresso
+            div.header
+                a(href="/oasis")
+                    img(src="../assets/imgs-pug/oasis-01.png", alt="", srcset="").img-header-left
+                h2.h2-header !{conteudo.titulo}
+                a(href="/config")
+                    img(src="../assets/imgs-pug/config.png", alt="Configurações", srcset="").img-header-right
+        section
+            div.terminal
+                div.terminal-header
+                    div.fundo_abas  
+                    img(src="../assets/imgs-pug/logo-python.png", alt="", srcset="")
+                    div.linha_vertical_abas
+                    p Console
+                    div.linha_vertical_abas
+                //- Nessa parte terminal centro vai conter o espaço para a resposta que será adicionada pelo usuário
+                div.terminal-centro
+                    div.espaco-resposta
+                        div.resposta-usuario
+                            input(type="text" disabled).conteudo
+                        p.paragrafo ("Hello, World!")
+                div.terminal-resposta
+                    div.linha_vertical_abas_terminal_resposta
+                    img(src="../assets/imgs-pug/botao_reset_codigo.png", alt="", onclick="recarregar_pagina()").img_botao_reset
+                    button(type="button" onclick="teste_campo()").terminal-button2 Testar
+            div.div2
+            //-     // Botão para ir para o conteúdo anterior
+            //-     button(onclick="carregarConteudoAnterior()") Conteúdo Anterior
+            //- //- Nessa parte abaixo o conteúdo detro dos botões para dar a resposta virão do banco
+            div.resposta 
+                //- button(type="button" onclick="botoes()").botoes-resposta print 
+
+        script(src="/assets/scripts-pug/teste.js") 
+        script(src="/assets/scripts-pug/barra_progress.js")
+
+        script.
+            let idConteudo = !{id_conteudo}; // Passa o valor do ID do backend para o JavaScript
+            console.log(idConteudo)

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código Agora</title>
+    <link rel="stylesheet" href="../../assets/styles-html/vars.css">
+    <link rel="stylesheet" href="../../assets/styles-html/style-login.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <img id="logo" src="../../assets/imgs-html/fundo-login.png" alt="logo">
+            <ul>
+                <li>
+                    <a href="index">
+                        Página inicial
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        Sobre
+                    </a>
+                </li>
+                <li>
+                    <a href="cadastro">
+                        Inscreva-se
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <div  class="container">
+            <div class="container__lefth">
+                <h1 class="">Login</h1>
+                
+                <div class="container__lefth__dados_cadastro">
+                    <div class="dados-row">
+                        <p class="dados"><input placeholder="Digite seu e-mal" id="logEmail" onkeydown="verificarCamposLog(event)" class="input-tranparent" type="text"><span class="fa fa-envelope"></span></p>
+                    </div>
+                    <div class="dados-row">
+                        <p class="dados"><input  placeholder="Digite sua senha" id="logSenha" onkeydown="verificarCamposLog(event)" class="input-tranparent" type="password"><span class="fa fa-lock"></span></p>
+                        <p class="check">
+                            <input type="checkbox" id="check" onclick="mostrarsenha()" value=""> Mostrar Senha
+                        </p>
+                    </div>
+                </div>
+            <button onclick="verificarUsuario()" class="container__button">Começar</button>
+            </div>
+            
+            <div class="container__right">
+                <div class="container__right__texto">
+                    <h2>Já fez seu <span class="span-laranja">cadastro</span> ?</h2>
+                    <br>
+                    <h3>Faça seu cadastro e comece o<br> quanto antes</h3>
+                    <br>
+                    <h6>A cada etapa, um novo desafio</h6>
+                    <br>
+                    <p class="p__link-cad">
+                        <a href="cadastro">Fazer meu cadastro aqui</a>
+                    </p>
+                    <div class="container__right__img">
+                        <img src="../../assets/imgs-html/img-cadastro-ilha.png" alt="fundo-login">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="../../assets/scripts-html/login.js"></script>
+    <script src="https://kit.fontawesome.com/062f506ca7.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações</title>
+    <link rel="stylesheet" href="../../assets/styles-html/vars.css">
+    <link rel="stylesheet" href="../../assets/styles-html/style-config.css">
+</head>
+<body onload="carregarDados()">
+    <header>
+        <a href="#" onclick="voltarPaginaAnterior()">
+            <img class="voltar" src="../../assets/imgs-html/Voltar.png" alt="botao_voltar">
+        </a>
+    </header>
+    <section>
+        <div class="main">
+            <div class="img-lefth">
+                <img src="../../assets/imgs-html/img-left-config.png" alt="imagem-ilha-esquerda">
+            </div>
+            <div class="container">
+                <div class="dados-row">
+                    <h2>Meus dados</h2>
+                </div>
+                <div class="container__dados">
+                    <div class="dados-row">
+                        <p class="nome_inpt">Nome:</p>
+                        <p class="dados"><input id="confNome" class="input-tranparent" type="text" disabled><span onclick="habilitarNome()" class="fa-regular fa-pen-to-square"></span></p>
+                    </div>
+                    <div class="dados-row">
+                        <p class="nome_inpt">E-mail:</p>
+                        <p class="dados"><input id="confEmail" class="input-tranparent" type="email" disabled><span onclick="habilitarEmail()" class="fa-regular fa-pen-to-square"></span></p>
+                    </div>
+                    <div class="dados-row">
+                        <p class="nome_inpt">Senha:</p>
+                        <p class="dados"><input id="confSenha" class="input-tranparent" type="password" disabled><span onclick="habilitarSenha()" class="fa-regular fa-pen-to-square"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="container2" style="margin-left: 10px;">
+                <div class="dados-row">
+                    <h2>Dados do jogo</h2>
+                </div>
+                <div class="container__dados">
+                    <div class="dados-row">
+                        <div class="switch-container">
+                            <label for="sound-effects" class="switch-label">Música:</label>
+                            <input type="checkbox" id="sound-effects" class="switch" checked>
+                        </div>
+                    </div>
+                    <div class="dados-row">
+                        <p id="fasesCompletadas">Fases completadas: 0</p>
+                    </div>
+                    <div class="dados-row">
+                        <input onclick="teste()" id="DeleteConta" type="button" value="Excluir minha conta">
+                    </div>
+                </div>
+            </div>
+            <div class="img-right">
+                <img src="../../assets/imgs-html/img-right-config.png" alt="imagem-ilha-direita">
+            </div>
+        </div>
+    </section>
+    <script src="https://kit.fontawesome.com/062f506ca7.js" crossorigin="anonymous"></script>
+    <script src="../../assets/scripts-html/config.js"></script>
+</body>
+</html>

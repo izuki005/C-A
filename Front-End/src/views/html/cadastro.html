@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código Agora</title>
+    <link rel="stylesheet" href="../../assets/styles-html/vars.css">
+    <link rel="stylesheet" href="../../assets/styles-html/style-cadastro.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <img id="logo" src="../../assets/imgs-html/fundo-login.png" alt="logo">
+            <ul>
+                <li>
+                    <a href="index">
+                        Página inicial
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        Sobre
+                    </a>
+                </li>
+                <li>
+                    <a href="cadastro">
+                        Inscreva-se
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section>
+        <!-- Modal para verificar código -->
+        <div id="modal" class="hidden fade">
+            <div id="base">
+                <h4>Verifique o código no seu e-mail</h4>
+                <input type="text" id="cod" placeholder="Digite o código" onkeydown="if (event.key === 'Enter') inserirCodigo()">
+                <button onclick="inserirCodigo()">Verificar</button>
+            </div>
+        </div> <!--Esse modal verifica o código do e-mail-->
+        <div  class="container">
+            <div class="container__lefth">
+                <h1 class="">Cadastre-se</h1>
+                
+                <div class="container__lefth__dados_cadastro">
+                    <div class="dados-row">
+                        <p class="dados"><input id="cadNome" placeholder="Digite seu Nome" onkeydown="verificarCamposCad(event)" class="input-tranparent" type="text"><span class="fa fa-user"></span></p>
+                    </div>
+                    <div class="dados-row">
+                        <p class="dados"><input id="cadEmail" placeholder="Digite seu E-mail" onkeydown="verificarCamposCad(event)" class="input-tranparent" type="email"><span class="fa fa-envelope"></span></p>
+                    </div>
+                    <div class="dados-row">
+                        <p class="dados"><input id="cadSenha" placeholder="Digite sua Senha" onkeydown="verificarCamposCad(event)" maxlength="12" class="input-tranparent" type="password"><span class="fa fa-lock"></span></p>  
+                        <p class="check">
+                            <input type="checkbox" id="check" onclick="mostrarsenha()" value=""> Mostrar Senha
+                        </p>
+                    </div>
+                </div>
+                <button type="submit" onclick="enviarEmail()" class="container__button">Cadastrar</button>
+            </div>
+            
+            <div class="container__right">
+                <img src="../../assets/imgs-html/fundo-cadastro.png" alt="fundo-login">
+                <div class="container__right__texto">
+                    <h2>Ainda não fez <span class="span-laranja">login</span> ?</h2>
+                    <br>
+                    <h3>Faça login e continue sua jornada</h3>
+                    <br>
+                    <h6>A cada novo nível, sua lógica se fortalece.</h6>
+                    <br>
+                    <p class="p__link-cad">
+                        <a href="login">Fazer meu login aqui</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="https://kit.fontawesome.com/062f506ca7.js" crossorigin="anonymous"></script>
+    <script src="../../assets/scripts-html/cadastro.js"></script>
+</body>
+</html>

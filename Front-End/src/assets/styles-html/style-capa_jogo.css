@@ -1,0 +1,100 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  body {
+    /* background-color: #000; */
+    color: #fff;
+    font-size: 18pt;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background: radial-gradient(circle, rgba(14,14,14,1) 0%, rgba(32,49,59,1) 100%); */
+    background-image: url(../imgs-html/Stars-black.png);
+    filter: saturate(1.2);
+  }
+  .cover {
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+  }
+  h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin-top: 2rem;
+    font-family: 'Roboto', sans-serif;
+  }
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .start-button {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    background-color: #d77718;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .start-button:hover {
+    background-color: #b35d11;
+  }
+  #logo-container {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  #logo {
+    width: 200px;
+    border-radius: 50px;
+    position: relative;
+    z-index: 2;
+    border: 5px solid #fff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+  .planet {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+  .planet img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    animation: planetRotate 20s linear infinite;
+  }
+  @keyframes planetRotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .planet.deserto {
+    top: 5%;;
+    transform: translate(-50%, -50%);
+  }
+  .planet.gelo {
+    top: 5%;
+    right: 10%;
+    transform: translate(50%, -50%);
+  }
+  .planet.floresta {
+    bottom: 10%;
+    left: 5%;
+    transform: translate(-50%, 50%);
+  }
+  .planet.vulcao {
+    bottom: 10%;
+    right: 5%;
+    transform: translate(50%, 50%);
+  }
