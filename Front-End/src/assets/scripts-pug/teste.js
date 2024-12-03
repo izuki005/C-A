@@ -778,6 +778,9 @@ function teste_campo() {
         let espaco_resposta = document.querySelector(".espaco-resposta");
         let frases = ["Este é o número 1", "Este é o número 2", "Este é o número 3", "Este é o número 4", "Este é o número 5", "Este é o número 6", "Este é o número 7", "Este é o número 8", "Este é o número 9", "Este é o número 10"];
         let valor = input.value.trim();
+        let terminal_centro = document.querySelector(".terminal-centro")
+        terminal_centro.style.display = "flex";
+
 
         espaco_resposta.style.padding = "14px 0 0 30px"
     

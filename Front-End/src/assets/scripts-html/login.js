@@ -1,3 +1,6 @@
+localStorage.clear();
+console.log("Local Storage limpo após login.");
+
 function verificarCamposLog(event) {
     const emailInput = document.getElementById('logEmail')
     const senhaInput = document.getElementById('logSenha')

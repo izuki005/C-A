@@ -46,21 +46,20 @@ function atualizarPlaneta() {
     }
 }
 
-// Verifica se o localStorage contém a informação de "Fases completadas: 5"
-const fasesCompletadas = localStorage.getItem("fasesCompletadas");
+const faseAtual = localStorage.getItem("faseAtual");
+if (!faseAtual) {
+    console.log("Nenhuma fase encontrada no Local Storage.");
+} else if (faseAtual === "5") {
+    console.log("Fase 5 alcançada. Atualizando desbloqueios...");
 
-if (fasesCompletadas === "5") {
-    console.log("Fases completadas: 5. Atualizando o status do planeta Gelo...");
-
-    // Atualiza o planeta "Gelo" para desbloqueado
     const planetaGelo = planetas.find(planeta => planeta.nome === "Gelo");
     if (planetaGelo) {
-        planetaGelo.desbloqueado = true; // Marca como desbloqueado
+        planetaGelo.desbloqueado = true;
         console.log("Planeta Gelo desbloqueado!");
-    } else {
-        console.error("Planeta Gelo não encontrado no array de planetas.");
     }
 }
+
+
 
 // Evento para mudar para o planeta anterior
 setaEsquerda.addEventListener('click', () => {

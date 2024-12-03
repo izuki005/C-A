@@ -79,6 +79,9 @@ async function completarFase(userData) {
     } else if (idConteudo === 53) {
         console.log('PARABENS VOCÊ CHEGOU AO ULTIMO OÁSIS, AGORA NO FUTURO IRÁ VER O MUNDO DO GELO')
         await completarFaseAPI(5, userData.id_cadastro);
+        // Armazena no Local Storage que a fase 5 foi concluída
+        localStorage.setItem("faseAtual", "5");
+        console.log("Progresso atualizado: Fase 5 concluída!");
     }
     
 }

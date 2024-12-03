@@ -145,18 +145,16 @@ section .div2 button {
     width: 700px;
     height: 230px;
     color: #fff;
-    display: flex;
 }
 .espaco-resposta {
     width: 700px; /* Define a largura do elemento */
-    height: auto; /* A altura se ajusta ao conteúdo */
+    height: auto; 
     /* border: 1px solid blue;  */
     display: flex; /* Torna o elemento um contêiner flexível */
     flex-direction: column; /* Alinha os itens flex em uma coluna (verticalmente) */
-    align-items: start; /* Alinha os itens no início (esquerda, no caso de texto) */
+    align-items: start; 
     padding: 0 0 0 30px; /* Adiciona um padding de 30px no lado esquerdo */
-    overflow-y: auto; /* Adiciona uma barra de rolagem vertical apenas quando necessário */
-    
+    overflow-y: auto;
     /* Estilos para Firefox */
     scrollbar-width: thin; /* Faz a barra de rolagem ser fina no Firefox */
     scrollbar-color: #E19A2F rgba(136, 136, 136, 0.205); /* Define as cores da barra de rolagem no Firefox */
@@ -175,10 +173,6 @@ section .div2 button {
 .espaco-resposta::-webkit-scrollbar-thumb:hover {
     background: #D8891C; /* Polegar laranja mais escuro ao passar o mouse */
 }
-
-
-
-
 .pai_p {
     /* border: 1px solid blue; */
     width: auto;
