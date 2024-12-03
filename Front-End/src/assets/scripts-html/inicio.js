@@ -45,19 +45,33 @@ function atualizarPlaneta() {
         linkPlaneta.style.pointerEvents = 'none'; // Desabilita o clique
     }
 }
+// Verifica se a página é "inicio-jogo"
+if (window.location.pathname.endsWith("/inicio-jogo")) {
+    const minhaImagem = document.querySelector('img[src="../../assets/imgs-html/M-gelo-mini-apagado.png"]');
+    const faseAtual = localStorage.getItem("faseAtual");
 
+    // Verifica se a imagem foi encontrada e se a fase atual é 5
+    if (minhaImagem && faseAtual === "5") {
+        console.log("Imagem encontrada e fase 5 verificada!");
+        minhaImagem.src = "../../assets/imgs-html/M-gelo-mini.png";  // Atualiza a imagem
+    }
+}
+// Verifica se a fase foi armazenada no localStorage
 const faseAtual = localStorage.getItem("faseAtual");
+
 if (!faseAtual) {
     console.log("Nenhuma fase encontrada no Local Storage.");
 } else if (faseAtual === "5") {
     console.log("Fase 5 alcançada. Atualizando desbloqueios...");
 
+    // Atualiza o status do planeta Gelo para desbloqueado
     const planetaGelo = planetas.find(planeta => planeta.nome === "Gelo");
     if (planetaGelo) {
         planetaGelo.desbloqueado = true;
         console.log("Planeta Gelo desbloqueado!");
     }
 }
+
 
 
 
