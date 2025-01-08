@@ -1,11 +1,13 @@
 const sql = require('mssql');
 
+// na parte de server coloque o nome do servidor de sua máquina
+// coloque a senha de seu servidor dentro de password
 const config = {
-    server: 'matheus004',
+    server: '',
     database: 'CodAg',
     port: 1433,
     user: 'sa',
-    password: 'jogo21',
+    password: '',
     trustServerCertificate: true,
     options: {
         cryptoCredentialsDetails: {
